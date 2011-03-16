@@ -2,15 +2,15 @@
 <resource xsi:type="vt:ServiceStandard" status="active"
           created="2000-01-01T09:00:00" updated="2000-01-01T09:00:00"
           xmlns:vr="http://www.ivoa.net/xml/VOResource/v1.0"
-          xmlns:vt="http://www.ivoa.net/xml/VOStandard/v0.4" 
+          xmlns:vt="http://www.ivoa.net/xml/StandardsRegExt/v1.0" 
           xmlns:vs="http://www.ivoa.net/xml/VODataService/v1.1" 
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://www.ivoa.net/xml/VOResource/v1.0
                               VOResource-v1.0.xsd
                               http://www.ivoa.net/xml/VODataService/v1.1
                               VODataService-v1.1.xsd
-                              http://www.ivoa.net/xml/VOStandard/v0.4
-                              VOStandard-v0.4.xsd">
+                              http://www.ivoa.net/xml/StandardsRegExt/v1.0
+                              StandardsRegExt-v1.0.xsd">
 
     <title>   Simple Image Access Protocol   </title>
     <shortName>   SIA   </shortName>

@@ -1,6 +1,6 @@
 <resource xsi:type="vstd:StandardKeyEnumeration" 
              xmlns:vr="http://www.ivoa.net/xml/VOResource/v1.0"
-             xmlns:vstd="http://www.ivoa.net/xml/VOStandard/v0.4" 
+             xmlns:vstd="http://www.ivoa.net/xml/StandardsRegExt/v1.0" 
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              created="2001-12-31T12:00:00"
              updated="2001-12-31T12:00:00" status="active">
