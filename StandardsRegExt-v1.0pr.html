@@ -242,7 +242,7 @@ Elsewhere, the use is not required.
        <ul class="toc">
          <li> <a href="#ns">2.1. The Schema Namespace and Location</a></li>
          <li> <a href="#summ">2.2. Summary of Metadata Concepts</a></li>
-         <li> <a href="#summ">2.3. Defining Enumerations of Identifiers</a></li>
+         <li> <a href="#defkeys">2.3. Defining Enumerations of Identifiers</a></li>
        </ul>
   </li><li><a href="#metadata">3. The StandardsRegExt Metadata</a>
        <ul class="toc">
@@ -335,7 +335,8 @@ However, other standards, be they ad hoc or endorsed by another
 body, may be published in any compliant registry.
 </p>
 
-<h3>1.1. The Role in the IVOA Architecture</h3>
+<a name="role">
+<h3>1.1. The Role in the IVOA Architecture</h3></a>
 
 <p>
 The IVOA Architecture [Arch] provides a high-level view of how IVOA
@@ -375,6 +376,7 @@ the XML format.  StandardsRegExt is an extension of the VOResource
 standard the defines extra metadata for describing a standard.  
 </p>
 
+<a name="model"></a>
 <h2>2. The StandardsRegExt Data Model</h2>
 
 <p>
@@ -469,6 +471,7 @@ names, or a new resource description could be created (with a new IVOA
 identifier). 
 </p>
 
+<a href="ns"></a>
 <h3><a name="ns">2.1. The Schema Namespace and Location</a></h3>
 
 <p>
@@ -534,6 +537,7 @@ qualifier to a StandardsRegExt type name given as the value of an
 <code>xsi:type</code> attribute.  
 </p>
 
+<a name="summ"></a>
 <h3>2.2. Summary of Metadata Concepts</h3>
 
 The StandardsRegExt extension defines three new types of resources.  Two
@@ -676,8 +680,10 @@ metadata.  This can be be done by deriving a new key metadatum type
 derived by extension from the <code>vstd:StandardKey</code>.  
 </p>
 
+<a name="metadata"></a>
 <h2>3. The StandardsRegExt Metadata</h2>
 
+<a name="resext"></a>
 <h3>3.1. Resource Type Extensions</h3>
 
 <p>
@@ -1213,6 +1219,7 @@ The contents of the <code>&lt;key&gt;</code> element is described in
 the next section.  
 </p>
 
+<a name="stdkey"></a>
 <a name="d:StandardKey"></a>
 <h3>3.2. Defining Keys: StandardKey and StandardKeyURI</h3>
 
@@ -1337,7 +1344,7 @@ schema and use this type.
 <a name="endNumbering"></a>
 
 
-
+<a name="appA"></a>
 <h2>Appendix A: The complete StandardsRegExt Schema</h2>
 
 <div class="schemaOuter">
@@ -1653,6 +1660,7 @@ schema and use this type.
 </div></div>
 
 
+<a name="appB"></a>
 <h2>Appendix B: Change History</h2>
 
 <h4>Changes since WD-v1.0 20100519:</h4>
@@ -1765,7 +1773,7 @@ schema and use this type.
 <hr />
 <font size="-3">
 <!-- hhmts start -->
-Last modified: Wed Mar 16 01:34:44 2011
+Last modified: Wed Mar 16 04:15:27 2011
 <!-- hhmts end -->
 </font>
 
