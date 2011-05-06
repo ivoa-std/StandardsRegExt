@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" >
 <head>
-<title>StandardsRegExt (Working Draft)</title>
+<title>StandardsRegExt (Proposed Recommendation)</title>
 
 <style type="text/css">
 .issue {background-color: yellow}
@@ -50,7 +52,7 @@ div.schemaHeader { font-weight: bold;
                     margin: 4px}
 </style>
 <link href="http://www.ivoa.net/misc/ivoa_a.html" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="http://www.ivoa.net/misc/ivoa_pr.css" type="text/css">
+<link rel="stylesheet" href="http://www.ivoa.net/misc/ivoa_pr.css" type="text/css"/>
 <!-- <link href="http://www.ivoa.net/misc/ivoa_wd.css" rel="stylesheet" type="text/css" /> -->
 <!-- <link rel="stylesheet" href="IVOA-WD.css" type="text/css" /> -->
 </head>
@@ -234,7 +236,7 @@ Elsewhere, the use is not required.
   <li><a href="#acknowledge">Acknowledgments</a></li>
   <li><a href="#conf">Conformance-related definitions</a></li>
   <li><a href="#synnot">Syntax Notation Using XML Schema</a></li>
-  <li><a href="#Intro">1. Introduction</a></li>
+  <li><a href="#Intro">1. Introduction</a>
       <ul class="toc">
          <li> <a href="#role">1.1. The Role in the IVOA Architecture</a> </li>
       </ul></li>
@@ -335,8 +337,8 @@ However, other standards, be they ad hoc or endorsed by another
 body, may be published in any compliant registry.
 </p>
 
-<a name="role">
-<h3>1.1. The Role in the IVOA Architecture</h3></a>
+
+<h3><a name="role"/>1.1. The Role in the IVOA Architecture</h3>
 
 <p>
 The IVOA Architecture [Arch] provides a high-level view of how IVOA
@@ -376,8 +378,8 @@ the XML format.  StandardsRegExt is an extension of the VOResource
 standard the defines extra metadata for describing a standard.  
 </p>
 
-<a name="model"></a>
-<h2>2. The StandardsRegExt Data Model</h2>
+
+<h2><a name="model"></a>2. The StandardsRegExt Data Model</h2>
 
 <p>
 The StandardsRegExt extension in general enables the description of three
@@ -471,8 +473,8 @@ names, or a new resource description could be created (with a new IVOA
 identifier). 
 </p>
 
-<a href="ns"></a>
-<h3><a name="ns">2.1. The Schema Namespace and Location</a></h3>
+
+<h3><a name="ns"/>2.1. The Schema Namespace and Location</h3>
 
 <p>
 The namespace associated with StandardsRegExt extensions is
@@ -537,8 +539,8 @@ qualifier to a StandardsRegExt type name given as the value of an
 <code>xsi:type</code> attribute.  
 </p>
 
-<a name="summ"></a>
-<h3>2.2. Summary of Metadata Concepts</h3>
+
+<h3><a name="summ"></a>2.2. Summary of Metadata Concepts</h3>
 
 The StandardsRegExt extension defines three new types of resources.  Two
 are specifically for independently documented standards:
@@ -578,8 +580,8 @@ are specifically for independently documented standards:
 </dl>
 </blockquote>
 
-<a name="defkeys"></a>
-<h3>2.3. Defining Enumerations of Identifiers </h3>
+
+<h3><a name="defkeys"></a>2.3. Defining Enumerations of Identifiers </h3>
 
 <p>
 A common practice when defining metadata to restrict
@@ -680,11 +682,11 @@ metadata.  This can be be done by deriving a new key metadatum type
 derived by extension from the <code>vstd:StandardKey</code>.  
 </p>
 
-<a name="metadata"></a>
-<h2>3. The StandardsRegExt Metadata</h2>
 
-<a name="resext"></a>
-<h3>3.1. Resource Type Extensions</h3>
+<h2><a name="metadata"></a>3. The StandardsRegExt Metadata</h2>
+
+
+<h3><a name="resext"></a>3.1. Resource Type Extensions</h3>
 
 <p>
 This specification defined three new resource types.  As is spelled
@@ -695,8 +697,8 @@ Doing so implies that the semantic meaning of that type applies to the
 resource.  
 </p>
 
-<a name="d:Standard"></a>
-<h4>3.1.1. Standard</h4>
+
+<h4><a name="d:Standard"></a>3.1.1. Standard</h4>
 
 <p>
 The <code>vstd:Standard</code> resource type describes any general
@@ -869,7 +871,7 @@ users to the preferred version.
 </pre>
 </div></div>
     
-<p>
+
 <table width="100%" border="2">
 <thead>
   <tr><th align="left" colspan="2">vstd:EndorsedVersion Attributes</th>
@@ -957,7 +959,7 @@ users to the preferred version.
     
 </tbody>
 </table>
-</p>
+
 
 <p>
 When all versions of the standard are considered deprecated by the
@@ -1025,8 +1027,8 @@ standard that the current standard is deprecated by when relevant.
 </div>
 
 
-<a name="d:ServiceStandard"></a>
-<h4>3.1.2. ServiceStandard</h4>
+
+<h4><a name="d:ServiceStandard"></a>3.1.2. ServiceStandard</h4>
 
 <p>
 The <code>vstd:ServiceStandard</code> resource type extends
@@ -1128,7 +1130,7 @@ process for building that description is as follows:
        record.  </li>
 </ol>
 
-<p>
+
 </p><blockquote>
 <table bgcolor="#dddddd" border="2" cellpadding="5"><tbody><tr><td>
 <dl>
@@ -1154,8 +1156,8 @@ process for building that description is as follows:
               
 
 
-<a name="d:StandardKeyEnumeration"></a>
-<h4>3.1.3. StandardKeyEnumeration</h4>
+
+<h4><a name="d:StandardKeyEnumeration"></a>3.1.3. StandardKeyEnumeration</h4>
 
 <p>
 The <code>vstd:StandardKeyEnumeration</code> resource type is available
@@ -1220,8 +1222,8 @@ the next section.
 </p>
 
 <a name="stdkey"></a>
-<a name="d:StandardKey"></a>
-<h3>3.2. Defining Keys: StandardKey and StandardKeyURI</h3>
+
+<h3><a name="d:StandardKey"></a>3.2. Defining Keys: StandardKey and StandardKeyURI</h3>
 
 <p>
 The <code>vstd:StandardKey</code> type provides the means to 
@@ -1344,13 +1346,13 @@ schema and use this type.
 <a name="endNumbering"></a>
 
 
-<a name="appA"></a>
-<h2>Appendix A: The complete StandardsRegExt Schema</h2>
+
+<h2><a name="appA"></a>Appendix A: The complete StandardsRegExt Schema</h2>
 
 <div class="schemaOuter">
   <div class="schemaHeader"><a name="s:StandardsRegExt" id="s:StandardsRegExt">The Complete StandardsRegExt Schema</a></div>
-  <div class="schemaInner">
-<pre><a name="s:VODataService"></a>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+  <div class="schemaInner"><a name="s:VODataService"></a>
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;xs:schema targetNamespace="http://www.ivoa.net/xml/StandardsRegExt/v1.0" 
            xmlns:xs="http://www.w3.org/2001/XMLSchema" 
            xmlns:vr="http://www.ivoa.net/xml/VOResource/v1.0" 
@@ -1660,8 +1662,8 @@ schema and use this type.
 </div></div>
 
 
-<a name="appB"></a>
-<h2>Appendix B: Change History</h2>
+
+<h2><a name="appB"></a>Appendix B: Change History</h2>
 
 <h4>Changes since WD-v1.0 20100519:</h4>
 
@@ -1686,7 +1688,7 @@ schema and use this type.
 </ul>
 
 
-<h2><a id="References">References</a></h2>
+<h2><a id="References"/>References</h2>
 
 <dl>
   <dt> <a name="r:ri">[RI]</a> </dt>
@@ -1717,7 +1719,7 @@ schema and use this type.
        <cite><a href="http://www.w3.org/TR/REC-xml">Extensible Markup
        Language (XML) 1.0 (Third Edition)</a></cite>, W3C
        Recommendation 04 February 2004,
-       <code>http://www.w3.org/TR/REC-xml</code>
+       <code>http://www.w3.org/TR/REC-xml</code></dd>
 
   <dt> <a name="schema" id="schema">[Schema]</a>
   </dt><dd> Fallside, David C., Walmsley, Priscilla (editors) 2004,
@@ -1733,11 +1735,11 @@ schema and use this type.
   <dt> <a name="RM" id="RM">[RM]</a> </dt>
   <dd> Hanisch, Robert (ed.) 2004. <cite><a href="http://www.ivoa.net/Documents/REC/ResMetadata/RM-20040426.htm"> Resource Metadata for the Virtual Observatory, Version 1.01</a></cite>, IVOA Recommendation, <code>http://www.ivoa.net/Documents/REC/ResMetadata/RM-20040426.htm</code> </dd>
 
-  <dt> <a name="RofR" id="RofR">[RofR]</a>
+  <dt> <a name="RofR" id="RofR">[RofR]</a></dt>
   <dd> Plante, R. 2007, <cite>
        <a href="http://www.ivoa.net/Documents/Notes/RegistryOfRegistries/RegistryOfRegistries-20070628.html">
        The Registry of Registries v1.00</a></cite>, IVOA Note,
-       <code>http://www.ivoa.net/Documents/Notes/RegistryOfRegistries/RegistryOfRegistries-20070628.html</code>
+       <code>http://www.ivoa.net/Documents/Notes/RegistryOfRegistries/RegistryOfRegistries-20070628.html</code></dd>
 
   <dt> <a name="VR" id="VR">[VR]</a> </dt>
   <dd> Plante, R., Benson, K., Graham, M., Greene,
@@ -1749,7 +1751,7 @@ schema and use this type.
        <code>http://www.ivoa.net/Documents/REC/ReR/VOResource-20080222.html</code>
        </dd>
 
-  </dd><dt> <a name="ID" id="ID">[ID]</a>
+  <dt> <a name="ID" id="ID">[ID]</a>
   </dt><dd> Plante, R., Linde, T., Williams, R., Noddle, K. 2005, <cite>
        <a href="http://www.ivoa.net/Documents/REC/Identifiers/Identifiers-200505XX.html">
        IVOA Identifiers v1.1</a></cite>,
