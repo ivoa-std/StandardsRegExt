@@ -56,7 +56,7 @@ div.schemaHeader { font-weight: bold;
 <!-- <link href="http://www.ivoa.net/misc/ivoa_wd.css" rel="stylesheet" type="text/css" /> -->
 <!-- <link rel="stylesheet" href="IVOA-WD.css" type="text/css" /> -->
 </head>
-<body bgcolor="white" onload="setupSections()">
+<body bgcolor="white">
 
 <div class="head">
 <a href="http://www.ivoa.net/"><img alt="IVOA" src="http://www.ivoa.net/pub/images/IVOA_wb_300.jpg" height="169" width="300" /></a>
@@ -171,7 +171,7 @@ interpreted as described in IETF standard, RFC 2119
 </p>
 
 <p>
-The <a name="d:vo"><strong>Virtual Observatory (VO)</strong></a> is
+The <a name="d:vo"><strong>Virtual Observatory (VO)</strong></a> is a
 general term for a collection of federated resources that can be used
 to conduct astronomical research, education, and outreach.
 <a name="d:ivoa">The</a> <a href="http://www.ivoa.net/"><strong>International
@@ -280,7 +280,7 @@ metadata terms for services and other discoverable resources.  A
 specific XML encoding of these resources is described in the IVOA standard
 <a href="http://www.ivoa.net/Documents/latest/VOResource.html">VOResource:
 an XML Encoding Schema for Resource Metadata</a> [<a href="#VR">Plante
-et al. 2006</a>] (hereafter refered to as <strong>VOResource</strong>).
+et al. 2006</a>] (hereafter referred to as <strong>VOResource</strong>).
 In this schema, support for a standard service protocol is described
 as a service's <em>capability</em>; the associated metadata is
 contained within the service resource description's
@@ -291,20 +291,20 @@ attribute of the <code>&lt;capability&gt;</code> element called
 whose value is a URI.  The <a href="#VR">VOResource standard</a> does
 not place a formal validation requirement on the
 <code>standardID</code> other than it be a legal URI; however, it
-was intended that IVOA-endorsed standards would represented via an
+was intended that IVOA-endorsed standards would be represented via an
 IVOA identifier.  As per the IVOA Identifier standard
 [<a href="#ID">ID</a>], an IVOA identifier must be registered as a
 resource in an IVOA-compliant registry.  
 </p>
 
 <p>
-This document defines a VOResource extension schema call
+This document defines a VOResource extension schema called
 <strong>StandardsRegExt</strong> which allows one to describe a standard
 and register it with an IVOA registry.  By doing so, a unique IVOA
 identifier becomes "attached" to the standard which can be referred to
 in other resource descriptions, namely for services that support the
 standard.  Not only does this aid in the unambiguous discovery of
-complient service instances but also in validating their descriptions
+compliment service instances but also in validating their descriptions
 and support for the standard.  Another benefit of associating an IVOA
 identifier with a standard is that it allows registry users who discover
 services that conform to particular standard to also discover the
@@ -324,7 +324,7 @@ for example, specific features of a standard protocol (such as
 supported data transport protocols).  By virtue of being defined
 within the context of a VOResource description, one can refer to the
 key using a globally unique URI by adding the key name as a URI fragment
-[<a href="#r:uri">URI</a>] onto IVOA identifier associated with the
+[<a href="#r:uri">URI</a>] onto the IVOA identifier associated with the
 descriptions.  
 </p>
 
@@ -375,7 +375,7 @@ also be a resource.  The Resource Metadata standard
 [<a href="#RM">RM</a>] defines the core concepts used in the resource
 descriptions, and the VOResource standard [<a href="#VOR">VOR</a>] defines
 the XML format.  StandardsRegExt is an extension of the VOResource
-standard the defines extra metadata for describing a standard.  
+standard that defines extra metadata for describing a standard.  
 </p>
 
 
@@ -585,14 +585,14 @@ are specifically for independently documented standards:
 
 <p>
 A common practice when defining metadata to restrict
-certain string values to a controlled sets of defined names, each with 
+certain string values to a controlled set of defined names, each with 
 a well-defined meaning.  With XML
 Schema, the controlled set can be enforced by a validating parser 
 (using the <code>xsd:enumeration</code> construct
 [<a href="#Schema">Schema</a>]).  One disadvantage of locking in the
-vocabulary in an XML Schema document is that growing list of allowed
-names requires a revision of the XML Schema document, which can be a
-disruptive change.  To avoid this, it is the practice VOResource and
+vocabulary in an XML Schema document is that in order to grow the list of allowed
+names, a revision of the XML Schema document is required, which can be a
+disruptive change.  To avoid this, it is the practice within VOResource and
 its extensions to avoid "hard-coded" enumerations in the XML Schema
 document for sets of defined values that will likely change over
 time.  
@@ -603,8 +603,8 @@ time.
 The StandardsRegExt schema provides an alternative to XML Schema-based
 definitions of controlled names.  Instead, a controlled list of names,
 called <em>standard keys</em>, can be defined as part of any of the three
-StandardsRegExt resource types.  Updating a resourse description is much
-less disruptive than a Schema document, and as a resource available
+StandardsRegExt resource types.  Updating a resource description is much
+less disruptive than a Schema document, and as a resource is available
 via an IVOA-compliant registry, it is still possible for a
 (non-Schema-based) application to validate the use of the vocabulary.  
 </p>
@@ -735,7 +735,7 @@ follows.
 As one of the purposes of this resource type is to enable users to
 discover the documentation that defines the standard that the resource 
 describes, the <code>&lt;referenceURL&gt;</code> should point either
-to the stadard's specification document or to summary information about
+to the standard's specification document or to summary information about
 the standard that can lead one to the specification document.  
 </p>
 
@@ -760,7 +760,7 @@ to the core set:
           <tr xmlns="" bgcolor="#f5f5f5"><td valign="top" nowrap="nowrap"><em>Semantic Meaning:</em></td>
               <td width="90%" valign="top">
                      the version of the standard that is recommended for use.
-                   </td>
+                </td>
           </tr>
           <tr bgcolor="#dddddd"><td valign="top" nowrap="nowrap"><em>Occurrences:</em></td>
               <td valign="top">required; multiple occurrences allowed.</td>
@@ -771,7 +771,7 @@ to the core set:
                      More than one version can be listed, indicating
                      that any of these versions are recommended for
                      use.  
-                   </p>
+                  </p>
               </td> 
           </tr>
       </tbody></table>
@@ -788,7 +788,7 @@ to the core set:
                      versions of the standard are considered
                      deprecated by the publisher.  The value is a 
                      human-readable explanation for the designation.
-                   </td>
+                </td>
           </tr>
           <tr bgcolor="#dddddd"><td valign="top" nowrap="nowrap"><em>Occurrences:</em></td>
               <td valign="top">optional</td>
@@ -798,7 +798,7 @@ to the core set:
 <p>
                      The explanation should indicate if another
                      standard should be preferred.  
-                   </p>
+                  </p>
               </td> 
           </tr>
       </tbody></table>
@@ -812,7 +812,7 @@ to the core set:
           <tr bgcolor="#f5f5f5"><td valign="top" nowrap="nowrap"><em>Semantic Meaning:</em></td>
               <td width="90%" valign="top">
                      a defined key associated with this standard.
-                   </td>
+                </td>
           </tr>
           <tr bgcolor="#dddddd"><td valign="top" nowrap="nowrap"><em>Occurrences:</em></td>
               <td valign="top">optional; multiple occurrences allowed.</td>
@@ -886,7 +886,7 @@ users to the preferred version.
           </tr>
           <tr xmlns="" bgcolor="#f5f5f5"><td valign="top" nowrap="nowrap"><em>Semantic Meaning:</em></td>
               <td width="90%" valign="top">
-                 the IVOA status level of this verison of the standard.
+                 the IVOA status level of this version of the standard.
                </td>
           </tr>
           <tr bgcolor="#dddddd"><td valign="top" nowrap="nowrap"><em>Occurrences:</em></td>
@@ -898,23 +898,23 @@ users to the preferred version.
                  <tr><td valign="top"><code>rec</code> </td>
                      <td>
                             an IVOA Recommendation
-                         </td></tr>
+                        </td></tr>
     
                  <tr><td valign="top"><code>prop</code> </td>
                      <td>
                             an IVOA Proposed Recommendation
-                         </td></tr>
+                        </td></tr>
     
                  <tr><td valign="top"><code>wd</code> </td>
                      <td>
                             an IVOA Working Draft
-                         </td></tr>
+                        </td></tr>
     
                  <tr><td valign="top"><code>n/a</code> </td>
                      <td>
                             not an IVOA standard or protostandard at
                             this time. 
-                         </td></tr>
+                        </td></tr>
     
               </tbody></table></td> 
           </tr>
@@ -1075,7 +1075,7 @@ VOResource schema [<a href="#r:vr">VR</a>].
               <td width="90%" valign="top">
                       an abstract description of one of the interfaces defined 
                       by this service standard.  
-                    </td>
+                </td>
           </tr>
           <tr bgcolor="#dddddd"><td valign="top" nowrap="nowrap"><em>Occurrences:</em></td>
               <td valign="top">optional; multiple occurrences allowed.</td>
@@ -1086,7 +1086,7 @@ VOResource schema [<a href="#r:vr">VR</a>].
                that apply to all implementations.  Each interface 
                element should specify a <code>role</code> attribute with a 
                value starting with "std:", or, if there is only one standard 
-               ce, <code>role</code> is set to "std".  
+               child element, <code>role</code> is set to "std".  
               </td>
           </tr>
       </tbody></table>
@@ -1107,7 +1107,7 @@ applications should not expect it to be resolvable.
 </p>
 
 <p>
-An applications can, in principle, get a complete machine-readable
+An application can, in principle, get a complete machine-readable
 description of a particular instance of a standard service (to, say,
 create a GUI for that service on-the-fly) by combining the general
 description in the <code>vstd:ServiceStandard</code> record with the
@@ -1204,7 +1204,7 @@ metadata.
               <td width="90%" valign="top">
                       the name and definition of a key--a named concept, 
                       feature, or property.
-                    </td>
+                </td>
           </tr>
           <tr bgcolor="#dddddd"><td valign="top" nowrap="nowrap"><em>Occurrences:</em></td>
               <td valign="top">required; multiple occurrences allowed.</td>
@@ -1335,7 +1335,7 @@ schema and use this type.
        simply to provide a way of documenting the definitions in a
        VOResource record.  Thus, an application may dereference the
        URI for display or user help purposes; however, dereferencing
-       in not necessary to use the URI. </dd> 
+       is not necessary to use the URI. </dd> 
        
        
 </dl>
@@ -1348,7 +1348,7 @@ schema and use this type.
 
 
 <h2><a name="appA"></a>Appendix A: The complete StandardsRegExt Schema</h2>
-
+<p>The schema is included here for completeness - the definitive source of the schema is at <a href="http://www.ivoa.net/xml/StandardsRegExt/v1.0">http://www.ivoa.net/xml/StandardsRegExt/v1.0</a>.</p>
 <div class="schemaOuter">
   <div class="schemaHeader"><a name="s:StandardsRegExt" id="s:StandardsRegExt">The Complete StandardsRegExt Schema</a></div>
   <div class="schemaInner"><a name="s:VODataService"></a>
@@ -1439,7 +1439,7 @@ schema and use this type.
            &lt;xs:attribute name="status" default="n/a"&gt;
              &lt;xs:annotation&gt;
                &lt;xs:documentation&gt;
-                 the IVOA status level of this verison of the standard.
+                 the IVOA status level of this version of the standard.
                &lt;/xs:documentation&gt;
              &lt;/xs:annotation&gt;
 
@@ -1575,7 +1575,7 @@ schema and use this type.
             A registered set of related keys.  Each key can be
             uniquely identified by combining the IVOA identifier of
             this resource with the key name separated by the URI
-            fragment delimiter, #, as in: ivoa-identifiery#key-name
+            fragment delimiter, #, as in: ivoa-identifier#key-name
          &lt;/xs:documentation&gt;
       &lt;/xs:annotation&gt;
       &lt;xs:complexContent&gt;
@@ -1641,7 +1641,7 @@ schema and use this type.
          &lt;/xs:documentation&gt;
       &lt;/xs:annotation&gt;
       &lt;xs:restriction base="xs:anyURI"&gt;
-         &lt;xs:pattern value="ivo://[\w\d][\w\d\-_\.!~\*'\(\)\+=]{2,}(/[\w\d\-_\.!~\*'\(\)\+=]+(/[\w\d\-_\.!~\*'\(\)\+=]+)*)?(#([A-Za-z0-9;/\?:@&amp;=\+$,\-_\.!~\*'\(\)]|%[A-Fa-f0-9]{2})+)?"/&gt;
+         &lt;xs:pattern value="ivo://[\w\d][\w\d\-_\.!~\*'\(\)\+=]{2,}(/[\w\d\-_\.!~\*'\(\)\+=]+(/[\w\d\-_\.!~\*'\(\)\+=]+)*)?(#([A-Za-z0-9;/\?:@&amp;amp;=\+$,\-_\.!~\*'\(\)]|%[A-Fa-f0-9]{2})+)?"/&gt;
       &lt;/xs:restriction&gt;
     &lt;/xs:simpleType&gt;
 
@@ -1654,7 +1654,7 @@ schema and use this type.
        &lt;/xs:annotation&gt;
        &lt;xs:restriction base="xs:string"&gt;
           &lt;xs:pattern
-              value="([A-Za-z0-9;/\?:@&amp;=\+$,\-_\.!~\*'\(\)]|%[A-Fa-f0-9]{2})+"/&gt;
+              value="([A-Za-z0-9;/\?:@&amp;amp;=\+$,\-_\.!~\*'\(\)]|%[A-Fa-f0-9]{2})+"/&gt;
        &lt;/xs:restriction&gt;
     &lt;/xs:simpleType&gt;
 &lt;/xs:schema&gt;
@@ -1665,6 +1665,11 @@ schema and use this type.
 
 <h2><a name="appB"></a>Appendix B: Change History</h2>
 
+<h4>Changes since PR-v1.0 20110316:</h4>
+
+<ul>
+   <li>Corrected ampersand representation in schema listing</li>
+</ul>
 <h4>Changes since WD-v1.0 20100519:</h4>
 
 <ul>
@@ -1699,7 +1704,7 @@ schema and use this type.
        IVOA Registry Interfaces</a></cite>, v1.0, IVOA
        Recommendation,
        <code>http://www.ivoa.net/Documents/RegistryInterface/20091104/</code>
-       </dd>
+    </dd>
        
   <dt> <a name="r:uri">[URI]</a> </dt>
   <dd> Berners-Lee, Tim, Fielding, R., Irvine, U.C., Masinter, L. 1998.
@@ -1749,7 +1754,7 @@ schema and use this type.
        VOResource: an XML Encoding Schema for Resource Metadata</a></cite>,
        v1.03, IVOA Recommendation,
        <code>http://www.ivoa.net/Documents/REC/ReR/VOResource-20080222.html</code>
-       </dd>
+    </dd>
 
   <dt> <a name="ID" id="ID">[ID]</a>
   </dt><dd> Plante, R., Linde, T., Williams, R., Noddle, K. 2005, <cite>
@@ -1768,7 +1773,7 @@ schema and use this type.
        Collections and Services</a></cite>,
        v1.1, IVOA Proposed Recommendation,
        <code>http://www.ivoa.net/Documents/VODataService/20090903/</code>
-       </dd>
+    </dd>
 
 </dl>
 
@@ -1777,7 +1782,7 @@ schema and use this type.
 $Revision$ $Date$  $HeadURL$
 </p>
 
-  </div>  <!-- end id="main" -->
+</div>  <!-- end id="main" -->
 
 </body>
 </html>
