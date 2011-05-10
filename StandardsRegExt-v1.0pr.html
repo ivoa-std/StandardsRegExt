@@ -634,10 +634,11 @@ where <em>ivoa-identifier</em> is the resource's IVOA identifier and
 </p>
 
 <p>
-For example with a key named <code>case-insensitive</code> defined
-within a resource description with an IVOA identifier given by
-<code>&lt;identifier&gt; ivo://ivoa.net/std/QueryProtocol
-&lt;identifier&gt;</code>, the URI identifying this key would be:
+For example, we consider a resource description with an IVOA
+identifier given by <code>&lt;identifier&gt;
+ivo://ivoa.net/std/QueryProtocol &lt;identifier&gt;</code> that
+defines a a key named <code>case-insensitive</code>; the URI
+identifying this key would be: 
 
 <blockquote>
 <code>ivo://ivoa.net/std/QueryProtocol#case-insensitive</code>
@@ -1292,6 +1293,14 @@ a VOResource record.
           </tr>
           <tr bgcolor="#dddddd"><td valign="top" nowrap="nowrap"><em>Occurrences:</em></td>
               <td valign="top">required</td>
+          </tr>
+          <tr bgcolor="#f5f5f5"><td valign="top" nowrap="nowrap"><em>Comments:</em></td>
+              <td valign="top">
+                Note that while a lengthy definition and other
+                comments can be included in the body of this element,
+                the <code>xs:token</code> type does not support
+                multiple paragraphs.  
+              </td> 
           </tr>
       </tbody></table>
   </td></tr>
