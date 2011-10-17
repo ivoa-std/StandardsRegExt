@@ -100,7 +100,7 @@
                          </xs:documentation>
                       </xs:annotation>
                    </xs:enumeration>
-                   <xs:enumeration value="prop">
+                   <xs:enumeration value="pr">
                       <xs:annotation>
                          <xs:documentation>
                             an IVOA Proposed Recommendation
@@ -149,7 +149,7 @@
                    <xs:enumeration value="deprecated">
                       <xs:annotation>
                          <xs:documentation>
-                            a versions whose use is now discouraged
+                            a version whose use is now discouraged
                             because a newer version is preferred.  
                          </xs:documentation>
                       </xs:annotation>
