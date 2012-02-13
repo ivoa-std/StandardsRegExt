@@ -1948,8 +1948,8 @@ defined in the specification.
 
 <ul>
   <li> added Note box to section 2.2 that recommends against using 
-       <strong>vstd:StandardKeyEnumeration</strong> to describe keys when
-       they are defined by an IVOA standard. </li>
+       <strong><code>vstd:StandardKeyEnumeration</code></strong> to
+       describe keys when they are defined by an IVOA standard. </li>
   <li> added statement in section 2.3 highlighting that # signs are
        not allowed in key names. </li>
   <li> added <code>iwd</code> and <code>note</code> as allowed values
@@ -1957,9 +1957,12 @@ defined in the specification.
        <strong><code>status</code></strong> attribute. </li>
   <li> converted a Note box in section 3.1.2 to a normative paragraph
        that recommends listing optional <strong><code>ParamHTTP</code></strong>
-       parameters as ignored.  </li>
-  <li> added sample <strong>vstd:ServiceStandard</strong> instance
-       record back in as Appendix B </li>
+       parameters as ignored.  Note that there is a related error in
+       the VODataService standard [<a href="#r:vds">VDS</a>]: while
+       the <strong><code>ignored</code></strong> value is defined in
+       the schema, it is not included in the document text.</li>
+  <li> added sample <strong><code>vstd:ServiceStandard</code></strong> 
+       instance record back in as Appendix B </li>
   <li> added references to TAP and SIA </li>
   <li> fixed various grammatical typos. </li>
 </ul>
