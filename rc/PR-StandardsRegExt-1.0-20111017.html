@@ -66,20 +66,18 @@ IVOA Standards<br />
 Version 1.0</h1>
 
 <h2>IVOA Proposed Recommendation <br />
-13 February 2012</h2>
+17 October 2011</h2>
 
 <dl>
   <dt>This version:</dt>
-  <dd><a href="http://www.ivoa.net/Documents/StandardsRegExt/20120213/">
-      http://www.ivoa.net/Documents/StandardsRegExt/20120213/</a></dd>
+  <dd><a href="http://www.ivoa.net/Documents/StandardsRegExt/20111017/">
+      http://www.ivoa.net/Documents/StandardsRegExt/20111017/</a></dd>
  
   <dt>Latest version:</dt>
   <dd><a href="http://www.ivoa.net/Documents/latest/StandardsRegExt.html">
       http://www.ivoa.net/Documents/latest/StandardsRegExt.html</a></dd>
 
   <dt>Previous versions</dt>
-  <dd><a href="http://www.ivoa.net/Documents/StandardsRegExt/20111017/">
-      http://www.ivoa.net/Documents/StandardsRegExt/20111017/</a></dd>
   <dd>PR: <a href="http://www.ivoa.net/Documents/StandardsRegExt/20110921/">
       http://www.ivoa.net/Documents/StandardsRegExt/20110921/</a></dd>
   <dd>PR: <a href="http://www.ivoa.net/Documents/StandardsRegExt/20110316/">
@@ -154,8 +152,9 @@ Information Technology Research Program under Cooperative Agreement
 AST0122449 with The Johns Hopkins University, from the
 <a href="http://www.pparc.ac.uk/">UK Particle Physics and Astronomy
 Research Council (PPARC)</a>, and from the
-<a href="http://cordis.europa.eu/fp7/capacities/home_en.html">European
-Commission's Seventh Framework Program</a>.  </p>
+<a href="http://fp6.cordis.lu/fp6/home.cfm">Eurpean Commission's Sixth
+Framework Program</a> via the <a href="http://www.astro-opticon.org/">
+Optical Infrared Coordination Network (OPTICON)</a>.  </p>
 
 <p>
 This document contains text lifted verbatim, with small changes, and
@@ -256,9 +255,8 @@ Elsewhere, the use is not required.
          <li> <a href="#resext">3.1.  Resource Type Extensions</a> </li>
          <li> <a href="#stdkey">3.2.  Defining Keys: StandardKey and StandardKeyURI</a> </li>
        </ul></li>
-  <li><a href="#appA">Appendix A: The StandardsRegExt XML Schema</a></li>
-  <li><a href="#appB">Appendix B: A Sample Record</a></li>
-  <li><a href="#appC">Appendix C: Change History</a></li>
+  <li><a href="#appA">Appendix A: the StandardsRegExt XML Schema</a></li>
+  <li><a href="#appB">Appendix B: Change History</a></li>
   <li><a href="#References">References</a></li>
 </ul>
 </div></div>
@@ -313,7 +311,7 @@ standard.  Not only does this aid in the unambiguous discovery of
 compliant service instances but also in validating their descriptions
 and support for the standard.  Another benefit of associating an IVOA
 identifier with a standard is that it allows registry users who discover
-services that conform to a particular standard to also discover the
+services that conform to particular standard to also discover the
 document that describes that standard.
 </p>
 
@@ -575,7 +573,7 @@ are specifically for independently documented standards:
        element. </dd>
 
   <dt> <code>vstd:StandardKeyEnumeration</code> </dt>
-  <dd> This resource type allows for the description of a related set of 
+  <dd> This resource type allows for the description of a related set
        controlled names (referred to as <em>keys</em>) and their
        meanings.  While keys can be defined as part of a
        <code>vstd:Standard</code> or <code>vstd:ServiceStandard</code>
@@ -585,23 +583,6 @@ are specifically for independently documented standards:
        not.  </dd>       
        
 </dl>
-</blockquote>
-
-<blockquote>
-<table bgcolor="#dddddd" border="2" cellpadding="5"><tbody><tr><td>
-<dl>
-  <dt> <strong>Note:</strong> </dt>
-  <dd> As mentioned above, this standard allows controlled names to be
-       defined either as part of a record of any of the above three
-       types.  When such names are being defined as part of an IVOA
-       standard, it is recommended that the <code>vstd:Standard</code> or
-       <code>vstd:ServiceStandard</code> record corresponding to the
-       IVOA standard document be used to define the names.  The
-       <code>vstd:StandardKeyEnumeration</code> might be convenient
-       for definitions that are experimental or otherwise are for
-       non-IVOA-based applications.  </dd>
-</dl>
-</td></tr></tbody></table>
 </blockquote>
 
 
@@ -614,12 +595,12 @@ a well-defined meaning.  With XML
 Schema, the controlled set can be enforced by a validating parser 
 (using the <code>xsd:enumeration</code> construct
 [<a href="#Schema">Schema</a>]).  One disadvantage of locking in the
-vocabulary in an XML Schema document is that in order to grow the list
-of allowed names, a revision of the XML Schema document is required,
-which can be a disruptive change.  To avoid this, it is the practice
-within VOResource and its extensions to avoid "hard-coded"
-enumerations in the XML Schema document for sets of defined values
-that will likely change over time.  
+vocabulary in an XML Schema document is that in order to grow the list of allowed
+names, a revision of the XML Schema document is required, which can be a
+disruptive change.  To avoid this, it is the practice within VOResource and
+its extensions to avoid "hard-coded" enumerations in the XML Schema
+document for sets of defined values that will likely change over
+time.  
 </p>
 
 <p>
@@ -655,8 +636,6 @@ description that defines the key:
 <p>
 where <em>ivoa-identifier</em> is the resource's IVOA identifier and
 <em>key-name</em> is the name of a key defined in that resource.
-Consistent with the URI standard [<a href="#r:uri">URI</a>], the
-<em>key-name</em> must not contain a pound (#) sign.
 </p>
 
 <p>
@@ -880,8 +859,6 @@ users to the preferred version.
             &lt;xs:enumeration value="rec" /&gt;
             &lt;xs:enumeration value="pr" /&gt;
             &lt;xs:enumeration value="wd" /&gt;
-            &lt;xs:enumeration value="iwd" /&gt;
-            &lt;xs:enumeration value="note" /&gt;
             &lt;xs:enumeration value="n/a" /&gt;
           &lt;/restriction&gt;
         &lt;/simpleType&gt;
@@ -900,7 +877,7 @@ users to the preferred version.
 </pre>
 </div></div>
     
-<p>
+
 <table width="100%" border="2">
 <thead>
   <tr><th align="left" colspan="2">vstd:EndorsedVersion Attributes</th>
@@ -939,17 +916,6 @@ users to the preferred version.
                             an IVOA Working Draft
                         </td></tr>
     
-                 <tr><td valign="top"><code>iwd</code> </td>
-                     <td>
-                            an internal Working Draft of an IVOA
-                            Working Group
-                        </td></tr>
-    
-                 <tr><td valign="top"><code>note</code> </td>
-                     <td>
-                            a published IVOA Note
-                        </td></tr>
-    
                  <tr><td valign="top"><code>n/a</code> </td>
                      <td>
                             not an IVOA standard or protostandard at
@@ -960,17 +926,6 @@ users to the preferred version.
           </tr>
           <tr bgcolor="#dddddd"><td valign="top" nowrap="nowrap"><em>Default Value:</em></td>
               <td width="90%" valign="top"><code>n/a</code></td> 
-          </tr>
-          <tr bgcolor="#f5f5f5"><td valign="top" nowrap="nowrap"><em>Comments:</em></td>
-              <td valign="top">
-                 For values of <strong>rec</strong>, <strong>pr</strong>, 
-                 <strong>wd</strong>, and <strong>note</strong>, the 
-                 record's <strong>&lt;referenceURL&gt;</strong> element
-                 should point to the official specification document in 
-                 the <a href="http://www.ivoa.net/Documents/">IVOA
-                 Document Repository</a>; if the document does not
-                 appear there, these values should not be used.  
-              </td> 
           </tr>
       </tbody></table>
   </td></tr>
@@ -1010,7 +965,7 @@ users to the preferred version.
     
 </tbody>
 </table>
-</p>
+
 
 <p>
 When all versions of the standard are considered deprecated by the
@@ -1028,9 +983,9 @@ standard that the current standard is deprecated by when relevant.
        might be used in the VO is in the case of the SkyNode standard
        [<a href="#r:sn">SkyNode</a>].  As of this writing, there are
        many instances of SkyNode services available in the VO, and where 
-       they are used, version 1.01 is endorsed; however, the IVOA has
-       deprecated this standard in favor of the Table Access
-       Protocol [<a href="#r:tap">TAP</a>].    </dd> 
+       they are used, version 1.01 is endorsed; however, the IVOA is
+       deprecating this standard in favor of the Table Access
+       Protocol.    </dd> 
 </dl>
 </td></tr></tbody></table>
 </blockquote>
@@ -1084,7 +1039,7 @@ standard that the current standard is deprecated by when relevant.
 <p>
 The <code>vstd:ServiceStandard</code> resource type extends
 <a href="#d:Standard"><code>vstd:Standard</code></a> to describe more
-specifically a standard protocol.  It adds an 
+specifically a standard protocol.  It adds an
 <code>&lt;interface&gt;</code> element to allow the interface defined
 by the standard to be described in a machine-readable way.  Its type
 is defined to be <code>vr:Interface</code>, which is defined in the
@@ -1181,40 +1136,32 @@ process for building that description is as follows:
        record.  </li>
 </ol>
 
-<p>
-The so-called "simple" data access layer (DAL) services, such as the
-Simple Image Access services [<a href="#r:sia">SIA</a>], are
-registered using the <code>vs:ParamHTTP</code> interface type
-[<a href="#r:vds">VDS</a>] to describe its interface.  This interface
-type allows one to list input parameters accepted by the service.
-Each parameter can be marked as <em>required</em>, <em>optional</em>,
-or <em>ignored</em>.  Typically with DAL services, parameters defined
-as optional by the standard may be legally ignored by an
-implementation.  Consequently, this specification recommends special
-instruction for listing and interpreting input parameteters in a
-<code>vstd:ServiceStandard</code> record when the interface is of type
-<code>vs:ParamHTTP</code>:  parameters that can be optionally provided
-in a client's query but are ignorable by the implementation should be
-marked as <em>ignored</em>.  Applications that consume such 
-<code>vstd:ServiceStandard</code> records should thus interpret the
-parameters marked <em>ignored</em> as <em>optional</em> for use by
-clients and <em>ignorable</em> by implementations.  This minimizes the
-list of parameters that the service provider must list in the
-registration of a particular service instance to the ones that are
-actually supported (i.e. not ignored): when the list service
-instance description is merged into the list from the 
-<code>vstd:ServiceStandard</code> record (step 4 above), the result is
-an accurate list of the optional but supported and the ignored
-parameters for that service instance.
-</p>
 
-<p>
-An example of an instance of a <code>vstd:ServiceStandard</code>
-record is shown in <a href="#appB">Appendix B</a>.  It describes the
-Simple Image Access Specification [<a href="#r:sia">SIA</a>] and
-in particular illustrates the recommended way to list input parameters
-defined by the standard.  
-</p>
+</p><blockquote>
+<table bgcolor="#dddddd" border="2" cellpadding="5"><tbody><tr><td>
+<dl>
+  <dt> <strong>Note:</strong> </dt>
+  <dd> A number of IVOA standard services (e.g. [<a href="#r:sia">SIA</a>])
+       are registered using the <code>vs:ParamHTTP</code> interface
+       type to describe its interface.  This interface type allows one
+       to list input parameters accepted by the service.  Each
+       parameter can be marked as <em>required</em> or
+       <em>optional</em>.  A <code>vstd:ServiceStandard</code> record
+       for the SIA protocol can list the required and optional
+       parameters defined by the SIA specification.  A resource record
+       for a real SIA service, then, need only list the optional
+       parameters that it supports plus any custom parameters.
+       Between the two records, an application can, in principle,
+       build a GUI to the SIA service without knowing anything special
+       about the SIA standard protocol.  </dd> 
+</dl>
+</td></tr></tbody></table>
+</blockquote>
+<p></p>
+      
+              
+
+
 
 <h4><a name="d:StandardKeyEnumeration"></a>3.1.3. StandardKeyEnumeration</h4>
 
@@ -1224,7 +1171,7 @@ for collecting definitions of related, standard keys.  Each key defined
 within this resource can then be referred to by a unique IVOA
 Identifier URI (see <a href="#stdkey">section 3.2</a>).  To support
 this, the <code>vstd:StandardKeyEnumeration</code> resource simply
-adds the <code>&lt;key&gt;</code> element to the standard core
+adds the <code>&lt;keys&gt;</code> element to the standard core
 metadata.  
 </p>
 
@@ -1336,11 +1283,6 @@ a VOResource record.
           <tr bgcolor="#dddddd"><td valign="top" nowrap="nowrap"><em>Occurrences:</em></td>
               <td valign="top">required</td>
           </tr>
-          <tr bgcolor="#f5f5f5"><td valign="top" nowrap="nowrap"><em>Comments:</em></td>
-              <td valign="top">
-                Note that fragments may not include a pound (#) sign.
-              </td> 
-          </tr>
       </tbody></table>
   </td></tr>
     
@@ -1420,12 +1362,10 @@ schema and use this type.
 
 
 <h2><a name="appA"></a>Appendix A: The complete StandardsRegExt Schema</h2>
-
 <p>The schema is included here for completeness - the definitive source of the schema is at <a href="http://www.ivoa.net/xml/StandardsRegExt/v1.0">http://www.ivoa.net/xml/StandardsRegExt/v1.0</a>.</p>
-
 <div class="schemaOuter">
   <div class="schemaHeader"><a name="s:StandardsRegExt" id="s:StandardsRegExt">The Complete StandardsRegExt Schema</a></div>
-  <div class="schemaInner">
+  <div class="schemaInner"><a name="s:VODataService"></a>
 <pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;xs:schema targetNamespace="http://www.ivoa.net/xml/StandardsRegExt/v1.0" 
            xmlns:xs="http://www.w3.org/2001/XMLSchema" 
@@ -1515,13 +1455,6 @@ schema and use this type.
                &lt;xs:documentation&gt;
                  the IVOA status level of this version of the standard.
                &lt;/xs:documentation&gt;
-               &lt;xs:documentation&gt;
-                 For values of "rec", "pr", "wd", and "note", the
-                 record's referenceURL element should point to the
-                 official specification document in the IVOA Document
-                 Repository; if the document does not appear there,
-                 these values should not be used. 
-               &lt;/xs:documentation&gt;
              &lt;/xs:annotation&gt;
 
              &lt;xs:simpleType&gt;
@@ -1544,20 +1477,6 @@ schema and use this type.
                       &lt;xs:annotation&gt;
                          &lt;xs:documentation&gt;
                             an IVOA Working Draft
-                         &lt;/xs:documentation&gt;
-                      &lt;/xs:annotation&gt;
-                   &lt;/xs:enumeration&gt;
-                   &lt;xs:enumeration value="iwd"&gt;
-                      &lt;xs:annotation&gt;
-                         &lt;xs:documentation&gt;
-                            an internal Working Draft of an IVOA Working Group
-                         &lt;/xs:documentation&gt;
-                      &lt;/xs:annotation&gt;
-                   &lt;/xs:enumeration&gt;
-                   &lt;xs:enumeration value="note"&gt;
-                      &lt;xs:annotation&gt;
-                         &lt;xs:documentation&gt;
-                            a published IVOA Note
                          &lt;/xs:documentation&gt;
                       &lt;/xs:annotation&gt;
                    &lt;/xs:enumeration&gt;
@@ -1756,220 +1675,9 @@ schema and use this type.
 </pre>
 </div></div>
 
-<h2><a name="appB"></a>Appendix B: A Sample Record</h2>
-
-<p>
-This example shows how one can describe an IVOA standard, the Simple
-Image Access Protocol.  It includes a description of the input parameters
-defined in the specification.  
-</p>
 
 
-<div class="schemaOuter">
-  <div class="schemaHeader"><a name="s:samplerec" id="s:samplerec">A
-  sample record describing the SIA standard</a></div>
-  <div class="schemaInner">
-<pre>&gt;&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;resource xsi:type="vt:ServiceStandard" status="active"
-          created="2000-01-01T09:00:00" updated="2000-01-01T09:00:00"
-          xmlns:vr="http://www.ivoa.net/xml/VOResource/v1.0"
-          xmlns:vt="http://www.ivoa.net/xml/StandardsRegExt/v1.0" 
-          xmlns:vs="http://www.ivoa.net/xml/VODataService/v1.1" 
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://www.ivoa.net/xml/VOResource/v1.0
-                              VOResource-v1.0.xsd
-                              http://www.ivoa.net/xml/VODataService/v1.1
-                              VODataService-v1.1.xsd
-                              http://www.ivoa.net/xml/StandardsRegExt/v1.0
-                              StandardsRegExt-v1.0.xsd"&gt;
-
-    &lt;title&gt;   Simple Image Access Protocol   &lt;/title&gt;
-    &lt;shortName&gt;   SIA   &lt;/shortName&gt;
-    &lt;identifier&gt;   ivo://ivoa.net/std/SIA   &lt;/identifier&gt;
-
-    &lt;curation&gt;
-      &lt;publisher ivo-id="ivo://ivoa.net/IVOA"&gt;
-        International Virtual Observatory Alliance
-      &lt;/publisher&gt;
-      &lt;creator&gt;
-        &lt;name&gt;  Doug Tody   &lt;/name&gt;
-      &lt;/creator&gt;
-      &lt;creator&gt;
-        &lt;name&gt;  Ray Plante   &lt;/name&gt;
-      &lt;/creator&gt;
-      &lt;date&gt;   2004-05-24   &lt;/date&gt;
-      &lt;contact&gt;
-        &lt;name&gt;   Data Access Layer Working Group   &lt;/name&gt;
-	&lt;email&gt;  dal@ivoa.net    &lt;/email&gt;
-      &lt;/contact&gt;
-    &lt;/curation&gt;
-
-    &lt;content&gt;
-      &lt;subject&gt;   software standard   &lt;/subject&gt;
-      &lt;subject&gt;   virtual observatory   &lt;/subject&gt;
-      &lt;description&gt;
-        The Simple Image Access Protocol is a protocol for retrieving
-        image data from a variety of astronomical image repositories
-        through a uniform interface. The interface is meant to be
-        reasonably simple to implement by service providers. A query
-        defining a rectangular region on the sky is used to query for
-        candidate images. The service returns a list of candidate
-        images formatted as a VOTable. For each candidate image an
-        access reference URL may be used to retrieve the image. Images
-        may be returned in a variety of formats including FITS and
-        various graphics formats. Referenced images are often computed
-        on the fly, e.g., as cutouts from larger images. 
-      &lt;/description&gt;
-      &lt;referenceURL&gt;
-         http://www.ivoa.net/Documents/latest/SIA.html
-      &lt;/referenceURL&gt;
-      &lt;type&gt;   Other   &lt;/type&gt;
-      &lt;contentLevel&gt;   Research   &lt;/contentLevel&gt;
-    &lt;/content&gt;
-
-    &lt;endorsedVersion status="rec"&gt; 1.0 &lt;/endorsedVersion&gt;
-
-    &lt;interface xsi:type="vs:ParamHTTP" role="std" version="1.0"&gt;
-       &lt;accessURL use="base"&gt; http://sample.org/cgi-bin/sia &lt;/accessURL&gt;
-       &lt;queryType&gt;GET&lt;/queryType&gt;
-       &lt;resultType&gt;text/xml+votable&lt;/resultType&gt;
-
-       &lt;!-- 
-         -  These are the standard input parameters defined in the 
-         -  SIA spec
-         --&gt;
-       &lt;param use="required"&gt;
-         &lt;name&gt;POS&lt;/name&gt;
-         &lt;description&gt;
-            Search Position in the form "ra,dec" where ra and dec are given 
-            in decimal degrees in the ICRS coordinate system.
-         &lt;/description&gt;
-         &lt;unit&gt;degrees&lt;/unit&gt;
-         &lt;dataType arraysize="2"&gt;real&lt;/dataType&gt;
-       &lt;/param&gt;
-       &lt;param use="required"&gt;
-         &lt;name&gt;SIZE&lt;/name&gt;
-         &lt;description&gt;
-            Size of search region in the RA and Dec. directions in decimal 
-            degrees.
-         &lt;/description&gt;
-         &lt;unit&gt;degrees&lt;/unit&gt;
-         &lt;dataType arraysize="2"&gt;real&lt;/dataType&gt;
-       &lt;/param&gt;
-       &lt;param use="optional"&gt;
-         &lt;name&gt;FORMAT&lt;/name&gt;
-         &lt;description&gt;Requested format of images.&lt;/description&gt;
-         &lt;dataType&gt;string&lt;/dataType&gt;
-       &lt;/param&gt;
-       &lt;param use="optional"&gt;
-         &lt;name&gt;INTERSECT&lt;/name&gt;
-         &lt;description&gt;
-           Choice of intersection of matched images with the region of 
-           interest.
-         &lt;/description&gt;
-         &lt;dataType&gt;string&lt;/dataType&gt;
-       &lt;/param&gt;
-       &lt;param use="ignored"&gt;
-         &lt;name&gt;NAXIS&lt;/name&gt;
-         &lt;description&gt;
-           The number of pixels desired along each axis
-         &lt;/description&gt;
-         &lt;dataType arraysize="2"&gt;integer&lt;/dataType&gt;
-       &lt;/param&gt;
-       &lt;param use="ignored"&gt;
-         &lt;name&gt;CFRAME&lt;/name&gt;
-         &lt;description&gt;
-           the coordinate frame to impose on the image.
-         &lt;/description&gt;
-         &lt;dataType&gt;string&lt;/dataType&gt;
-       &lt;/param&gt;
-       &lt;param use="ignored"&gt;
-         &lt;name&gt;EQUINOX&lt;/name&gt;
-         &lt;description&gt;
-           the epoch of the mean equator and equinox for the specified 
-           coordinate system reference frame (CFRAME). coordinate frame to 
-           impose on the image.
-         &lt;/description&gt;
-         &lt;dataType&gt;string&lt;/dataType&gt;
-       &lt;/param&gt;
-       &lt;param use="ignored"&gt;
-         &lt;name&gt;CRPIX&lt;/name&gt;
-         &lt;description&gt;
-           the pixel position to locate the reference position in the output
-           image.
-         &lt;/description&gt;
-         &lt;dataType arraysize="2"&gt;real&lt;/dataType&gt;
-       &lt;/param&gt;
-       &lt;param use="ignored"&gt;
-         &lt;name&gt;CRVAL&lt;/name&gt;
-         &lt;description&gt;
-           the world coordinates of the reference position in the output
-           image in decimal degrees
-         &lt;/description&gt;
-         &lt;dataType arraysize="2"&gt;real&lt;/dataType&gt;
-       &lt;/param&gt;
-       &lt;param use="ignored"&gt;
-         &lt;name&gt;CDELT&lt;/name&gt;
-         &lt;description&gt;
-           the scale of the output image in decimal degrees per pixel
-         &lt;/description&gt;
-         &lt;dataType arraysize="2"&gt;real&lt;/dataType&gt;
-       &lt;/param&gt;
-       &lt;param use="ignored"&gt;
-         &lt;name&gt;ROTANG&lt;/name&gt;
-         &lt;description&gt;
-           the rotation angle to put into the output image's coordinate system
-         &lt;/description&gt;
-         &lt;dataType arraysize="2"&gt;real&lt;/dataType&gt;
-       &lt;/param&gt;
-       &lt;param use="ignored"&gt;
-         &lt;name&gt;PROJ&lt;/name&gt;
-         &lt;description&gt;
-           the projection to impose in the construction of the output image
-         &lt;/description&gt;
-         &lt;dataType&gt;string&lt;/dataType&gt;
-       &lt;/param&gt;
-       &lt;param use="ignored"&gt;
-         &lt;name&gt;VERB&lt;/name&gt;
-         &lt;description&gt;
-           the level of verbosity in the output.
-         &lt;/description&gt;
-         &lt;dataType&gt;string&lt;/dataType&gt;
-       &lt;/param&gt;
-    &lt;/interface&gt;
-   
-&lt;/resource&gt;
-</pre>
-</div></div>
-
-<h2><a name="appC"></a>Appendix C: Change History</h2>
-
-<h4>Changes since PR-v1.0 20111017:</h4>
-
-<ul>
-  <li> added Note box to section 2.2 that recommends against using 
-       <strong>vstd:StandardKeyEnumeration</strong> to describe keys when
-       they are defined by an IVOA standard. </li>
-  <li> added statement in section 2.3 highlighting that # signs are
-       not allowed in key names. </li>
-  <li> added <code>iwd</code> and <code>note</code> as allowed values
-       for <strong><code>vstd:EndorsedVersion</code></strong>'s
-       <strong><code>status</code></strong> attribute. </li>
-  <li> converted a Note box in section 3.1.2 to a normative paragraph
-       that recommends listing optional <strong><code>ParamHTTP</code></strong>
-       parameters as ignored.  </li>
-  <li> added sample <strong>vstd:ServiceStandard</strong> instance
-       record back in as Appendix B </li>
-  <li> added references to TAP and SIA </li>
-  <li> fixed various grammatical typos. </li>
-</ul>
-
-<h4>Changes since PR-v1.0 20110921:</h4>
-
-<ul>
-  <li> In <code>&lt;endorsedVersion&gt;</code>, changed "prop" to "pr". </li>
-  <li> various typo corrections </li>
-</ul>
+<h2><a name="appB"></a>Appendix B: Change History</h2>
 
 <h4>Changes since PR-v1.0 20110316:</h4>
 
@@ -2041,7 +1749,7 @@ defined in the specification.
        October 2004, <code>http://www.w3.org/TR/xmlschema-0/</code> </dd>
 
   <dt> <a name="Arch">[Arch]</a> </dt>
-  <dd> Arviset, Christophe, Severin Gaudet, and the IVOA Technical
+  <dd> Arviset, Christophe, Severin Gaudet, and the IVOA Tehcnical
        Coordination Group 2010, <cite>
        <a href="http://www.ivoa.net/Documents/Notes/IVOAArchitecture/">
        The IVOA Architecture</a></cite>, v1.0, IVOA Note, 23 November 2010,
@@ -2069,35 +1777,21 @@ defined in the specification.
 
   <dt> <a name="ID" id="ID">[ID]</a>
   </dt><dd> Plante, R., Linde, T., Williams, R., Noddle, K. 2005, <cite>
-       <a href="http://www.ivoa.net/Documents/REC/Identifiers/Identifiers-20070302.html">
-       IVOA Identifiers v1.12</a></cite>,
-       <code>http://www.ivoa.net/Documents/REC/Identifiers/Identifiers-20070302.html</code>.
+       <a href="http://www.ivoa.net/Documents/REC/Identifiers/Identifiers-200505XX.html">
+       IVOA Identifiers v1.1</a></cite>,
+       <code>http://www.ivoa.net/Documents/REC/Identifiers/Identifiers-200505XX.html</code>.
 
   </dd>
-
-  </dd><dt> <a name="r:sia">[SIA]</a>
-  </dt><dd> Tody, Doug, Plante, Ray, and Harrison, Paul 2009, <cite>
-       <a href="http://www.ivoa.net/Documents/SIA/20091116/">
-       Simple Image Access Specification Version 1.0</a></cite>, IVOA
-       Recommendation, 
-       <code>http://www.ivoa.net/Documents/SIA/20091116/</code>.
-
-  </dd><dt> <a name="r:tap">[TAP]</a>
-  </dt><dd> Dowler, Patric, Rixon, Guy, and Tody, Doug 2010, <cite>
-       <a href="http://www.ivoa.net/Documents/TAP/20100327/">
-       Table Access Protocol, Version 1.0</a></cite>, IVOA
-       Recommendation, 
-       <code>http://www.ivoa.net/Documents/TAP/20100327/</code>.
 
   <dt> <a name="r:vds" id="r:vds">[VDS]</a> </dt>
   <dd> Plante, R., St&eacute;b&eacute;, A. Benson, K., Dowler, P. Graham, M., 
        Greene, G., Harrison, P., Lemson, G., Linde, T., Rixon,
-       G., St&eacute;b&eacute;, A. 2010, <cite>
-       <a href="http://www.ivoa.net/Documents/VODataService/20101202/">
+       G., St&eacute;b&eacute;, A. 2009, <cite>
+       <a href="http://www.ivoa.net/Documents/VODataService/20090903/">
        VODataService: a VOResource Schema Extension for Describing
        Collections and Services</a></cite>,
-       v1.1, IVOA Recommendation,
-       <code>http://www.ivoa.net/Documents/VODataService/20101202/</code>
+       v1.1, IVOA Proposed Recommendation,
+       <code>http://www.ivoa.net/Documents/VODataService/20090903/</code>
     </dd>
 
 </dl>
