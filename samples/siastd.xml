@@ -56,7 +56,7 @@
       <contentLevel>   Research   </contentLevel>
     </content>
 
-    <endorsedVersion status="wd"> 1.0 </endorsedVersion>
+    <endorsedVersion status="rec"> 1.0 </endorsedVersion>
 
     <interface xsi:type="vs:ParamHTTP" role="std" version="1.0">
        <accessURL use="base"> http://sample.org/cgi-bin/sia </accessURL>
@@ -158,7 +158,7 @@
          </description>
          <dataType>string</dataType>
        </param>
-       <param use="optional">
+       <param use="ignored">
          <name>VERB</name>
          <description>
            the level of verbosity in the output.
