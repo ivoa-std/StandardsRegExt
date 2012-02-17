@@ -222,7 +222,7 @@
             </xs:annotation>
          </xs:element>
          <xs:element name="description" type="xs:token" 
-                     minOccurs="0" maxOccurs="unbounded" >
+                     minOccurs="0" maxOccurs="1" >
             <xs:annotation>
                <xs:documentation>
                   A human-readable description of what the schema
@@ -249,7 +249,7 @@
          </xs:element>
       </xs:sequence>
 
-      <xs:attribute name="namespace" type="xs:token">
+      <xs:attribute name="namespace" type="xs:token" use="required">
           <xs:annotation>
              <xs:documentation>
                an identifier for the schema being described.  Each instance 

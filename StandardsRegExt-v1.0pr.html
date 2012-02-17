@@ -70,14 +70,16 @@ Version 1.0</h1>
 
 <dl>
   <dt>This version:</dt>
-  <dd><a href="http://www.ivoa.net/Documents/StandardsRegExt/20120213/">
-      http://www.ivoa.net/Documents/StandardsRegExt/20120213/</a></dd>
+  <dd><a href="http://www.ivoa.net/Documents/StandardsRegExt/20120217/">
+      http://www.ivoa.net/Documents/StandardsRegExt/20120217/</a></dd>
  
   <dt>Latest version:</dt>
   <dd><a href="http://www.ivoa.net/Documents/latest/StandardsRegExt.html">
       http://www.ivoa.net/Documents/latest/StandardsRegExt.html</a></dd>
 
   <dt>Previous versions</dt>
+  <dd>PR: <a href="http://www.ivoa.net/Documents/StandardsRegExt/20120213/">
+      http://www.ivoa.net/Documents/StandardsRegExt/20120213/</a></dd>
   <dd>PR: <a href="http://www.ivoa.net/Documents/StandardsRegExt/20111017/">
       http://www.ivoa.net/Documents/StandardsRegExt/20111017/</a></dd>
   <dd>PR: <a href="http://www.ivoa.net/Documents/StandardsRegExt/20110921/">
@@ -613,7 +615,7 @@ certain string values to a controlled set of defined names, each with
 a well-defined meaning.  With XML
 Schema, the controlled set can be enforced by a validating parser 
 (using the <code>xsd:enumeration</code> construct
-[<a href="#Schema">Schema</a>]).  One disadvantage of locking in the
+[<a href="#schema">Schema</a>]).  One disadvantage of locking in the
 vocabulary in an XML Schema document is that in order to grow the list
 of allowed names, a revision of the XML Schema document is required,
 which can be a disruptive change.  To avoid this, it is the practice
@@ -747,6 +749,8 @@ follows.
       &lt;xs:sequence &gt;
         &lt;xs:element name="endorsedVersion" type="vstd:EndorsedVersion"
                     maxOccurs="unbounded" /&gt;
+        &lt;xs:element name="schema" type="vstd:Schema" minOccurs="0" 
+                    maxOccurs="unbounded" &gt;
         &lt;xs:element name="deprecated" type="xs:token" minOccurs="0" /&gt;
         &lt;xs:element name="key" type="vstd:StandardKey" minOccurs="0"
                     maxOccurs="unbounded" /&gt;
@@ -794,11 +798,32 @@ to the core set:
           </tr>
           <tr bgcolor="#f5f5f5"><td valign="top" nowrap="nowrap"><em>Comments:</em></td>
               <td valign="top">
-<p>
                      More than one version can be listed, indicating
                      that any of these versions are recommended for
                      use.  
-                  </p>
+              </td> 
+          </tr>
+      </tbody></table>
+  </td></tr>
+    
+  <tr><td valign="top">schema</td>
+      <td valign="top"><table width="100%" border="0"><tbody>
+          <tr bgcolor="#dddddd"><td valign="top" nowrap="nowrap"><em>Value type:</em></td>
+              <td valign="top">composite: <a href="#s:Schema">vstd:Schema</a></td>
+          </tr>
+          <tr xmlns="" bgcolor="#f5f5f5"><td valign="top" nowrap="nowrap"><em>Semantic Meaning:</em></td>
+              <td width="90%" valign="top">
+                     a description and pointer to a schema document
+                     defined by this standard.
+                </td>
+          </tr>
+          <tr bgcolor="#dddddd"><td valign="top" nowrap="nowrap"><em>Occurrences:</em></td>
+              <td valign="top">optional; multiple occurrences allowed.</td>
+          </tr>
+          <tr bgcolor="#f5f5f5"><td valign="top" nowrap="nowrap"><em>Comments:</em></td>
+              <td valign="top">
+                     This is most typically an XML Schema, but it need
+                     not be strictly. 
               </td> 
           </tr>
       </tbody></table>
@@ -822,10 +847,8 @@ to the core set:
           </tr>
           <tr bgcolor="#f5f5f5"><td valign="top" nowrap="nowrap"><em>Comments:</em></td>
               <td valign="top">
-<p>
                      The explanation should indicate if another
                      standard should be preferred.  
-                  </p>
               </td> 
           </tr>
       </tbody></table>
@@ -1037,44 +1060,233 @@ standard that the current standard is deprecated by when relevant.
 </dl>
 </td></tr></tbody></table>
 </blockquote>
-<p></p>
+
+<p>
+The <strong><code>&lt;schema&gt;</code></strong> element allows one to
+list the locations of any schemas defined by the standard thereby making
+them discoverable as well (just as the specification document is
+discoverable via the <strong><code>&lt;referenceURL&gt</code></strong>
+element).  It also can provide pointers to example uses of the
+schemas.  Typically (especially for IVOA standards), the schema is an
+XML schema, and the location points to an XML Schema [<a
+href="#schema">Schema</a>] document; however, this is not required.
+Other schema types and definition formats are allowed.
+</p>
+
+<div class="schemaOuter">
+<a name="s:Schema">
+</a><div class="schemaHeader">vstd:Schema Type Schema Definition</div>
+<div class="schemaInner">
+<pre>&lt;xs:complexType name="Schema"&gt;
+   &lt;xs:sequence&gt;
+      &lt;xs:element name="location" type="xs:anyURI" 
+                  minOccurs="1" maxOccurs="1"/&gt;
+      &lt;xs:element name="description" type="xs:token" 
+                  minOccurs="0" maxOccurs="1" /&gt;
+      &lt;xs:element name="example" type="xs:anyURI" 
+                  minOccurs="0" maxOccurs="unbounded" /&gt;
+   &lt;/xs:sequence&gt;
+   &lt;xs:attribute name="namespace" type="xs:token" use="required"/&gt;
+&lt;/xs:complexType&gt;
+</pre>
+</div></div>
+
+<p>
+As multiple schemas can be listed in the resource description, the
+<strong><code>namespace</code></strong> attribute provides an
+identifying label for each <strong><code>&lt;schema&gt;</code></strong> 
+element:
+</p>
+
+<p>
+<table width="100%" border="2">
+<thead>
+  <tr><th align="left" colspan="2">vstd:Schema Attributes</th>
+  </tr><tr><th>Attribute</th><th>Definition</th>
+</tr></thead>
+<tbody>
+
+  <tr><td valign="top">namespace</td>
+      <td valign="top"><table width="100%" border="0"><tbody>
+          <tr bgcolor="#dddddd"><td valign="top" nowrap="nowrap"><em>Value type:</em></td>
+              <td valign="top">string: <strong><code>xs:token</code></strong></td>
+          </tr>
+          <tr xmlns="" bgcolor="#f5f5f5"><td valign="top" nowrap="nowrap"><em>Semantic Meaning:</em></td>
+              <td width="90%" valign="top">
+                 an identifier for the schema being described.  Each instance 
+                 of this attribute must be unique within the resourse
+                 description.
+               </td>
+          </tr>
+          <tr bgcolor="#dddddd"><td valign="top" nowrap="nowrap"><em>Occurrences:</em></td>
+              <td valign="top">required</td>
+          </tr>
+          <tr bgcolor="#f5f5f5"><td valign="top" nowrap="nowrap"><em>Comments:</em></td>
+              <td valign="top">
+               For XML schemas, this should be the schema's namespace URI.
+               Otherwise, it is a unique label to distinguish it from 
+               other schemas described in the same resource description. 
+              </td> 
+          </tr>
+      </tbody></table>
+  </td></tr>
+    
+</tbody>
+</table>
+</p>
+
+<p>
+The main component of the <strong><code>&lt;schema&gt;</code></strong>
+content is the URL pointing to the schema's definition document, but
+it can also provide additional information useful for display:
+</p>
+
+<p>
+<table width="100%" border="2">
+<thead>
+  <tr><th align="left" colspan="2">vstd:Schema Metadata Elements</th>
+  </tr><tr><th>Element</th><th>Definition</th>
+</tr></thead>
+<tbody>
+
+  <tr><td valign="top">location</td>
+      <td valign="top"><table width="100%" border="0"><tbody>
+          <tr bgcolor="#dddddd"><td valign="top" nowrap="nowrap"><em>Value type:</em></td>
+              <td valign="top">URL: <strong><code>xs:anyURI</code></strong></td>
+          </tr>
+          <tr xmlns="" bgcolor="#f5f5f5"><td valign="top" nowrap="nowrap"><em>Semantic Meaning:</em></td>
+              <td width="90%" valign="top">
+                 A URL pointing to a document that formally defines
+                 the schema.
+               </td>
+          </tr>
+          <tr bgcolor="#dddddd"><td valign="top" nowrap="nowrap"><em>Occurrences:</em></td>
+              <td valign="top">required</td>
+          </tr>
+          <tr bgcolor="#f5f5f5"><td valign="top" nowrap="nowrap"><em>Comments:</em></td>
+              <td valign="top">
+                 The document should be in a machine-parsable format
+                 when applicable.  For example, when refering to an
+                 XML schema, the document should be an XML Schema or 
+                 similar document that can be used to validate an 
+                 instance document.  
+              </td> 
+          </tr>
+      </tbody></table>
+  </td></tr>
+    
+  <tr><td valign="top">description</td>
+      <td valign="top"><table width="100%" border="0"><tbody>
+          <tr bgcolor="#dddddd"><td valign="top" nowrap="nowrap"><em>Value type:</em></td>
+              <td valign="top">URL: <strong><code>xs:token</code></strong></td>
+          </tr>
+          <tr xmlns="" bgcolor="#f5f5f5"><td valign="top" nowrap="nowrap"><em>Semantic Meaning:</em></td>
+              <td width="90%" valign="top">
+                 A human-readable description of what the schema defines or is 
+                 used for.
+               </td>
+          </tr>
+          <tr bgcolor="#dddddd"><td valign="top" nowrap="nowrap"><em>Occurrences:</em></td>
+              <td valign="top">optional</td>
+          </tr>
+          <tr bgcolor="#f5f5f5"><td valign="top" nowrap="nowrap"><em>Comments:</em></td>
+              <td valign="top">
+                 A brief description--e.g. one statement--is recommended for
+                 display purposes.  
+              </td> 
+          </tr>
+      </tbody></table>
+  </td></tr>
+    
+  <tr><td valign="top">example</td>
+      <td valign="top"><table width="100%" border="0"><tbody>
+          <tr bgcolor="#dddddd"><td valign="top" nowrap="nowrap"><em>Value type:</em></td>
+              <td valign="top">URL: <strong><code>xs:anyURI</code></strong></td>
+          </tr>
+          <tr xmlns="" bgcolor="#f5f5f5"><td valign="top" nowrap="nowrap"><em>Semantic Meaning:</em></td>
+              <td width="90%" valign="top">
+                 A URL pointing to a sample document that illustrates 
+                 the use of the schema.
+               </td>
+          </tr>
+          <tr bgcolor="#dddddd"><td valign="top" nowrap="nowrap"><em>Occurrences:</em></td>
+              <td valign="top">optional; multiple occurances are allowed.</td>
+          </tr>
+          <tr bgcolor="#f5f5f5"><td valign="top" nowrap="nowrap"><em>Comments:</em></td>
+              <td valign="top">
+                 When applicable (e.g. XML), the document should be
+                 in the format defined by the schema document.
+              </td> 
+          </tr>
+      </tbody></table>
+  </td></tr>
+    
+</tbody>
+</table>
+</p>
+
+
       
 <div class="exampleOuter">
   <div class="exampleHeader">An example of a Standard resource that 
        summarizes this specification </div> 
   <div class="exampleInner" style="background-color: rgb(213, 222, 227);">
-<pre>
-&lt;ri:Resource xsi:type="vstd:Standard" created="2001-12-31T12:00:00"
-             updated="2001-12-31T12:00:00" status="active"&gt;
-   &lt;title&gt;StandardsRegExt: a VOResource Schema Extension for Describing IVOA Standards&lt;/title&gt;
-   &lt;identifier&gt;ivo://ivoa.net/std/StandardsRegExt&lt;/identifier&gt;
-   &lt;curation&gt;
-      &lt;publisher&gt;IVOA&lt;/publisher&gt;
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;ri:Resource xsi:type="vstd:Standard" status="active"
+             created="2012-02-17T11:15:00" updated="2012-02-17T11:15:00"
+             xmlns:ri="http://www.ivoa.net/xml/RegistryInterface/v1.0" 
+             xmlns:vstd="http://www.ivoa.net/xml/StandardsRegExt/v1.0" 
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+    &lt;title&gt; StandardsRegExt: a VOResource Schema Extension for Describing IVOA Standards &lt;/title&gt;
+    &lt;shortName&gt; StandardsRegExt &lt;/shortName&gt;
+    &lt;identifier&gt;   ivo://ivoa.net/std/StandardsRegExt   &lt;/identifier&gt;
+    &lt;curation&gt;
+      &lt;publisher ivo-id="ivo://ivoa.net/IVOA"&gt;
+        International Virtual Observatory Alliance
+      &lt;/publisher&gt;
       &lt;creator&gt;
-         &lt;name&gt;IVOA&lt;/name&gt;
-         &lt;logo&gt;http://www.ivoa.net/icons/ivoa_logo_small.jpg&lt;/logo&gt;
+        &lt;name&gt;  IVOA Registry Working Group   &lt;/name&gt;
+        &lt;logo&gt;http://www.ivoa.net/icons/ivoa_logo_small.jpg&lt;/logo&gt;
       &lt;/creator&gt;
-      &lt;date role="representative"&gt;2006-07-17&lt;/date&gt;
-      &lt;version&gt;1.0&lt;/version&gt;
+      &lt;date role="creation"&gt; 2010-05-19 &lt;/date&gt;
+      &lt;date role="updated"&gt;  2012-02-17 &lt;/date&gt;
+      &lt;version&gt; 1.0 &lt;/version&gt;
       &lt;contact&gt;
-         &lt;name&gt;IVOA Registry WG&lt;/name&gt;
-         &lt;email&gt;registry@ivoa.net&lt;/email&gt;
+        &lt;name&gt;   Resource Registry Working Group   &lt;/name&gt;
+	&lt;email&gt;  registry@ivoa.net    &lt;/email&gt;
       &lt;/contact&gt;
-   &lt;/curation&gt;
-   &lt;content&gt;
-      &lt;subject&gt;standard language identifiers&lt;/subject&gt;
-      &lt;subject&gt;virtual observatory&lt;/subject&gt;
+    &lt;/curation&gt;
+    &lt;content&gt;
+      &lt;subject&gt;   software standard   &lt;/subject&gt;
+      &lt;subject&gt;   virtual observatory   &lt;/subject&gt;
       &lt;description&gt;
         This document describes an XML encoding standard for metadata about
-        IVOA standards themselves, referred to as StandardsRegExt.  We describe the
-        general model for the schema and explain how it may be included in
-        other schema as a methodology of avoiding XML enumerations. This
-        schema is primarily intended to support interoperable registries used
-        for discovering resources.
+        IVOA standards themselves, referred to as StandardsRegExt.  It is
+        intended to allow for the discovery of a standard via an IVOA
+        identifier that refers to the standard.  It also allows one to define
+        concepts that are defined by the standard which can themselves be
+        referred to via an IVOA identifier (augmented with a URL fragment
+        identifier).  Finally, it can also provide a machine interpretable
+        description of a standard service interface.  We describe the general
+        model for the schema and explain its intended use by interoperable
+        registries for discovering resources. 
       &lt;/description&gt;
-      &lt;referenceURL&gt;http://www.ivoa.net/Documents/latest/StandardsRegExt.html&lt;/referenceURL&gt;
-   &lt;/content&gt;
-   &lt;endorsedVersion status="pr"&gt;1.0&lt;/endorsedVersion&gt;
+      &lt;referenceURL&gt;
+         http://www.ivoa.net/Documents/StandardsRegExt/
+      &lt;/referenceURL&gt;
+      &lt;type&gt;   Other   &lt;/type&gt;
+      &lt;contentLevel&gt;   Research   &lt;/contentLevel&gt;
+    &lt;/content&gt;
+    &lt;endorsedVersion status="pr"&gt; 1.0 &lt;/endorsedVersion&gt;
+    &lt;schema namespace="http://www.ivoa.net/xml/StandardsRegExt/v1.0"&gt;
+      &lt;location&gt;http://www.ivoa.net/xml/StandardsRegExt/v1.0&lt;/location&gt;
+      &lt;description&gt;
+        the VOResource extension XML Schema for registering standards
+      &lt;/description&gt;
+      &lt;example&gt;http://rofr.ivoa.net/examples/StandardsRegExt.xml&lt;/example&gt;
+      &lt;example&gt;http://rofr.ivoa.net/examples/SIA.xml&lt;/example&gt;
+      &lt;example&gt;http://rofr.ivoa.net/examples/VOSpace.xml&lt;/example&gt;
+    &lt;/schema&gt;
 &lt;/ri:Resource&gt;
 </pre>
   </div>
@@ -1481,6 +1693,20 @@ schema and use this type.
                 &lt;/xs:annotation&gt;
               &lt;/xs:element&gt;
 
+              &lt;xs:element name="schema" type="vstd:Schema" 
+                          minOccurs="0" maxOccurs="unbounded"&gt;
+                &lt;xs:annotation&gt;
+                   &lt;xs:documentation&gt;
+                     a description and pointer to a schema document
+                     defined by this standard.
+                   &lt;/xs:documentation&gt;
+                   &lt;xs:documentation&gt;
+                     This is most typically an XML Schema, but it need
+                     not be strictly.  
+                   &lt;/xs:documentation&gt;
+                &lt;/xs:annotation&gt;
+              &lt;/xs:element&gt;
+
               &lt;xs:element name="deprecated" type="xs:token" minOccurs="0"&gt;
                 &lt;xs:annotation&gt;
                    &lt;xs:documentation&gt;
@@ -1610,6 +1836,73 @@ schema and use this type.
 
          &lt;/xs:extension&gt;
       &lt;/xs:simpleContent&gt;
+   &lt;/xs:complexType&gt;
+
+   &lt;xs:complexType name="Schema"&gt;
+      &lt;xs:annotation&gt;
+         &lt;xs:documentation&gt;
+           a description of a schema definition
+         &lt;/xs:documentation&gt;
+      &lt;/xs:annotation&gt;
+
+      &lt;xs:sequence&gt;
+         &lt;xs:element name="location" type="xs:anyURI" 
+                     minOccurs="1" maxOccurs="1"&gt;
+            &lt;xs:annotation&gt;
+               &lt;xs:documentation&gt;
+                  A URL pointing to a document that formally defines
+                  the schema.
+               &lt;/xs:documentation&gt;
+               &lt;xs:documentation&gt;
+                  The document should be in a machine-parsable format
+                  when applicable.  For example, when refering to an
+                  XML schema, the document should be an XML Schema or 
+                  similar document that can be used to validate an 
+                  instance document.  
+               &lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+         &lt;/xs:element&gt;
+         &lt;xs:element name="description" type="xs:token" 
+                     minOccurs="0" maxOccurs="1" &gt;
+            &lt;xs:annotation&gt;
+               &lt;xs:documentation&gt;
+                  A human-readable description of what the schema
+                  defines or is used for.
+               &lt;/xs:documentation&gt;
+               &lt;xs:documentation&gt;
+                  A brief description--e.g. one statement--is
+                  recommended for display purposes.  
+               &lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+         &lt;/xs:element&gt;
+         &lt;xs:element name="example" type="xs:anyURI" 
+                     minOccurs="0" maxOccurs="unbounded"&gt;
+            &lt;xs:annotation&gt;
+               &lt;xs:documentation&gt;
+                  A URL pointing to a sample document that illustrates 
+                  the use of the schema.
+               &lt;/xs:documentation&gt;
+               &lt;xs:documentation&gt;
+                  When applicable (e.g. XML), the document should be
+                  in the format defined by the schema document.
+               &lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+         &lt;/xs:element&gt;
+      &lt;/xs:sequence&gt;
+
+      &lt;xs:attribute name="namespace" type="xs:token" use="required"&gt;
+          &lt;xs:annotation&gt;
+             &lt;xs:documentation&gt;
+               an identifier for the schema being described.  Each instance 
+               of this attribute must be unique within the resourse description.
+             &lt;/xs:documentation&gt;
+             &lt;xs:documentation&gt;
+               For XML schemas, this should be the schema's namespace URI.
+               Otherwise, it should be a unique label to distinguish it from 
+               other schemas described in the same resource description. 
+             &lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+      &lt;/xs:attribute&gt;
    &lt;/xs:complexType&gt;
 
    &lt;xs:complexType name="ServiceStandard"&gt;
@@ -1773,10 +2066,9 @@ defined in the specification.
   sample record describing the SIA standard</a></div>
   <div class="schemaInner">
 <pre>&gt;&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;resource xsi:type="vt:ServiceStandard" status="active"
+&lt;resource xsi:type="vstd:ServiceStandard" status="active"
           created="2000-01-01T09:00:00" updated="2000-01-01T09:00:00"
-          xmlns:vr="http://www.ivoa.net/xml/VOResource/v1.0"
-          xmlns:vt="http://www.ivoa.net/xml/StandardsRegExt/v1.0" 
+          xmlns:vstd="http://www.ivoa.net/xml/StandardsRegExt/v1.0" 
           xmlns:vs="http://www.ivoa.net/xml/VODataService/v1.1" 
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://www.ivoa.net/xml/VOResource/v1.0
@@ -1946,6 +2238,14 @@ defined in the specification.
 </div></div>
 
 <h2><a name="appC"></a>Appendix C: Change History</h2>
+
+<h4>Changes since PR-v1.0 20120213:</h4>
+
+<ul>
+  <li> added the <strong><code>&lt;schema&gt;</code></strong> element to
+       <strong><code>vstd:Standard</code></strong> </li>
+  <li> updated example in section 3.1.1 </li>
+</ul>
 
 <h4>Changes since PR-v1.0 20111017:</h4>
 
