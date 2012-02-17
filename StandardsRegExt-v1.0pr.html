@@ -78,7 +78,7 @@ Version 1.0</h1>
       http://www.ivoa.net/Documents/latest/StandardsRegExt.html</a></dd>
 
   <dt>Previous versions</dt>
-  <dd><a href="http://www.ivoa.net/Documents/StandardsRegExt/20111017/">
+  <dd>PR: <a href="http://www.ivoa.net/Documents/StandardsRegExt/20111017/">
       http://www.ivoa.net/Documents/StandardsRegExt/20111017/</a></dd>
   <dd>PR: <a href="http://www.ivoa.net/Documents/StandardsRegExt/20110921/">
       http://www.ivoa.net/Documents/StandardsRegExt/20110921/</a></dd>
@@ -1030,7 +1030,10 @@ standard that the current standard is deprecated by when relevant.
        many instances of SkyNode services available in the VO, and where 
        they are used, version 1.01 is endorsed; however, the IVOA has
        deprecated this standard in favor of the Table Access
-       Protocol [<a href="#r:tap">TAP</a>].    </dd> 
+       Protocol [<a href="#r:tap">TAP</a>].  Thus, a
+       <strong><code>vstd:ServiceStandards</code></strong> record for
+       SkyNode should include a <code>&lt;deprecated&gt;</code>
+       element whose content refers viewers to the TAP standard.  </dd> 
 </dl>
 </td></tr></tbody></table>
 </blockquote>
