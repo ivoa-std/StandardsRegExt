@@ -5,7 +5,7 @@
            xmlns:vstd="http://www.ivoa.net/xml/StandardsRegExt/v1.0" 
            xmlns:vm="http://www.ivoa.net/xml/VOMetadata/v0.1"
            elementFormDefault="unqualified" attributeFormDefault="unqualified"
-           version="1.0pr2" >
+           version="1.0pr3" >
 
    <xs:annotation>
       <xs:appinfo>
@@ -52,6 +52,20 @@
                 </xs:annotation>
               </xs:element>
 
+              <xs:element name="schema" type="vstd:Schema" 
+                          minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                   <xs:documentation>
+                     a description and pointer to a schema document
+                     defined by this standard.
+                   </xs:documentation>
+                   <xs:documentation>
+                     This is most typically an XML Schema, but it need
+                     not be strictly.  
+                   </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+
               <xs:element name="deprecated" type="xs:token" minOccurs="0">
                 <xs:annotation>
                    <xs:documentation>
@@ -87,7 +101,7 @@
            <xs:attribute name="status" default="n/a">
              <xs:annotation>
                <xs:documentation>
-                 the IVOA status level of this verison of the standard.
+                 the IVOA status level of this version of the standard.
                </xs:documentation>
                <xs:documentation>
                  For values of "rec", "pr", "wd", and "note", the
@@ -181,6 +195,73 @@
 
          </xs:extension>
       </xs:simpleContent>
+   </xs:complexType>
+
+   <xs:complexType name="Schema">
+      <xs:annotation>
+         <xs:documentation>
+           a description of a schema definition
+         </xs:documentation>
+      </xs:annotation>
+
+      <xs:sequence>
+         <xs:element name="location" type="xs:anyURI" 
+                     minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:documentation>
+                  A URL pointing to a document that formally defines
+                  the schema.
+               </xs:documentation>
+               <xs:documentation>
+                  The document should be in a machine-parsable format
+                  when applicable.  For example, when refering to an
+                  XML schema, the document should be an XML Schema or 
+                  similar document that can be used to validate an 
+                  instance document.  
+               </xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="description" type="xs:token" 
+                     minOccurs="0" maxOccurs="unbounded" >
+            <xs:annotation>
+               <xs:documentation>
+                  A human-readable description of what the schema
+                  defines or is used for.
+               </xs:documentation>
+               <xs:documentation>
+                  A brief description--e.g. one statement--is
+                  recommended for display purposes.  
+               </xs:documentation>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="example" type="xs:anyURI" 
+                     minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+               <xs:documentation>
+                  A URL pointing to a sample document that illustrates 
+                  the use of the schema.
+               </xs:documentation>
+               <xs:documentation>
+                  When applicable (e.g. XML), the document should be
+                  in the format defined by the schema document.
+               </xs:documentation>
+            </xs:annotation>
+         </xs:element>
+      </xs:sequence>
+
+      <xs:attribute name="namespace" type="xs:token">
+          <xs:annotation>
+             <xs:documentation>
+               an identifier for the schema being described.  Each instance 
+               of this attribute must be unique within the resourse description.
+             </xs:documentation>
+             <xs:documentation>
+               For XML schemas, this should be the schema's namespace URI.
+               Otherwise, it should be a unique label to distinguish it from 
+               other schemas described in the same resource description. 
+             </xs:documentation>
+          </xs:annotation>
+      </xs:attribute>
    </xs:complexType>
 
    <xs:complexType name="ServiceStandard">
