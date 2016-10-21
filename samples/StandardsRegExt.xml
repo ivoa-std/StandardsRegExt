@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<resource xsi:type="vt:Standard" status="active"
-          created="2012-02-17T11:15:00" updated="2012-02-17T11:15:00"
+<ri:Resource xsi:type="vt:Standard" status="active"
+          created="2012-02-17T11:15:00" updated="2016-10-21T11:15:00"
           xmlns:vr="http://www.ivoa.net/xml/VOResource/v1.0"
           xmlns:vt="http://www.ivoa.net/xml/StandardsRegExt/v1.0" 
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:ri="http://www.ivoa.net/xml/RegistryInterface/v1.0"
+
           xsi:schemaLocation="http://www.ivoa.net/xml/VOResource/v1.0
                               VOResource-v1.0.xsd
                               http://www.ivoa.net/xml/StandardsRegExt/v1.0
@@ -80,4 +82,4 @@
       <example>http://rofr.ivoa.net/examples/VOSpace.xml</example>
     </schema>
    
-</resource>
+</ri:Resource>
