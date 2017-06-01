@@ -1,0 +1,39 @@
+<ri:Resource    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:vstd="http://www.ivoa.net/xml/StandardsRegExt/v1.0"
+xmlns:ri="http://www.ivoa.net/xml/RegistryInterface/v1.0"
+created="2017-06-01T09:33:00Z" status="active" xsi:type="vstd:Standard">
+  <title>HiPS -- Hierarchical Progressive Survey</title>
+  <identifier>ivo://ivoa.net/std/hips</identifier>
+  <curation>
+    <publisher>IVOA Apps Working Group</publisher>
+    <creator>                                     
+      <name>Pierre Fernique</name>
+    </creator>                    
+    <date role="created">2017-06-01T09:33:00</date>
+    <contact>                                      
+      <name>IVOA Apps Working Group</name>
+      <email>apps@ivoa.net</email>        
+    </contact>                    
+  </curation>
+  <content>
+    <subject>Virtual observatory</subject>
+    <subject>Standards</subject>          
+    <subject>HiPS</subject>     
+    <description>HiPS: a hierarchical scheme for the description, storage and
+access of sky survey data. The system is based on hierarchical tiling of sky
+regions at finer and finer spatial resolution which facilitates a progressive
+view of a survey, and supports multi-resolution zooming and panning. HiPS uses
+the HEALPix tessellation of the sky as the basis for the scheme and is
+implemented as a simple file structure with a direct indexing scheme that
+leads to practical implementations.</description>
+    <referenceURL>http://ivoa.net/documents/hips</referenceURL>
+  </content>
+  <endorsedVersion status="REC" use="preferred">1.0</endorsedVersion>
+  <key>
+    <name>hipslist-1.0</name>
+    <name>hips-1.0</name>    
+    <description>A service returning a list of HiPS identifiers and metadata
+for HiPS.</description>
+    <description>A single HiPS.</description>
+  </key>
+</ri:Resource>
