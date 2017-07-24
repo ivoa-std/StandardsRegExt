@@ -104,14 +104,4 @@ standards context.
 
   <endorsedVersion status="pr">1.0</endorsedVersion>
 
-	<key>
-		<name>vodml-prefix</name>
-		<description>ivoa</description>
-	</key>
-	<key>
-		<name>vodml-url</name>
-		<!-- TODO: Work out what this actually is -->
-		<description>http://www.ivoa.net/xml/ivoa.vo-dml</description>
-	</key>
-
 </ri:Resource>
