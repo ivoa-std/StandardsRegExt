@@ -93,4 +93,93 @@ http://www.ivoa.net/Documents/SimpleDALRegExt/).
     </relationship>
   </content>
   <endorsedVersion status="rec"> 1.0 </endorsedVersion>
+
+	<interface xsi:type="vs:ParamHTTP" version="1.0" role="std">
+  	<accessURL use="base"> http://sample.org/cgi-bin/sia </accessURL>
+  	<queryType>GET</queryType>
+  	<resultType>text/xml+votable</resultType>
+  	<param use="required">
+    	<name>REQUEST</name>
+    	<description>
+     	 The request or operation name, where only "queryData" is
+     	 allowed as a value.
+   	 </description>
+    	<dataType>string</dataType>
+  	</param>
+  	<param use="optional">
+    	<name>VERSION</name>
+    	<description>
+     	 The version of the SLAP standard this query requests support for.
+   	 </description>
+    	<dataType>string</dataType>
+  	</param>
+  	<param use="optional">
+    	<name>WAVELENTH</name>
+    	<description>
+      	The range of wavelengths to restrict search to
+   	 </description>
+    	<dataType>string</dataType>
+  	</param>
+  	<param use="optional">
+    	<name>CHEMICAL_ELEMENT</name>
+    	<description>
+      	a list of chemical elements to search for
+   	 </description>
+    	<dataType>string</dataType>
+  	</param>
+  	<param use="optional">
+    	<name>INITIAL_LEVEL_ENERGY</name>
+    	<description>
+      	The range of energy to restrict matched lines to based on the
+      	initial energy level of the transition measured in Joules.
+   	 </description>
+    	<dataType>string</dataType>
+  	</param>
+  	<param use="optional">
+    	<name>FINAL_LEVEL_ENERGY</name>
+    	<description>
+      	The range of energy to restrict matched lines to based on the
+      	final energy level of the transition measured in Joules.
+   	 </description>
+    	<dataType>string</dataType>
+  	</param>
+  	<param use="optional">
+    	<name>TEMPERATURE</name>
+    	<description>
+      	The expected temperature of the emitting or absorbing medium.
+   	 </description>
+    	<unit>degrees Kelvin</unit>
+    	<dataType>real</dataType>
+  	</param>
+  	<param use="optional">
+    	<name>EINSTEIN_A</name>
+    	<description>
+      	The range of the Einstein A parameter to select lines by
+      	in units of probability per second.  
+   	 </description>
+    	<dataType>string</dataType>
+  	</param>
+  	<param use="optional">
+    	<name>PROCESS_TYPE</name>
+    	<description>
+      	The type of physical process responsible for the generation
+      	of the transition to restrict lines by, given as one of 
+      	"Matter-radiationinteraction", `Matter-matter interaction", 
+      	"Energy shift", "Broadening". 
+   	 </description>
+    	<dataType>string</dataType>
+  	</param>
+  	<param use="optional">
+    	<name>PROCESS_NAME</name>
+    	<description>
+      	The specific process responsible for the generation
+      	of the transition to restrict lines by, such as
+      	"Photoionization", "Collisional excitation",
+      	"Gravitational redshift", "Stark broadening", "Resonance
+      	broadening", "Van der Waals broadening", etc.
+   	 </description>
+    	<dataType>string</dataType>
+  	</param>
+	</interface>
+
 </ri:Resource>
