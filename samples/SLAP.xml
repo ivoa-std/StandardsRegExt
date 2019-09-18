@@ -1,0 +1,96 @@
+<ri:Resource status="active" 
+  xsi:type="vstd:ServiceStandard" 
+  created="2013-03-25T19:21:51"
+  updated="2019-09-18T12:00:00"
+  xmlns:vr="http://www.ivoa.net/xml/VOResource/v1.0"
+  xmlns:vstd="http://www.ivoa.net/xml/StandardsRegExt/v1.0" 
+  xmlns:vs="http://www.ivoa.net/xml/VODataService/v1.1" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:ri="http://www.ivoa.net/xml/RegistryInterface/v1.0"
+
+  >
+  <title>   Simple Line Access Protocol   </title>
+  <shortName>SLAP</shortName>
+  <identifier>   ivo://ivoa.net/std/SLAP   </identifier>
+  <curation>
+    <publisher ivo-id="ivo://ivoa.net/IVOA"
+      >International Virtual Observatory Alliance
+    </publisher>
+    <creator>
+      <name>  Jesus Salgado   </name>
+    </creator>
+    <creator>
+      <name>  Pedro Osuna   </name>
+    </creator>
+    <creator>
+      <name>  Matteo Guainazzi   </name>
+    </creator>
+    <creator>
+      <name>  Isa Barbarisi   </name>
+    </creator>
+    <creator>
+      <name>  Marie-Lise Dubernet   </name>
+    </creator>
+    <creator>
+      <name>  Doug Tody   </name>
+    </creator>
+    <date>   2010-12-09   </date>
+    <version> 1.0 </version>
+    <contact>
+      <name>   Data Access Layer Working Group   </name>
+      <email>  dal@ivoa.net    </email>
+    </contact>
+  </curation>
+  <content>
+    <subject>   software standard   </subject>
+    <subject>   virtual observatory   </subject>
+    <subject>   data access layer   </subject>
+    <subject>   DAL   </subject>
+    <description>
+The Simple Line Access Protocol (SLAP) is an IVOA Data Access
+protocol which defines a protocol for retrieving spectral
+lines coming from various Spectral Line Data Collections
+through a uniform interface within the VO framework.  These
+lines can be either observed or theoretical and will be
+typically used to identify emission or absorption features in
+astronomical spectra.  It makes use of the Simple Spectral Line
+Data Model (SSLDM) to characterize spectral lines through
+the use of uTypes.  Physical quantities of units are
+described by using the standard Units DM.  SLAP services
+can be registered in an IVOA Registry of Resources using the
+VOResource Extension standard, having a unique
+ResourceIdentifier in the Registry.  The SLAP interface is
+meant to be reasonably simple to implement by service
+providers.  A basic query will be done in a wavelength range
+for the different services.  The service returns a list of
+spectral lines formatted as a VOTable.  Thus, an implementation
+of the service may support additional search parameters (some
+which may be custom to that particular service) to more finely
+control the selection of spectral lines.  The specification
+also describes how the search on extra parameters has to be
+done, making use of the support provided by the Simple
+Spectral Line Data Model.  Note that
+the metadata used to describe an SLAP service in the registry
+is defined in the SimpleDALRegExt standard 
+(ivo://www.ivoa.net/std/SimpleDALRegExt; 
+http://www.ivoa.net/Documents/SimpleDALRegExt/).  
+    </description>
+    <referenceURL
+      >http://www.ivoa.net/Documents/SLAP/</referenceURL>
+    <type>   Other   </type>
+    <contentLevel>   Research   </contentLevel>
+    <relationship>
+      <relationshipType>related-to</relationshipType>
+      <relatedResource ivo-id="ivo://www.ivoa.net/std/VOTable">
+  VOTable Format Definition
+</relatedResource>
+    </relationship>
+    <relationship>
+      <relationshipType>related-to</relationshipType>
+      <relatedResource ivo-id="ivo://www.ivoa.net/std/SimpleDALRegExt">
+  SimpleDALRegExt: Describing Simple Data Access Services
+</relatedResource>
+    </relationship>
+  </content>
+  <endorsedVersion status="rec"> 1.0 </endorsedVersion>
+</ri:Resource>
