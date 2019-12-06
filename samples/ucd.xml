@@ -32,10 +32,10 @@
 		<creator><name>Rixon, G.</name></creator>
 		<creator><name>Williams, R.</name></creator>
 		
-    <date role="update">####</date>
-    <version>2005-08-19</version>
+    <date role="update">2005-08-19</date>
+    <version>1.10</version>
     <contact>
-      <name>IVOA Semantics Working Groupname>
+      <name>IVOA Semantics Working Group</name>
       <email>semantics@ivoa.net</email>
     </contact>
   </curation>
