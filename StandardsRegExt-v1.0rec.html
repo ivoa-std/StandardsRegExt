@@ -1026,7 +1026,7 @@ users to the preferred version.
                        the most preferred version.
                      </td></tr>
     
-                 <tr><td valign="top"><code>deprecated</code> &nbsp;</td>
+                 <tr><td valign="top"><code>deprecated</code></td>
                      <td>
                        a version whose use is now discouraged
                        because a newer version is preferred.  
@@ -1071,7 +1071,7 @@ standard that the current standard is deprecated by when relevant.
 The <strong><code>&lt;schema&gt;</code></strong> element allows one to
 list the locations of any schemas defined by the standard thereby making
 them discoverable as well (just as the specification document is
-discoverable via the <strong><code>&lt;referenceURL&gt</code></strong>
+discoverable via the <strong><code>&lt;referenceURL&gt;</code></strong>
 element).  It also can provide pointers to example uses of the
 schemas.  Typically (especially for IVOA standards), the schema is an
 XML schema, and the location points to an XML Schema [<a
@@ -1384,7 +1384,7 @@ description of a particular instance of a standard service (to, say,
 create a GUI for that service on-the-fly) by combining the general
 description in the <code>vstd:ServiceStandard</code> record with the
 service resource description for the specific instance.  The intended
-process for building that description is as follows:
+process for building that description is as follows:</p>
 
 <ol>
   <li> The application obtains a VOResource resource record for the
@@ -2248,7 +2248,7 @@ defined in the specification.
 <h4>Changes since PR-v1.0 20120217:</h4>
 
 <ul>
-  <li> none other than date and status.
+  <li> none other than date and status.</li>
 </ul>
 
 <h4>Changes since PR-v1.0 20120213:</h4>
@@ -2321,104 +2321,6 @@ defined in the specification.
 
 <h2><a id="References"/>References</h2>
 
-<dl>
-  <dt> <a name="r:ri">[RI]</a> </dt>
-  <dd> Benson, Kevin, Plante, Ray, Auden, Elizabeth, Graham, Matthew, Greene,
-       Gretchen, Hill, Martin, Linde, Tony, Morris, Dave, O'Mullane,
-       Wil, Rixon, Guy, Andrews, Kona 2008, <cite>
-       <a href="http://www.ivoa.net/Documents/RegistryInterface/20091104/">
-       IVOA Registry Interfaces</a></cite>, v1.0, IVOA
-       Recommendation,
-       <code>http://www.ivoa.net/Documents/RegistryInterface/20091104/</code>
-    </dd>
-       
-  <dt> <a name="r:uri">[URI]</a> </dt>
-  <dd> Berners-Lee, Tim, Fielding, R., Irvine, U.C., Masinter, L. 1998.
-       <cite><a href="http://www.ietf.org/rfc/rfc2396.txt">Universal
-       Resource Identifier (URI): Generic Syntax</a></cite>, IETF RFC 2396,
-       <code>http://www.ietf.org/rfc/rfc2396.txt</code> </dd>
-
-  <dt> <a name="should" id="should">[RFC 2119]</a> </dt>
-  <dd> Bradner, S. 1997. <cite><a href="http://www.ietf.org/rfc/rfc2119.txt">
-       Key words for use in RFCs to Indicate Requirement
-       Levels</a></cite>, IETF RFC 2119,
-       <code>http://www.ietf.org/rfc/rfc2119.txt</code> </dd>
-
-  <dt> <a name="xml" id="xml">[XML]</a> </dt>
-  <dd> Bray, Tim, Paoli, Jean, Sperberg-McQueen, C. M., Maler, Eve,
-       Yergeau, Francois (editors) 2004,
-       <cite><a href="http://www.w3.org/TR/REC-xml">Extensible Markup
-       Language (XML) 1.0 (Third Edition)</a></cite>, W3C
-       Recommendation 04 February 2004,
-       <code>http://www.w3.org/TR/REC-xml</code></dd>
-
-  <dt> <a name="schema" id="schema">[Schema]</a>
-  </dt><dd> Fallside, David C., Walmsley, Priscilla (editors) 2004,
-       <cite><a href="http://www.w3.org/TR/xmlschema-0/">XML Schema
-       Part 0: Primer Second Edition</a></cite>, W3C Recommendation 28
-       October 2004, <code>http://www.w3.org/TR/xmlschema-0/</code> </dd>
-
-  <dt> <a name="Arch">[Arch]</a> </dt>
-  <dd> Arviset, Christophe, Severin Gaudet, and the IVOA Technical
-       Coordination Group 2010, <cite>
-       <a href="http://www.ivoa.net/Documents/Notes/IVOAArchitecture/">
-       The IVOA Architecture</a></cite>, v1.0, IVOA Note, 23 November 2010,
-       <code>http://www.ivoa.net/Documents/Notes/IVOAArchitecture/</code>
-       </dd>
-  
-  <dt> <a name="RM" id="RM">[RM]</a> </dt>
-  <dd> Hanisch, Robert (ed.) 2004. <cite><a href="http://www.ivoa.net/Documents/REC/ResMetadata/RM-20040426.htm"> Resource Metadata for the Virtual Observatory, Version 1.01</a></cite>, IVOA Recommendation, <code>http://www.ivoa.net/Documents/REC/ResMetadata/RM-20040426.htm</code> </dd>
-
-  <dt> <a name="RofR" id="RofR">[RofR]</a></dt>
-  <dd> Plante, R. 2007, <cite>
-       <a href="http://www.ivoa.net/Documents/Notes/RegistryOfRegistries/RegistryOfRegistries-20070628.html">
-       The Registry of Registries v1.00</a></cite>, IVOA Note,
-       <code>http://www.ivoa.net/Documents/Notes/RegistryOfRegistries/RegistryOfRegistries-20070628.html</code></dd>
-
-  <dt> <a name="VR" id="VR">[VR]</a> </dt>
-  <dd> Plante, R., Benson, K., Graham, M., Greene,
-       G., Harrison, P., Lemson, G., Linde, T., Rixon,
-       G., St&eacute;b&eacute;, A. 2008, <cite>
-       <a href="http://www.ivoa.net/Documents/REC/ReR/VOResource-20080222.html">
-       VOResource: an XML Encoding Schema for Resource Metadata</a></cite>,
-       v1.03, IVOA Recommendation,
-       <code>http://www.ivoa.net/Documents/REC/ReR/VOResource-20080222.html</code>
-    </dd>
-
-  <dt> <a name="ID" id="ID">[ID]</a>
-  </dt><dd> Plante, R., Linde, T., Williams, R., Noddle, K. 2005, <cite>
-       <a href="http://www.ivoa.net/Documents/REC/Identifiers/Identifiers-20070302.html">
-       IVOA Identifiers v1.12</a></cite>,
-       <code>http://www.ivoa.net/Documents/REC/Identifiers/Identifiers-20070302.html</code>.
-
-  </dd>
-
-  </dd><dt> <a name="r:sia">[SIA]</a>
-  </dt><dd> Tody, Doug, Plante, Ray, and Harrison, Paul 2009, <cite>
-       <a href="http://www.ivoa.net/Documents/SIA/20091116/">
-       Simple Image Access Specification Version 1.0</a></cite>, IVOA
-       Recommendation, 
-       <code>http://www.ivoa.net/Documents/SIA/20091116/</code>.
-
-  </dd><dt> <a name="r:tap">[TAP]</a>
-  </dt><dd> Dowler, Patric, Rixon, Guy, and Tody, Doug 2010, <cite>
-       <a href="http://www.ivoa.net/Documents/TAP/20100327/">
-       Table Access Protocol, Version 1.0</a></cite>, IVOA
-       Recommendation, 
-       <code>http://www.ivoa.net/Documents/TAP/20100327/</code>.
-
-  <dt> <a name="r:vds" id="r:vds">[VDS]</a> </dt>
-  <dd> Plante, R., St&eacute;b&eacute;, A. Benson, K., Dowler, P. Graham, M., 
-       Greene, G., Harrison, P., Lemson, G., Linde, T., Rixon,
-       G., St&eacute;b&eacute;, A. 2010, <cite>
-       <a href="http://www.ivoa.net/Documents/VODataService/20101202/">
-       VODataService: a VOResource Schema Extension for Describing
-       Collections and Services</a></cite>,
-       v1.1, IVOA Recommendation,
-       <code>http://www.ivoa.net/Documents/VODataService/20101202/</code>
-    </dd>
-
-</dl>
 
       <hr/>
       <p style="text-align: right; font-size: x-small; color: #888;">
