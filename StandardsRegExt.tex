@@ -1,7 +1,8 @@
 \documentclass[11pt,a4paper]{ivoa}
 
 \lstloadlanguages{XML}
-\lstset{flexiblecolumns=true,tagstyle=\ttfamily, showstringspaces=False}
+\lstset{flexiblecolumns=true,tagstyle=\ttfamily, showstringspaces=False,
+  basicstyle=\footnotesize}
 
 \usepackage{todonotes}
 
@@ -71,7 +72,8 @@ The first versions of this document have been developed with support from the
 National Science Foundation's\footnote{\url{http://www.nsf.gov/}}
 Information Technology Research Program under Cooperative Agreement
 AST0122449 with The Johns Hopkins University, from the
-UK Particle Physics and Astronomy Research Council (PPARC)\footnote{\url{http://www.pparc.ac.uk/}, and from the
+UK Particle Physics and Astronomy Research Council
+(PPARC)\footnote{\url{http://www.pparc.ac.uk/}}, and from the
 European Commission's Seventh Framework
 Program\footnote{\url{http://cordis.europa.eu/fp7/capacities/home_en.html}}.
 
@@ -82,38 +84,6 @@ has been done without specific attribution as a means for providing
 consistency across similar documents.  We acknowledge the authors of
 that document for this text.  
 
-
-
-\subsection{Syntax Notation Using XML Schema}
-The eXtensible Markup Language, or XML, is a document syntax for marking
-textual information with named tags and is defined by the
-World Wide Web Consortium (W3C) Recommendation,
-XML 1.0 \citep{std:XML}.
-The set of XML tag names and the syntax
-rules for their use is referred to as the document schema.  One way to
-formally define a schema for XML documents is using the W3C standard
-known as XML Schema \citep{std:XSD}.
-
-
-This document defines the StandardsRegExt schema using XML Schema.
-Parts of the schema appear within the main sections of this document;
-however, documentation nodes have been left out for the sake of brevity.
-The full schema is available from the IVOA schema
-repository\footnote{\url{https://ivoa.net/xml/index.html}}.  For
-documentation and development purposes, this document is accompanied by
-a copy of that
-schema\footnote{\auxiliaryurl{StandardsRegExt-v1.0.xsd}}}.  In case of
-conflicts, the copy at the schema repository is normative.
-
-Reference to specific elements and types defined in the VOResource
-schema include the namespaces prefix, \texttt{vr}, as in
-\xmlel{vr:Resource} (a type defined in the VOResource schema).
-Reference to specific elements and types defined in the StandardsRegExt
-schema include the namespaces prefix, \texttt{vstd}, as in
-\xmlel{vstd:ServiceStandard} (a type defined in the StandardsRegExt schema).
-Use of the \texttt{vstd} prefix in compliant instance documents is 
-strongly recommended.  It is required where the Registry Interfaces
-standard \citep{2018ivoa.spec.0723D} standard applies.
 
 
 
@@ -222,6 +192,38 @@ defines the core concepts used in the resource
 descriptions, and VOResource defines
 the XML format.  StandardsRegExt is an extension of the VOResource
 standard that defines extra metadata for describing a standard.  
+
+\subsection{Syntax Notation Using XML Schema}
+The eXtensible Markup Language, or XML, is a document syntax for marking
+textual information with named tags and is defined by the
+World Wide Web Consortium (W3C) Recommendation,
+XML 1.0 \citep{std:XML}.
+The set of XML tag names and the syntax
+rules for their use is referred to as the document schema.  One way to
+formally define a schema for XML documents is using the W3C standard
+known as XML Schema \citep{std:XSD}.
+
+
+This document defines the StandardsRegExt schema using XML Schema.
+Parts of the schema appear within the main sections of this document;
+however, documentation nodes have been left out for the sake of brevity.
+The full schema is available from the IVOA schema
+repository\footnote{\url{https://ivoa.net/xml/index.html}}.  For
+documentation and development purposes, this document is accompanied by
+a copy of that
+schema\footnote{\auxiliaryurl{StandardsRegExt-v1.0.xsd}}.  In case of
+conflicts, the copy at the schema repository is normative.
+
+Reference to specific elements and types defined in the VOResource
+schema include the namespaces prefix, \texttt{vr}, as in
+\xmlel{vr:Resource} (a type defined in the VOResource schema).
+Reference to specific elements and types defined in the StandardsRegExt
+schema include the namespaces prefix, \texttt{vstd}, as in
+\xmlel{vstd:ServiceStandard} (a type defined in the StandardsRegExt schema).
+Use of the \texttt{vstd} prefix in compliant instance documents is 
+strongly recommended.  It is required where the Registry Interfaces
+standard \citep{2018ivoa.spec.0723D} standard applies.
+
 
 
 
@@ -409,6 +411,7 @@ are specifically for independently documented standards:
 
 
 \subsection{Defining Enumerations of Identifiers }
+\label{sect:keys}
 
 A common practice when defining metadata is to restrict
 certain string values to a controlled set of defined names, each with 
@@ -520,7 +523,7 @@ resource.
 
 
 
-\subsubsection{3.1.1. Standard}
+\subsubsection{Standard}
 
 The \xmlel{vstd:Standard} resource type describes any general
 standard specification.  This typically refers to an IVOA standard but
@@ -1060,7 +1063,7 @@ parameters for that service instance.
 
 
 An example of an instance of a \xmlel{vstd:ServiceStandard}
-record is shown in Appendix~\ref{app:B}.  It describes the
+record is shown in Appendix~\ref{app:fullrecord}.  It describes the
 Simple Image Access Specification and
 in particular illustrates the recommended way to list input parameters
 defined by the standard.  
@@ -1072,7 +1075,7 @@ defined by the standard.
 The \xmlel{vstd:StandardKeyEnumeration} resource type is available
 for collecting definitions of related, standard keys.  Each key defined
 within this resource can then be referred to by a unique IVOA
-Identifier URI (see Sect.~\ref{sect:stdkey}).  To support
+Identifier URI (see Sect.~\ref{sect:keys}).  To support
 this, the \xmlel{vstd:StandardKeyEnumeration} resource simply
 adds the \xmlel{key} element to the standard core
 metadata.  
@@ -1133,6 +1136,7 @@ the next section.
 
 
 \subsection{Defining Keys: StandardKey and StandardKeyURI}
+\label{sect:standardkeys}
 
 The \xmlel{vstd:StandardKey} type provides the means to 
 define keys (as defined in Sect.~\ref{sect:keys}) within
@@ -1222,7 +1226,7 @@ XML Schema to validate the form of a key URI may import the StandardsRegExt
 schema and use this type.  
 
 
-\begin{admonition}[Note]
+\begin{admonition}{Note}
 It is worth noting that just using or otherwise referencing a
 standard key URI in an application does not require importing
 the StandardsRegExt nor need there be any reference to the
@@ -1236,22 +1240,16 @@ is not necessary to use the URI.
 
 \appendix
 
-\section{The complete StandardsRegExt Schema}
-
-Appendix A: The complete StandardsRegExt SchemaThe schema is included
-here for completeness - the definitive source of the schema is at
-\href{http://www.ivoa.net/xml/StandardsRegExt/v1.0}{http://www.ivoa.net/xml/StandardsRegExt/v1.0}.\todo{No,
-it's not, and I'll throw this out in the next commit}
-
-
-
 \section{A Sample Record}
+\label{app:fullrecord}
 
 This example shows how one can describe an IVOA standard, the Simple
 Image Access Protocol.  It includes a description of the input parameters
-defined in the specification.  
+defined in the specification.  Note that this no longer corresponds to
+the actual SimpleDALRegExt record for the Simple Image Access Protocol
+as distributed by the Registry of Registries.
 
-\lstinputlisting{sia-example.vor}
+\lstinputlisting[language=XML]{sia-example.vor}
 
 \section{Changes from Previous Versions}
 
@@ -1261,13 +1259,13 @@ defined in the specification.
 \item Ported to ivoatex.
 \end{itemize}
 
-\subsubsection{Changes since PR-v1.0 20120217:}
+\subsection{Changes since PR-v1.0 20120217:}
 
 \begin{itemize}
 \item  none other than date and status.
 \end{itemize}
 
-\subsubsection{Changes since PR-v1.0 20120213:}
+\subsection{Changes since PR-v1.0 20120213:}
 
 \begin{itemize}
 \item  added the \xmlel{schema} element to
@@ -1277,7 +1275,7 @@ defined in the specification.
 
 \end{itemize}
 
-\subsubsection{Changes since PR-v1.0 20111017:}
+\subsection{Changes since PR-v1.0 20111017:}
 
 \begin{itemize}
 \item  added Note box that recommends against using 
@@ -1307,7 +1305,7 @@ defined in the specification.
 
 \end{itemize}
 
-\subsubsection{Changes since PR-v1.0 20110921:}
+\subsection{Changes since PR-v1.0 20110921:}
 
 \begin{itemize}
 
@@ -1317,7 +1315,7 @@ defined in the specification.
 
 \end{itemize}
 
-\subsubsection{Changes since PR-v1.0 20110316:}
+\subsection{Changes since PR-v1.0 20110316:}
 
 \begin{itemize}
 
@@ -1327,7 +1325,7 @@ defined in the specification.
 
 \end{itemize}
 
-\subsubsection{Changes since WD-v1.0 20100519:}
+\subsection{Changes since WD-v1.0 20100519:}
 
 \begin{itemize}
 
@@ -1341,7 +1339,7 @@ defined in the specification.
 
 \end{itemize}
 
-\subsubsection{Changes since WD-v1.0 20100514:}
+\subsection{Changes since WD-v1.0 20100514:}
 
 \begin{itemize}
 
@@ -1349,7 +1347,7 @@ defined in the specification.
 
 \end{itemize}
 
-\subsubsection{Changes since WD-v0.4:}
+\subsection{Changes since WD-v0.4:}
 
 \begin{itemize}
 
