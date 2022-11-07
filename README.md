@@ -1,5 +1,6 @@
-This document describes/defines FILL-THIS-OUT in the [Virtual
-Observatory](https://ivoa.net)
+This document defines a [VOResource](https://ivoa.net/documents/VOResource)
+for registering Virtual Observatory standards.  Its primary use is to
+enable machine-actionable references to standards and concepts within them.
 
 Stable versions of this document are available through the [IVOA
 document repository](http://ivoa.net/documents/).

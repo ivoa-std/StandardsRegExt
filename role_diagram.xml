@@ -1,0 +1,7 @@
+<archdiag xmlns="http://ivoa.net/archdiag">
+  <rec name="VOResource" x="64.5" y="155" w="71"/>
+  <rec name="Resource M.D." x="58" y="230" w="84"/>
+  <thisrec name="StandardsRE" x="63" y="375" w="74"/>
+
+  <rec name="Identifiers" x="125" y="425" w="60"/>
+</archdiag>

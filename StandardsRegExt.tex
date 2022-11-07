@@ -1,4 +1,10 @@
 \documentclass[11pt,a4paper]{ivoa}
+
+\lstloadlanguages{XML}
+\lstset{flexiblecolumns=true,tagstyle=\ttfamily, showstringspaces=False}
+
+\usepackage{todonotes}
+
 \input tthdefs
 
 
@@ -26,7 +32,8 @@
 \previousversion[http://www.ivoa.net/Documents/StandardsRegExt/20100519/]{
   WD-20100519}
 
-\title{StandardsRegExt}
+\title{StandardsRegExt: a VOResource Schema Extension for Describing
+IVOA Standards}
 
 \begin{document}
 
@@ -69,184 +76,82 @@ European Commission's Seventh Framework
 Program\footnote{\url{http://cordis.europa.eu/fp7/capacities/home_en.html}}.
 
 This document contains text lifted verbatim, with small changes, and
-with substantial changes from (old version of) the VODataService
-specification \citep{.  This
+with substantial changes from (old versions of) the VODataService
+specification \citep{2021ivoa.spec.1102D}.  This
 has been done without specific attribution as a means for providing
 consistency across similar documents.  We acknowledge the authors of
 that document for this text.  
 
 
 
-\subsection{Conformance-related definitions}
-
-\label{}
-
-
-The words "MUST", "SHALL", "SHOULD", "MAY", "RECOMMENDED", and
-"OPTIONAL" (in upper or lower case) used in this document are to be
-interpreted as described in IETF standard, RFC 2119
-\href{#should}{[RFC 2119]}.
-
-
-
-The \textbf{Virtual Observatory (VO)} is a
-general term for a collection of federated resources that can be used
-to conduct astronomical research, education, and outreach.
-The\href{http://www.ivoa.net/}{\textbf{International
-Virtual Observatory Alliance (IVOA)}} is a global
-collaboration of separately funded projects to develop standards and
-infrastructure that enable VO applications.
-
-
-
-XML document \textbf{validation} is a
-software process that checks that an XML document is not only
-well-formed XML but also conforms to the syntax rules defined by the
-applicable schema.  Typically, when the schema is defined by one or more 
-XML Schema [\href{#schema}{Schema}] documents (see
-\href{#synnot}{next section}), validation refers to checking for
-conformance to the syntax described in those Schema documents.  This
-document describes additional syntax constraints that cannot be
-enforced solely by the rules of XML Schema; thus, in this document,
-use of the term validation includes the extra checks that goes beyond
-common Schema-aware parsers which ensure conformance with this
-document.  
-
-
-
 \subsection{Syntax Notation Using XML Schema}
-Syntax Notation Using XML SchemaThe eXtensible Markup Language, or XML, is document syntax for marking
+The eXtensible Markup Language, or XML, is a document syntax for marking
 textual information with named tags and is defined by the
 World Wide Web Consortium (W3C) Recommendation,
-\href{http://www.w3.org/TR/REC-xml}{XML 1.0}
-[\href{#xml}{XML}].  The set of XML tag names and the syntax
+XML 1.0 \citep{std:XML}.
+The set of XML tag names and the syntax
 rules for their use is referred to as the document schema.  One way to
 formally define a schema for XML documents is using the W3C standard
-known as XML Schema [\href{#schema}{Schema}].
+known as XML Schema \citep{std:XSD}.
 
 
-This document defines the StandardsRegExt schema using XML Schema.  The
-full Schema document is listed in \href{#appA}{Appendix A}.
+This document defines the StandardsRegExt schema using XML Schema.
 Parts of the schema appear within the main sections of this document;
-however, documentation nodes have been left out for the sake of brevity.  
-
-
+however, documentation nodes have been left out for the sake of brevity.
+The full schema is available from the IVOA schema
+repository\footnote{\url{https://ivoa.net/xml/index.html}}.  For
+documentation and development purposes, this document is accompanied by
+a copy of that
+schema\footnote{\auxiliaryurl{StandardsRegExt-v1.0.xsd}}}.  In case of
+conflicts, the copy at the schema repository is normative.
 
 Reference to specific elements and types defined in the VOResource
 schema include the namespaces prefix, \texttt{vr}, as in
-\texttt{vr:Resource} (a type defined in the VOResource schema).
+\xmlel{vr:Resource} (a type defined in the VOResource schema).
 Reference to specific elements and types defined in the StandardsRegExt
 schema include the namespaces prefix, \texttt{vstd}, as in
-\texttt{vstd:ServiceStandard} (a type defined in the StandardsRegExt schema).
+\xmlel{vstd:ServiceStandard} (a type defined in the StandardsRegExt schema).
 Use of the \texttt{vstd} prefix in compliant instance documents is 
-strongly recommended, particularly in the applications that involve
-IVOA Registries (see [\href{#r:ri}{RI}], section 3.1.2).
-Elsewhere, the use is not required.  
+strongly recommended.  It is required where the Registry Interfaces
+standard \citep{2018ivoa.spec.0723D} standard applies.
 
 
 
-<div>
-\section{Contents}
+\section{Introduction}
 
-\label{contents}
+\label{sect:intro}
 
-
-<div>
-<div>
-\begin{itemize}
-
-\item \href{#abstract}{Abstract}{}
-
-\item \href{#status}{Status of this document}{}
-
-\item \href{#acknowledge}{Acknowledgments}{}
-
-\item \href{#conf}{Conformance-related definitions}{}
-
-\item \href{#synnot}{Syntax Notation Using XML Schema}{}
-
-\item \href{#Intro}{1. Introduction}
-\begin{itemize}
-
-\item \href{#role}{1.1. The Role in the IVOA Architecture}{}
-
-\end{itemize}
-{}
-
-\item \href{#model}{2. The StandardsRegExt Data Model}
-\begin{itemize}
-
-\item \href{#ns}{2.1. The Schema Namespace and Location}{}
-
-\item \href{#summ}{2.2. Summary of Metadata Concepts}{}
-
-\item \href{#defkeys}{2.3. Defining Enumerations of Identifiers}{}
-
-\end{itemize}
-{}
-
-\item \href{#metadata}{3. The StandardsRegExt Metadata}
-\begin{itemize}
-
-\item \href{#resext}{3.1.  Resource Type Extensions}{}
-
-\item \href{#stdkey}{3.2.  Defining Keys: StandardKey and StandardKeyURI}{}
-
-\end{itemize}
-{}
-
-\item \href{#appA}{Appendix A: The StandardsRegExt XML Schema}{}
-
-\item \href{#appB}{Appendix B: A Sample Record}{}
-
-\item \href{#appC}{Appendix C: Change History}{}
-
-\item \href{#References}{References}{}
-
-\end{itemize}
-</div>
-</div>
-</div>
-
-% - Editor's Note: - Sections are automatically numbered. It should not be necessary - to include section numbers (during the WD stage).
-
-\section{1. Introduction}
-
-\label{Intro}
-
-1. Introduction
 An important goal of the IVOA is to publish standards for services
 which can interoperate to create a Virtual Observatory (VO).  Central
-to the coordination of these services is the concept of a registry
-([\href{#r:ri}{RI}]) where resources can be described and thus
+to the coordination of these services is the concept of a Registry
+where resources can be described and thus
 discovered by users and applications in the VO.  The standard
-\href{http://www.ivoa.net/Documents/REC/ResMetadata/RM-20040426.htm}{Resource
-Metadata for the Virtual Observatory} [\href{#RM}{Hanisch et
-al. 2004}] (hereafter referred to as \textbf{RM}) defines
+Resource
+Metadata for the Virtual Observatory \citep{2007ivoa.spec.0302H}
+(hereafter referred to as \textbf{RM}) defines
 metadata terms for services and other discoverable resources.  A
 specific XML encoding of these resources is described in the IVOA standard
-\href{http://www.ivoa.net/Documents/latest/VOResource.html}{VOResource:
-an XML Encoding Schema for Resource Metadata} [\href{#VR}{Plante
-et al. 2006}] (hereafter referred to as \textbf{VOResource}).
+VOResource \citep{2018ivoa.spec.0625P}.
 In this schema, support for a standard service protocol is described
 as a service's \emph{capability}; the associated metadata is
 contained within the service resource description's
-\href{#d:Service}{\texttt{<capability>} element}.  The
+\xmlel{capability} element.  The
 specific standard protocol supported is uniquely identified via an
-attribute of the \texttt{<capability>} element called
-\href{http://www.ivoa.net/Documents/REC/ReR/VOResource-20080222.html#capability-xsi:type}{\texttt{standardID}}
-whose value is a URI.  The \href{#VR}{VOResource standard} does
+attribute of the \xmlel{capability} element called
+\xmlel{standardID}
+whose value is a URI.  VOResource does
 not place a formal validation requirement on the
-\texttt{standardID} other than it be a legal URI; however, it
+\xmlel{standardID} other than it be a legal URI; however, it
 was intended that IVOA-endorsed standards would be represented via an
 IVOA identifier.  As per the IVOA Identifier standard
-[\href{#ID}{ID}], an IVOA identifier must be registered as a
+\citep{2016ivoa.spec.0523D},
+an IVOA identifier must be registered as a
 resource in an IVOA-compliant registry.  
 
 
 
 This document defines a VOResource extension schema called
-\textbf{StandardsRegExt} which allows one to describe a standard
+StandardsRegExt which allows one to describe a standard
 and register it with an IVOA registry.  By doing so, a unique IVOA
 identifier becomes "attached" to the standard which can be referred to
 in other resource descriptions, namely for services that support the
@@ -271,46 +176,37 @@ for example, specific features of a standard protocol (such as
 supported data transport protocols).  By virtue of being defined
 within the context of a VOResource description, one can refer to the
 key using a globally unique URI by adding the key name as a URI fragment
-[\href{#r:uri}{URI}] onto the IVOA identifier associated with the
+onto the IVOA identifier associated with the
 descriptions.  
 
 
 
 It is envisaged that StandardsRegExt instances that describe standards
 endorsed or otherwise in development by the IVOA will be published in
-the IVOA Registry of Registries [\href{#RofR}{RofR}] using the
-authority identifier [\href{#ID}{ID}], \texttt{ivoa.net}.
+the IVOA Registry of Registries \citep{2007ivoa.rept.0628P} using the
+authority identifier, \texttt{ivoa.net}.
 However, other standards, be they ad hoc or endorsed by another
 body, may be published in any compliant registry.
 
 
 
-\subsection{1.1. The Role in the IVOA Architecture}
+\subsection{Role within the VO Architecture}
 
-\label{}
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{role_diagram.pdf}
+\caption{Architecture diagram for this document}
+\label{fig:archdiag}
+\end{figure}
 
-1.1. The Role in the IVOA Architecture
-The IVOA Architecture [\href{#Arch}{Arch}] provides a high-level
-view of how IVOA standards work together to connect users and
-applications with providers of data and services, as depicted in the
-diagram in Fig. 1.  
-
-
-
-<center>
-<font>
-\includegraphics[width=0.9\textwidth]{}
-\\
-<blockquote>\textbf{Figure 1.  StandardsRegExt in the IVOA Architecture.}
+Fig.~\ref{fig:archdiag} shows the role this document plays within the
+IVOA architecture \citep{2010ivoa.rept.1123A}.
 The Registry enables applications in the User Layer to discover
 archives and services in the Resource Layer.  The registry metadata
 model standards (in blue text and boxes) give structure to the
 information that enables that discovery.  StandardsRegExt defines metadata
 for describing standards themselves (like those that define the Data
 Access Protocols).  
-</blockquote>
-</font>
-</center>
 
 
 
@@ -322,112 +218,89 @@ that can be searched based on the metadata in those descriptions. In
 general, a resource can be more than just archives, data, or
 services; an IVOA standard, as represented by an IVOA document, can
 also be a resource.  The Resource Metadata standard
-[\href{#RM}{RM}] defines the core concepts used in the resource
-descriptions, and the VOResource standard [\href{#VOR}{VOR}] defines
+defines the core concepts used in the resource
+descriptions, and VOResource defines
 the XML format.  StandardsRegExt is an extension of the VOResource
 standard that defines extra metadata for describing a standard.  
 
 
 
-\section{2. The StandardsRegExt Data Model}
+\section{The StandardsRegExt Data Model}
 
-\label{}
-
-2. The StandardsRegExt Data Model
 The StandardsRegExt extension in general enables the description of three
 types of resources:
 
 \begin{itemize}
-
-\item  a generic standard (specified by an external document) {}
-
-\item  a standard specifically defining a service protocol {}
-
-\item  a set of related, standardized names called \emph{keys}.  {}
-
+\item  a generic standard (specified by an external document)
+\item  a standard specifically defining a service protocol
+\item  a set of related, standardized names called \emph{keys}.
 \end{itemize}
 
 
 Here's an example of defining a controlled list of computer languages
 that might be referred to in other descriptions of applications.
 
-
-
-<div>
-<div>An example of defining a list of
-       programming languages </div>
-
-<div>
-\begin{verbatim}
-<ri:Resource xsi:type="vstd:StandardKeyEnumeration" created="2001-12-31T12:00:00"
-             updated="2001-12-31T12:00:00" status="active">
-   <title>application languages</title>
-   <identifier>ivo://ivoa.net/std/application/languages</identifier>
-   <curation>
-      <publisher>IVOA</publisher>
-      <creator>
-         <name>IVOA</name>
-         <logo>http://www.ivoa.net/icons/ivoa_logo_small.jpg</logo>
-      </creator>
-      <date role="representative">2006-07-17</date>
-      <version>1.0</version>
-      <contact>
-         <name>IVOA Grid and Web Services WG</name>
-         <email>grid@ivoa.net</email>
-      </contact>
-   </curation>
-   <content>
-      <subject>IVOA Standard: registry</subject>
-      <description>
-         This resource defines keys for commonly used computer languages.
-      </description>
-      <referenceURL>http://www.ivoa.net/twiki/bin/view/IVOA/IvoaResReg</referenceURL>
-   </content>
-   <key>
-      <name>C</name>
-      <description>The C programming language</description>
-   </key>
-   <key>
-      <name>CPP</name>
-      <description>The C++ programming language</description>
-   </key>
-   <key>
-      <name>CSharp</name>
-      <description>The C# programming language</description>
-   </key>
-   <key>
-      <name>FORTRAN</name>
-      <description>The FORTRAN programming language</description>
-   </key>
-   <key>
-      <name>Java</name>
-      <description>The Java programming language</description>
-   </key>
-   <key>
-      <name>Perl</name>
-      <description>The Perl programming language</description>
-   </key>
-   <key>
-      <name>Python</name>
-      <description>The Python programming language</description>
-   </key>
+\begin{lstlisting}[language=xml]
+<ri:Resource xsi:type="vstd:StandardKeyEnumeration" 
+  created="2001-12-31T12:00:00"
+  updated="2001-12-31T12:00:00" status="active">
+  <title>application languages</title>
+  <identifier>ivo://ivoa.net/std/application/languages</identifier>
+  <curation>
+     <publisher>IVOA</publisher>
+     <creator>
+        <name>IVOA</name>
+        <logo>http://www.ivoa.net/icons/ivoa_logo_small.jpg</logo>
+     </creator>
+     <date role="representative">2006-07-17</date>
+     <version>1.0</version>
+     <contact>
+        <name>IVOA Grid and Web Services WG</name>
+        <email>grid@ivoa.net</email>
+     </contact>
+  </curation>
+  <content>
+     <subject>IVOA Standard: registry</subject>
+     <description>
+        This resource defines keys for commonly used computer languages.
+     </description>
+     <referenceURL>http://www.ivoa.net/twiki/bin/view/IVOA/IvoaResReg</referenceURL>
+  </content>
+  <key>
+     <name>C</name>
+     <description>The C programming language</description>
+  </key>
+  <key>
+     <name>CPP</name>
+     <description>The C++ programming language</description>
+  </key>
+  <key>
+     <name>CSharp</name>
+     <description>The C# programming language</description>
+  </key>
+  <key>
+     <name>FORTRAN</name>
+     <description>The FORTRAN programming language</description>
+  </key>
+  <key>
+     <name>Java</name>
+     <description>The Java programming language</description>
+  </key>
+  <key>
+     <name>Perl</name>
+     <description>The Perl programming language</description>
+  </key>
+  <key>
+     <name>Python</name>
+     <description>The Python programming language</description>
+  </key>
 </ri:Resource>
-\end{verbatim}
+\end{listlisting}
 
-</div>
-</div>
 
 This description defines the meaning behind the following URI, namely
-the Python language:
-
-
-
-<blockquote>
-\begin{verbatim}
-ivo://ivoa.net/std/application/languages#Python
-\end{verbatim}
-
-</blockquote>
+the Python language,
+\nolinkuri{ivo://ivoa.net/std/application/languages#Python}
 
 An application can thus refer to, for example, its support for the
 Python language via this URI.  Should other languages become
@@ -437,163 +310,118 @@ identifier).
 
 
 
-\subsection{2.1. The Schema Namespace and Location}
+\subsection{The Schema Namespace and Location}
 
-\label{}
-
-2.1. The Schema Namespace and Location
 The namespace associated with StandardsRegExt extensions is
-"http://www.ivoa.net/xml/StandardsRegExt/v1.0".  
+$$
+\hbox{\nolinkuri{http://www.ivoa.net/xml/StandardsRegExt/v1.0}.}
+$$
+
 Just like the namespace URI for the VOResource schema, the
 StandardsRegExt namespace URI can be interpreted as a URL.  Resolving it
-will return the XML Schema document (given in \href{#appA}{Appendix A})
-that defines the StandardsRegExt schema.  
-
-
+will return the XML Schema document
+that defines the StandardsRegExt schema.  This namespace is constant for
+all versions of StandardsRegExt version one, in particular the current
+version 1.1.  See \citet{2018ivoa.spec.0529H} for the background of this
+slightly confusing convention.
 
 Authors of VOResource instance documents may choose to
 provide a location for the VOResource XML Schema document and its
 extensions using the
-\href{http://www.w3.org/TR/xmlschema-0/#schemaLocation}{\texttt{xsi:schemaLocation}} attribute.  While the choice of
+\xmlel{xsi:schemaLocation} attribute.  While the choice of
 the location value is the choice of the author, this specification
 recommends using the StandardsRegExt namespace URI as its location URL
 (as illustrated in the example above), as in,
 
 
 
-<blockquote>
-\begin{verbatim}xsi:schemaLocation="http://www.ivoa.net/xml/StandardsRegExt/v1.0
-                    http://www.ivoa.net/xml/StandardsRegExt/v1.0"\end{verbatim}
-
-</blockquote>
-
-
-
-<blockquote>
-\begin{table}
-\begin{tabular}[FIXTHIS]
-
-\begin{description}
-\item[\textbf{Note:}] The IVOA Registry Interface standard [\href{#RI}{RI}]
-       actually \emph{requires} that the VOResource records it
-       shares with other registries provide location URLs via
-       \texttt{xsi:schemaLocation} for the VOResource schema and
-       all legal extension schemas that are used in the records.  This
-       rule would apply to the StandardsRegExt schema.  
-
-\end{description}
-
-\\
-
-\end{tabular}
-\end{table}
-</blockquote>
-
-
+\begin{lstlisting}
+xsi:schemaLocation="http://www.ivoa.net/xml/StandardsRegExt/v1.0
+                    http://www.ivoa.net/xml/StandardsRegExt/v1.0"
+\end{lstlisting}
 
 The prefix, \texttt{vstd}, is used by convention as the
 prefix defined for the StandardsRegExt schema; however, instance documents
 may use any prefix of the author's choosing.  In applications where
 common use of prefixes is recommended (such as with the Registry
-Interface specification [\href{#RI}{RI}]), use of the
+Interface specification), use of the
 \texttt{vstd} prefix is recommended.  Note also that in this
 document, the \texttt{vr} prefix is used to label, as shorthand, a
 type or element name that is defined in the VOResource schema, as in
-\texttt{vr:Resource}. 
+\xmlel{vr:Resource}. 
 
 
 
-As recommend by the VOResource standard [\href{#VR}{VR}], the
-StandardsRegExt schema sets \texttt{elementFormDefault="unqualified"}.
+As recommend by the VOResource standard, the
+StandardsRegExt schema sets \verb|elementFormDefault="unqualified"|.
 This means that it is not necessary to qualify element names defined
 in this schema with a namespace prefix (as there are no global
 elements defined).  The only place it is usually needed is as a
 qualifier to a StandardsRegExt type name given as the value of an
-\texttt{xsi:type} attribute.  
+\xmlel{xsi:type} attribute.  
 
 
 
-\subsection{2.2. Summary of Metadata Concepts}
-
-\label{}
-
-2.2. Summary of Metadata Concepts
+\subsection{Summary of Metadata Concepts}
 
 The StandardsRegExt extension defines three new types of resources.  Two
 are specifically for independently documented standards:
 
-
-<blockquote>
 \begin{description}
-\item[\texttt{vstd:Standard}] This resource describes a general standard (e.g. data model,
+\item[\xmlel{vstd:Standard}] This resource describes a general standard (e.g. data model,
        schema, protocol, etc.).  The most important piece of metadata
        associated with this resource is the
-       \href{http://www.ivoa.net/Documents/REC/ReR/VOResource-20080222.html#content}{\texttt{<referenceURL>}}
+       \xmlel{referenceURL}
        (from the core VOResource schema) 
        which should point to the human-readable specification document
        that defines the standard.  It also allows one to provide the
        recommended version of the standard to use.  
-\item[\texttt{vstd:ServiceStandard}] This resource type, which extends from
+\item[\xmlel{vstd:ServiceStandard}] This resource type, which extends from
        \texttt{vstd:Standard}, is specifically for describing a
        standard service protocol (e.g. Simple Cone Search).  It
-       differs from \texttt{vstd:Standard} in that it also allows
+       differs from \xmlel{vstd:Standard} in that it also allows
        one to describe specific constraints on the service interface
        via its
-\href{http://www.ivoa.net/Documents/REC/ReR/VOResource-20080222.html#d:interface}{\texttt{<interface>}}
+       \xmlel{interface}
        element. 
-\item[\texttt{vstd:StandardKeyEnumeration}] This resource type allows for the description of a related set of 
+\item[\xmlel{vstd:StandardKeyEnumeration}] This resource type allows for the description of a related set of 
        controlled names (referred to as \emph{keys}) and their
        meanings.  While keys can be defined as part of a
-       \texttt{vstd:Standard} or \texttt{vstd:ServiceStandard}
-       resource, the \texttt{vstd:StandardKeyEnumeration} allows 
+       \xmlel{vstd:Standard} or \xmlel{vstd:ServiceStandard}
+       resource, the \xmlel{vstd:StandardKeyEnumeration} allows 
        a set of key definitions to stand as a resource on its own,
        regardless of whether it is part of a documented standard or
        not.  
 
 \end{description}
 
-</blockquote>
-
-<blockquote>
-\begin{table}
-\begin{tabular}[FIXTHIS]
-
-\begin{description}
-\item[\textbf{Note:}] As mentioned above, this standard allows controlled names to be
+\begin{admonition}{Note}
+       As mentioned above, this standard allows controlled names to be
        defined either as part of a record of any of the above three
        types.  When such names are being defined as part of an IVOA
-       standard, it is recommended that the \texttt{vstd:Standard} or
-       \texttt{vstd:ServiceStandard} record corresponding to the
+       standard, it is recommended that the \xmlel{vstd:Standard} or
+       \xmlel{vstd:ServiceStandard} record corresponding to the
        IVOA standard document be used to define the names.  The
-       \texttt{vstd:StandardKeyEnumeration} might be convenient
+       \xmlel{vstd:StandardKeyEnumeration} might be convenient
        for definitions that are experimental or otherwise are for
        non-IVOA-based applications.  
+\end{admonition}
 
-\end{description}
 
-\\
+\subsection{Defining Enumerations of Identifiers }
 
-\end{tabular}
-\end{table}
-</blockquote>
-
-\subsection{2.3. Defining Enumerations of Identifiers }
-
-\label{}
-
-2.3. Defining Enumerations of Identifiers 
 A common practice when defining metadata is to restrict
 certain string values to a controlled set of defined names, each with 
 a well-defined meaning.  With XML
 Schema, the controlled set can be enforced by a validating parser 
-(using the \texttt{xsd:enumeration} construct
-[\href{#schema}{Schema}]).  One disadvantage of locking in the
+(using the \xmlel{xsd:enumeration} construct).  
+One disadvantage of locking in the
 vocabulary in an XML Schema document is that in order to grow the list
 of allowed names, a revision of the XML Schema document is required,
 which can be a disruptive change.  To avoid this, it is the practice
-within VOResource and its extensions to avoid "hard-coded"
+within VOResource and its extensions to avoid ``hard-coded''
 enumerations in the XML Schema document for sets of defined values
-that will likely change over time.  
+that will likely change over time.
 
 
 
@@ -608,38 +436,38 @@ via an IVOA-compliant registry, it is still possible for a
 
 
 The StandardsRegExt specification also defines a mapping from a key name to
-a URI.  This allows these keys--and their underlying meaning--to be
+a URI.  This allows these keys--and their underlying meaning -- to be
 referenced in a globally unique way in a variety of contexts, not
 restricted to XML.
 
 
 
-A key is defined using the \texttt{vstd:StandardKey} type which
+A key is defined using the \xmlel{vstd:StandardKey} type which
 consists simply of a name and a description.  The key is mapped to a
-URI by attaching the name as the "fragment"--i.e., appending after a
-pound sign, \texttt{#}--to the IVOA identifier for the resource
+URI by attaching the name as the "fragment" -- i.e., appending after a
+pound sign, \verb|#| -- to the IVOA identifier for the resource
 description that defines the key:
 
-
-
-<blockquote>\emph{ivoa-identifier}\texttt{#}\emph{key-name}</blockquote>
+$$
+\hbox{\emph{ivoa-identifier}\verb|#|\emph{key-name}}
+$$
 
 where \emph{ivoa-identifier} is the resource's IVOA identifier and
 \emph{key-name} is the name of a key defined in that resource.
-Consistent with the URI standard [\href{#r:uri}{URI}], the
-\emph{key-name} must not contain a pound (#) sign.
+Consistent with the URI standard, the
+\emph{key-name} must not contain a pound (\verb|#|) sign.
 
 
 
 For example, we consider a resource description with an IVOA
-identifier given by \texttt{<identifier>
-ivo://ivoa.net/std/QueryProtocol </identifier>} that
+identifier given by 
+\nolinkurl{ivo://ivoa.net/std/QueryProtocol} that
 defines a a key named \texttt{case-insensitive}; the URI
 identifying this key would be: 
 
-
-<blockquote>\texttt{ivo://ivoa.net/std/QueryProtocol#case-insensitive}</blockquote>
-
+$$
+\hbox{\nolinkurl{ivo://ivoa.net/std/QueryProtocol#case-insensitive}}
+$$
 
 
 This form of defining multiple keys, each with its own mapping to a
@@ -651,59 +479,42 @@ URI, all in one resource has several advantages:
 
 \item  The enumerations are naturally grouped under a single registry
        resource, and so can be retrieved with one registry query and
-       need no further metadata to assert the association. {}
+       need no further metadata to assert the association.
 
 \item  The "Dublin core" metadata that is associated with a resource
        need only be entered once for the whole enumeration, rather
-       than for each member of the enumeration - this  saves both
-       curation effort and space in the registry. {}
+       than for each member of the enumeration -- this  saves both
+       curation effort and space in the registry.
 
 \item  If it is necessary to expand the list of controlled names (or
        shrink it), it is simple and fairly undisruptive to update the
-       VOResource record.  {}
+       VOResource record.
 
 \end{itemize}
 
-<blockquote>
-\begin{table}
-\begin{tabular}[FIXTHIS]
-
-\begin{description}
-\item[\textbf{Note:}] When these enumerations are presented to a user in a GUI it is
+\begin{admonition}{Note}
+       When these enumerations are presented to a user in a GUI it is
        expected that only the "fragment" part that distinguishes
        the various members of the enumeration will be used as a choice
        value, as the full IVO ID is not usually particularly
        "user-friendly". 
-
-\end{description}
-
-\\
-
-\end{tabular}
-\end{table}
-</blockquote>
+\end{admonition}
 
 Some applications may wish to publish additional metadata associated
 with a key definition through further extension of VOResource
 metadata.  This can be be done by deriving a new key metadatum type
-derived by extension from the \texttt{vstd:StandardKey}.  
+derived by extension from the \xmlel{vstd:StandardKey}.  
 
 
 
-\section{3. The StandardsRegExt Metadata}
+\section{The StandardsRegExt Metadata}
 
-\label{}
+\subsection{Resource Type Extensions}
 
-3. The StandardsRegExt Metadata
-\subsection{3.1. Resource Type Extensions}
-
-\label{}
-
-3.1. Resource Type Extensions
 This specification defined three new resource types.  As is spelled
 out in the VOResource specification, a resource description indicates
 that it refers to one of these types of resources by setting the
-\texttt{xsi:type} attribute to the namespace-qualified type name.
+\xmlel{xsi:type} attribute to the namespace-qualified type name.
 Doing so implies that the semantic meaning of that type applies to the
 resource.  
 
@@ -711,173 +522,142 @@ resource.
 
 \subsubsection{3.1.1. Standard}
 
-\label{}
-
-3.1.1. Standard
-The \texttt{vstd:Standard} resource type describes any general
+The \xmlel{vstd:Standard} resource type describes any general
 standard specification.  This typically refers to an IVOA standard but
-is not limited to such.  Generally, the \texttt{vstd:Standard}
+is not limited to such.  Generally, the \xmlel{vstd:Standard}
 type is intended for standards \emph{other than} standard
-protocols (which should use the \texttt{vstd:ServiceStandard} type
-instead).  It extends the generic \texttt{vr:Resource} type as
+protocols (which should use the \xmlel{vstd:ServiceStandard} type
+instead).  It extends the generic \xmlel{vr:Resource} type as
 follows.  
 
 
 
-<div>
-<div>vstd:Standard Type Schema Definition</div>
+% GENERATED: !schemadoc StandardsRegExt-v1.0.xsd Standard
+\begin{generated}
+\begingroup
+        \renewcommand*\descriptionlabel[1]{%
+        \hbox to 5.5em{\emph{#1}\hfil}}\vspace{2ex}\noindent\textbf{\xmlel{vstd:Standard} Type Schema Documentation}
 
-<div>
-\begin{verbatim}<xs:complexType name="Standard" >
+\noindent{\small
+           a description of a standard specification.
+         \par}
+
+\noindent{\small
+           This typically refers to an IVOA standard but is not
+           limited to such.  
+         \par}
+
+\vspace{1ex}\noindent\textbf{\xmlel{vstd:Standard} Type Schema Definition}
+
+\begin{lstlisting}[language=XML,basicstyle=\footnotesize]
+<xs:complexType name="Standard" >
   <xs:complexContent >
     <xs:extension base="vr:Resource" >
       <xs:sequence >
-        <xs:element name="endorsedVersion" type="vstd:EndorsedVersion"
-                    maxOccurs="unbounded" />
-        <xs:element name="schema" type="vstd:Schema" minOccurs="0" 
-                    maxOccurs="unbounded" >
+        <xs:element name="endorsedVersion"
+                  type="vstd:EndorsedVersion"
+                  maxOccurs="unbounded" />
+        <xs:element name="schema" type="vstd:Schema" minOccurs="0"
+                  maxOccurs="unbounded" />
         <xs:element name="deprecated" type="xs:token" minOccurs="0" />
         <xs:element name="key" type="vstd:StandardKey" minOccurs="0"
-                    maxOccurs="unbounded" />
-      </sequence>
-    </extension>
-  </complexContent>
-</complexType>
-\end{verbatim}
+                  maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+\end{lstlisting}
 
-</div>
-</div>
+\vspace{0.5ex}\noindent\textbf{\xmlel{vstd:Standard} Extension Metadata Elements}
 
-As one of the purposes of this resource type is to enable users to
-discover the documentation that defines the standard that the resource 
-describes, the \texttt{<referenceURL>} should point either
-to the standard's specification document or to summary information about
-the standard that can lead one to the specification document.  
-
-
-
-The \texttt{vstd:Standard} resource type adds two metadata terms
-to the core set:
-
-
-
-\begin{table}
-\begin{tabular}[FIXTHIS]
-
-\textbf{vstd:Standard Extension Metadata Elements}\\
-
-\textbf{Element}&
-\textbf{Definition}\\
-endorsedVersion&
-\begin{table}
-\begin{tabular}[FIXTHIS]
-\emph{Value type:}&a string with optional attributes\\
-
-<tr>
-<td>
-<em>Semantic Meaning:</em>
-</td>
-
-<td>
+\begingroup\small\begin{bigdescription}\item[Element \xmlel{endorsedVersion}]
+\begin{description}
+\item[Type] a string with optional attributes
+\item[Meaning] 
                      the version of the standard that is recommended for use.
-                </td>
-</tr>
-\emph{Occurrences:}&required; multiple occurrences allowed.\\
-\emph{Comments:}&
+                   
+\item[Occurrence] required; multiple occurrences allowed.
+\item[Comment] 
                      More than one version can be listed, indicating
-                     that any of these versions are recommended for
-                     use.  
-              \\
+                     that any of these versions are recognized as
+                     acceptable for use.  
+                   
 
-\end{tabular}
-\end{table}
-\\
-schema&
-\begin{table}
-\begin{tabular}[FIXTHIS]
-\emph{Value type:}&composite: \href{#s:Schema}{vstd:Schema}\\
-
-<tr>
-<td>
-<em>Semantic Meaning:</em>
-</td>
-
-<td>
+\end{description}
+\item[Element \xmlel{schema}]
+\begin{description}
+\item[Type] composite: \xmlel{vstd:Schema}
+\item[Meaning] 
                      a description and pointer to a schema document
                      defined by this standard.
-                </td>
-</tr>
-\emph{Occurrences:}&optional; multiple occurrences allowed.\\
-\emph{Comments:}&
+                   
+\item[Occurrence] optional; multiple occurrences allowed.
+\item[Comment] 
                      This is most typically an XML Schema, but it need
-                     not be strictly. 
-              \\
+                     not be strictly.  
+                   
 
-\end{tabular}
-\end{table}
-\\
-deprecated&
-\begin{table}
-\begin{tabular}[FIXTHIS]
-\emph{Value type:}&string: 
-<code>xs:token</code>
-\\
-\emph{Semantic Meaning:}&
+\end{description}
+\item[Element \xmlel{deprecated}]
+\begin{description}
+\item[Type] string: \xmlel{xs:token}
+\item[Meaning] 
                      when present, this element indicates that all
                      versions of the standard are considered
                      deprecated by the publisher.  The value is a 
                      human-readable explanation for the designation.
-                \\
-\emph{Occurrences:}&optional\\
-\emph{Comments:}&
+                   
+\item[Occurrence] optional
+\item[Comment] 
                      The explanation should indicate if another
                      standard should be preferred.  
-              \\
+                   
 
-\end{tabular}
-\end{table}
-\\
-key&
-\begin{table}
-\begin{tabular}[FIXTHIS]
-\emph{Value type:}&composite: 
-<code>
-<a>vstd:StandardKey</a>
-</code>
-\\
-\emph{Semantic Meaning:}&
+\end{description}
+\item[Element \xmlel{key}]
+\begin{description}
+\item[Type] composite: \xmlel{vstd:StandardKey}
+\item[Meaning] 
                      a defined key associated with this standard.
-                \\
-\emph{Occurrences:}&optional; multiple occurrences allowed.\\
+                   
+\item[Occurrence] optional; multiple occurrences allowed.
 
-\end{tabular}
-\end{table}
-\\
-
-\end{tabular}
-\end{table}
+\end{description}
 
 
+\end{bigdescription}\endgroup
 
-The child \texttt{<key>} elements define terms with special
-meaning to the standard; see \href{#stdkey}{section 3.2}.  
+\endgroup
+\end{generated}
+
+% /GENERATED
+
+As one of the purposes of this resource type is to enable users to
+discover the documentation that defines the standard that the resource 
+describes, the \xmlel{referenceURL} should point either
+to the standard's specification document or to summary information about
+the standard that can lead one to the specification document.  
 
 
+The child \xmlel{key} elements define terms with special
+meaning to the standard; see Sect.~\ref{sect:standardkeys}.
 
-The purpose of the required \texttt{<endorsedVersion>}
+The purpose of the required \xmlel{endorsedVersion}
 element is to point potential users of the standard to the version
 that is most preferred by the standard's publisher.  If multiple
 versions are relevant or in use, multiple elements may be given; in
-this case, the \texttt{use} attribute can further help steer the
+this case, the \xmlel{use} attribute can further help steer the
 users to the preferred version.
 
 
+% GENERATED: !schemadoc StandardsRegExt-v1.0.xsd EndorsedVersion
+\begin{generated}
+\begingroup
+        \renewcommand*\descriptionlabel[1]{%
+        \hbox to 5.5em{\emph{#1}\hfil}}\vspace{1ex}\noindent\textbf{\xmlel{vstd:EndorsedVersion} Type Schema Definition}
 
-<div>
-<div>vstd:EndorsedVersion Type Schema Definition</div>
-
-<div>
-\begin{verbatim}<xs:complexType name="EndorsedVersion" >
+\begin{lstlisting}[language=XML,basicstyle=\footnotesize]
+<xs:complexType name="EndorsedVersion" >
   <xs:simpleContent >
     <xs:extension base="xs:string" >
       <xs:attribute name="status" default="n/a" >
@@ -889,466 +669,327 @@ users to the preferred version.
             <xs:enumeration value="iwd" />
             <xs:enumeration value="note" />
             <xs:enumeration value="n/a" />
-          </restriction>
-        </simpleType>
-      </attribute>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
       <xs:attribute name="use" >
         <xs:simpleType >
           <xs:restriction base="xs:string" >
             <xs:enumeration value="preferred" />
             <xs:enumeration value="deprecated" />
-          </restriction>
-        </simpleType>
-      </attribute>
-    </extension>
-  </simpleContent>
-</complexType>
-\end{verbatim}
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:extension>
+  </xs:simpleContent>
+</xs:complexType>
+\end{lstlisting}
 
-</div>
-</div>
+\vspace{0.5ex}\noindent\textbf{\xmlel{vstd:EndorsedVersion} Attributes}
 
-\begin{table}
-\begin{tabular}[FIXTHIS]
-
-\textbf{vstd:EndorsedVersion Attributes}\\
-
-\textbf{Attribute}&
-\textbf{Definition}\\
-status&
-\begin{table}
-\begin{tabular}[FIXTHIS]
-\emph{Value type:}&string with controlled vocabulary\\
-
-<tr>
-<td>
-<em>Semantic Meaning:</em>
-</td>
-
-<td>
+\begingroup\small\begin{bigdescription}
+\item[status]
+\begin{description}
+\item[Type] string with controlled vocabulary
+\item[Meaning] 
                  the IVOA status level of this version of the standard.
-               </td>
-</tr>
-\emph{Occurrences:}&optional\\
-\emph{Allowed Values:}&
-\begin{table}
-\begin{tabular}[FIXTHIS]
-\texttt{rec}&
+               
+\item[Occurrence] optional
+
+\item[Allowed Values]\hfil
+\begin{longtermsdescription}\item[rec]
                             an IVOA Recommendation
-                        \\
-\texttt{pr}&
+                         
+\item[pr]
                             an IVOA Proposed Recommendation
-                        \\
-\texttt{wd}&
+                         
+\item[wd]
                             an IVOA Working Draft
-                        \\
-\texttt{iwd}&
-                            an internal Working Draft of an IVOA
-                            Working Group
-                        \\
-\texttt{note}&
+                         
+\item[iwd]
+                            an internal Working Draft of an IVOA Working Group
+                         
+\item[note]
                             a published IVOA Note
-                        \\
-\texttt{n/a}&
+                         
+\item[n/a]
                             not an IVOA standard or protostandard at
                             this time. 
-                        \\
-
-\end{tabular}
-\end{table}
-\\
-\emph{Default Value:}&\texttt{n/a}\\
-\emph{Comments:}&
-                 For values of \textbf{rec}, \textbf{pr}, 
-                 \textbf{wd}, and \textbf{note}, the 
-                 record's \textbf{<referenceURL>} element
-                 should point to the official specification document in 
-                 the \href{http://www.ivoa.net/Documents/}{IVOA
-                 Document Repository}; if the document does not
-                 appear there, these values should not be used.  
-              \\
-
-\end{tabular}
-\end{table}
-\\
-use&
-\begin{table}
-\begin{tabular}[FIXTHIS]
-\emph{Value type:}&string with controlled vocabulary\\
-
-<tr>
-<td>
-<em>Semantic Meaning:</em>
-</td>
-
-<td>
+                         
+\end{longtermsdescription}
+\item[Default] n/a
+\item[Comment] 
+                 For values of {"}rec{"}, {"}pr{"}, {"}wd{"}, and {"}note{"}, the
+                 record's referenceURL element should point to the
+                 official specification document in the IVOA Document
+                 Repository; if the document does not appear there,
+                 these values should not be used. 
+               
+\end{description}
+\item[use]
+\begin{description}
+\item[Type] string with controlled vocabulary
+\item[Meaning] 
                  A designation of preference for the version compared
                  to other versions in use.
-               </td>
-</tr>
-\emph{Occurrences:}&optional\\
-\emph{Allowed Values:}&
-\begin{table}
-\begin{tabular}[FIXTHIS]
-\texttt{preferred}&
-                       the most preferred version.
-                     \\
-\texttt{deprecated}&
-                       a version whose use is now discouraged
-                       because a newer version is preferred.  
-                     \\
+               
+\item[Occurrence] optional
 
-\end{tabular}
-\end{table}
-\\
-
-\end{tabular}
-\end{table}
-\\
-
-\end{tabular}
-\end{table}
+\item[Allowed Values]\hfil
+\begin{longtermsdescription}\item[preferred]
+                            the most preferred version.
+                         
+\item[deprecated]
+                            a version whose use is now discouraged
+                            because a newer version is preferred.  
+                         
+\end{longtermsdescription}
+\end{description}
 
 
+\end{bigdescription}\endgroup
+
+\endgroup
+\end{generated}
+
+% /GENERATED
 
 When all versions of the standard are considered deprecated by the
-resource publisher, the \texttt{<deprecated>} child element
+resource publisher, the \xmlel{deprecated} child element
 should appear.  The explanation given as a value should mention the
 standard that the current standard is deprecated by when relevant.  
 
+\begin{admonition}{Note}
+An example where the \xmlel{deprecated} element
+might be used in the VO is in the case of the SkyNode standard.
+When StandardsRegExt was originally written, there are
+many instances of SkyNode services available in the VO, and where 
+they are used, version 1.01 is endorsed; however, the IVOA has
+deprecated this standard in favor of the Table Access
+Protocol.  Thus, a
+\xmlel{vstd:ServiceStandards} record for
+SkyNode should include a \xmlel{deprecated}
+element whose content refers viewers to the TAP standard.  
+\end{admonition}
 
+The \xmlel{schema>} element allows one to
+list the locations of any schemas defined by the standard thereby making
+them discoverable as well (just as the specification document is
+discoverable via the \xmlel{referenceURL}
+element).  It also can provide pointers to example uses of the
+schemas.  Typically (especially for IVOA standards), the schema is an
+XML schema, and the location points to an XML Schema document; however, this is not required.
+Other schema types and definition formats are allowed.
 
+% GENERATED: !schemadoc StandardsRegExt-v1.0.xsd Schema
+\begin{generated}
+\begingroup
+        \renewcommand*\descriptionlabel[1]{%
+        \hbox to 5.5em{\emph{#1}\hfil}}\vspace{2ex}\noindent\textbf{\xmlel{vstd:Schema} Type Schema Documentation}
 
+\noindent{\small
+           a description of a schema definition
+         \par}
 
-<blockquote>
-\begin{table}
-\begin{tabular}[FIXTHIS]
+\vspace{1ex}\noindent\textbf{\xmlel{vstd:Schema} Type Schema Definition}
 
+\begin{lstlisting}[language=XML,basicstyle=\footnotesize]
+<xs:complexType name="Schema" >
+  <xs:sequence >
+    <xs:element name="location" type="xs:anyURI" minOccurs="1"
+              maxOccurs="1" />
+    <xs:element name="description" type="xs:token" minOccurs="0"
+              maxOccurs="1" />
+    <xs:element name="example" type="xs:anyURI" minOccurs="0"
+              maxOccurs="unbounded" />
+  </xs:sequence>
+  <xs:attribute name="namespace" type="xs:token" use="required" />
+</xs:complexType>
+\end{lstlisting}
+
+\vspace{0.5ex}\noindent\textbf{\xmlel{vstd:Schema} Attributes}
+
+\begingroup\small\begin{bigdescription}
+\item[namespace]
 \begin{description}
-\item[\textbf{Note:}] An example where the \texttt{<deprecated>} element
-       might be used in the VO is in the case of the SkyNode standard
-       [\href{#r:sn}{SkyNode}].  As of this writing, there are
-       many instances of SkyNode services available in the VO, and where 
-       they are used, version 1.01 is endorsed; however, the IVOA has
-       deprecated this standard in favor of the Table Access
-       Protocol [\href{#r:tap}{TAP}].  Thus, a
-       \textbf{\texttt{vstd:ServiceStandards}} record for
-       SkyNode should include a \texttt{<deprecated>}
-       element whose content refers viewers to the TAP standard.  
+\item[Type] string: \xmlel{xs:token}
+\item[Meaning] 
+               an identifier for the schema being described.  Each instance 
+               of this attribute must be unique within the resourse description.
+             
+\item[Occurrence] required
+\item[Comment] 
+               For XML schemas, this should be the schema's namespace URI.
+               Otherwise, it should be a unique label to distinguish it from 
+               other schemas described in the same resource description. 
+             
+\end{description}
+
+
+\end{bigdescription}\endgroup
+
+
+
+\vspace{0.5ex}\noindent\textbf{\xmlel{vstd:Schema} Metadata Elements}
+
+\begingroup\small\begin{bigdescription}\item[Element \xmlel{location}]
+\begin{description}
+\item[Type] a URI: \xmlel{xs:anyURI}
+\item[Meaning] 
+                  A URL pointing to a document that formally defines
+                  the schema.
+               
+\item[Occurrence] required
+\item[Comment] 
+                  The document should be in a machine-parsable format
+                  when applicable.  For example, when refering to an
+                  XML schema, the document should be an XML Schema or 
+                  similar document that can be used to validate an 
+                  instance document.  
+               
+
+\end{description}
+\item[Element \xmlel{description}]
+\begin{description}
+\item[Type] string: \xmlel{xs:token}
+\item[Meaning] 
+                  A human-readable description of what the schema
+                  defines or is used for.
+               
+\item[Occurrence] optional
+\item[Comment] 
+                  A brief description--e.g. one statement--is
+                  recommended for display purposes.  
+               
+
+\end{description}
+\item[Element \xmlel{example}]
+\begin{description}
+\item[Type] a URI: \xmlel{xs:anyURI}
+\item[Meaning] 
+                  A URL pointing to a sample document that illustrates 
+                  the use of the schema.
+               
+\item[Occurrence] optional; multiple occurrences allowed.
+\item[Comment] 
+                  When applicable (e.g. XML), the document should be
+                  in the format defined by the schema document.
+               
 
 \end{description}
 
-\\
 
-\end{tabular}
-\end{table}
-</blockquote>
+\end{bigdescription}\endgroup
 
-The \textbf{\texttt{<schema>}} element allows one to
-list the locations of any schemas defined by the standard thereby making
-them discoverable as well (just as the specification document is
-discoverable via the \textbf{\texttt{<referenceURL>}}
-element).  It also can provide pointers to example uses of the
-schemas.  Typically (especially for IVOA standards), the schema is an
-XML schema, and the location points to an XML Schema [\href{#schema}{Schema}] document; however, this is not required.
-Other schema types and definition formats are allowed.
+\endgroup
+\end{generated}
 
-
-
-<div>
-<div>vstd:Schema Type Schema Definition</div>
-
-<div>
-\begin{verbatim}<xs:complexType name="Schema">
-   <xs:sequence>
-      <xs:element name="location" type="xs:anyURI" 
-                  minOccurs="1" maxOccurs="1"/>
-      <xs:element name="description" type="xs:token" 
-                  minOccurs="0" maxOccurs="1" />
-      <xs:element name="example" type="xs:anyURI" 
-                  minOccurs="0" maxOccurs="unbounded" />
-   </xs:sequence>
-   <xs:attribute name="namespace" type="xs:token" use="required"/>
-</xs:complexType>
-\end{verbatim}
-
-</div>
-</div>
+% /GENERATED
 
 As multiple schemas can be listed in the resource description, the
 \textbf{\texttt{namespace}} attribute provides an
 identifying label for each \textbf{\texttt{<schema>}} 
-element:
+element.
 
 
-
-\begin{table}
-\begin{tabular}[FIXTHIS]
-
-\textbf{vstd:Schema Attributes}\\
-
-\textbf{Attribute}&
-\textbf{Definition}\\
-namespace&
-\begin{table}
-\begin{tabular}[FIXTHIS]
-\emph{Value type:}&string: \textbf{\texttt{xs:token}}\\
-
-<tr>
-<td>
-<em>Semantic Meaning:</em>
-</td>
-
-<td>
-                 an identifier for the schema being described.  Each instance 
-                 of this attribute must be unique within the resourse
-                 description.
-               </td>
-</tr>
-\emph{Occurrences:}&required\\
-\emph{Comments:}&
-               For XML schemas, this should be the schema's namespace URI.
-               Otherwise, it is a unique label to distinguish it from 
-               other schemas described in the same resource description. 
-              \\
-
-\end{tabular}
-\end{table}
-\\
-
-\end{tabular}
-\end{table}
-
-
-
-The main component of the \textbf{\texttt{<schema>}}
+The main component of the \xmlel{schema}
 content is the URL pointing to the schema's definition document, but
-it can also provide additional information useful for display:
+it can also provide additional information useful for display.
+
+An example of a Standard resource that summarizes this specification
+\todo{make this an appendix or so}
+
+\lstinputlisting{StandardsRegExt.vor}
 
 
+\subsubsection{ServiceStandard}
 
-\begin{table}
-\begin{tabular}[FIXTHIS]
-
-\textbf{vstd:Schema Metadata Elements}\\
-
-\textbf{Element}&
-\textbf{Definition}\\
-location&
-\begin{table}
-\begin{tabular}[FIXTHIS]
-\emph{Value type:}&URL: \textbf{\texttt{xs:anyURI}}\\
-
-<tr>
-<td>
-<em>Semantic Meaning:</em>
-</td>
-
-<td>
-                 A URL pointing to a document that formally defines
-                 the schema.
-               </td>
-</tr>
-\emph{Occurrences:}&required\\
-\emph{Comments:}&
-                 The document should be in a machine-parsable format
-                 when applicable.  For example, when refering to an
-                 XML schema, the document should be an XML Schema or 
-                 similar document that can be used to validate an 
-                 instance document.  
-              \\
-
-\end{tabular}
-\end{table}
-\\
-description&
-\begin{table}
-\begin{tabular}[FIXTHIS]
-\emph{Value type:}&URL: \textbf{\texttt{xs:token}}\\
-
-<tr>
-<td>
-<em>Semantic Meaning:</em>
-</td>
-
-<td>
-                 A human-readable description of what the schema defines or is 
-                 used for.
-               </td>
-</tr>
-\emph{Occurrences:}&optional\\
-\emph{Comments:}&
-                 A brief description--e.g. one statement--is recommended for
-                 display purposes.  
-              \\
-
-\end{tabular}
-\end{table}
-\\
-example&
-\begin{table}
-\begin{tabular}[FIXTHIS]
-\emph{Value type:}&URL: \textbf{\texttt{xs:anyURI}}\\
-
-<tr>
-<td>
-<em>Semantic Meaning:</em>
-</td>
-
-<td>
-                 A URL pointing to a sample document that illustrates 
-                 the use of the schema.
-               </td>
-</tr>
-\emph{Occurrences:}&optional; multiple occurances are allowed.\\
-\emph{Comments:}&
-                 When applicable (e.g. XML), the document should be
-                 in the format defined by the schema document.
-              \\
-
-\end{tabular}
-\end{table}
-\\
-
-\end{tabular}
-\end{table}
-
-
-
-<div>
-<div>An example of a Standard resource that 
-       summarizes this specification </div>
-
-<div>
-\begin{verbatim}<?xml version="1.0" encoding="UTF-8"?>
-<ri:Resource xsi:type="vstd:Standard" status="active"
-             created="2012-02-17T11:15:00" updated="2012-02-17T11:15:00"
-             xmlns:ri="http://www.ivoa.net/xml/RegistryInterface/v1.0" 
-             xmlns:vstd="http://www.ivoa.net/xml/StandardsRegExt/v1.0" 
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <title> StandardsRegExt: a VOResource Schema Extension for Describing IVOA Standards </title>
-    <shortName> StandardsRegExt </shortName>
-    <identifier>   ivo://ivoa.net/std/StandardsRegExt   </identifier>
-    <curation>
-      <publisher ivo-id="ivo://ivoa.net/IVOA">
-        International Virtual Observatory Alliance
-      </publisher>
-      <creator>
-        <name>  IVOA Registry Working Group   </name>
-        <logo>http://www.ivoa.net/icons/ivoa_logo_small.jpg</logo>
-      </creator>
-      <date role="creation"> 2010-05-19 </date>
-      <date role="updated">  2012-02-17 </date>
-      <version> 1.0 </version>
-      <contact>
-        <name>   Resource Registry Working Group   </name>
-	<email>  registry@ivoa.net    </email>
-      </contact>
-    </curation>
-    <content>
-      <subject>   software standard   </subject>
-      <subject>   virtual observatory   </subject>
-      <description>
-        This document describes an XML encoding standard for metadata about
-        IVOA standards themselves, referred to as StandardsRegExt.  It is
-        intended to allow for the discovery of a standard via an IVOA
-        identifier that refers to the standard.  It also allows one to define
-        concepts that are defined by the standard which can themselves be
-        referred to via an IVOA identifier (augmented with a URL fragment
-        identifier).  Finally, it can also provide a machine interpretable
-        description of a standard service interface.  We describe the general
-        model for the schema and explain its intended use by interoperable
-        registries for discovering resources. 
-      </description>
-      <referenceURL>
-         http://www.ivoa.net/Documents/StandardsRegExt/
-      </referenceURL>
-      <type>   Other   </type>
-      <contentLevel>   Research   </contentLevel>
-    </content>
-    <endorsedVersion status="pr"> 1.0 </endorsedVersion>
-    <schema namespace="http://www.ivoa.net/xml/StandardsRegExt/v1.0">
-      <location>http://www.ivoa.net/xml/StandardsRegExt/v1.0</location>
-      <description>
-        the VOResource extension XML Schema for registering standards
-      </description>
-      <example>http://rofr.ivoa.net/examples/StandardsRegExt.xml</example>
-      <example>http://rofr.ivoa.net/examples/SIA.xml</example>
-      <example>http://rofr.ivoa.net/examples/VOSpace.xml</example>
-    </schema>
-</ri:Resource>
-\end{verbatim}
-
-</div>
-</div>
-
-\subsubsection{3.1.2. ServiceStandard}
-
-\label{}
-
-3.1.2. ServiceStandard
-The \texttt{vstd:ServiceStandard} resource type extends
-\href{#d:Standard}{\texttt{vstd:Standard}} to describe more
+The \xmlel{vstd:ServiceStandard} resource type extends
+\xmlel{vstd:Standard} to describe more
 specifically a standard protocol.  It adds an 
-\texttt{<interface>} element to allow the interface defined
+\xmlel{interface} element to allow the interface defined
 by the standard to be described in a machine-readable way.  Its type
-is defined to be \texttt{vr:Interface}, which is defined in the
-VOResource schema [\href{#r:vr}{VR}].  
+is defined to be \xmlel{vr:Interface}, which is defined in the
+VOResource schema.
 
 
+% GENERATED: !schemadoc StandardsRegExt-v1.0.xsd ServiceStandard
+\begin{generated}
+\begingroup
+        \renewcommand*\descriptionlabel[1]{%
+        \hbox to 5.5em{\emph{#1}\hfil}}\vspace{2ex}\noindent\textbf{\xmlel{vstd:ServiceStandard} Type Schema Documentation}
 
-<div>
-<div>vstd:ServiceStandard Type Schema Definition</div>
+\noindent{\small
+           a description of a standard service protocol.
+         \par}
 
-<div>
-\begin{verbatim}<xs:complexType name="ServiceStandard" >
+\noindent{\small
+           This typically refers to an IVOA standard but is not
+           limited to such.  
+         \par}
+
+\vspace{1ex}\noindent\textbf{\xmlel{vstd:ServiceStandard} Type Schema Definition}
+
+\begin{lstlisting}[language=XML,basicstyle=\footnotesize]
+<xs:complexType name="ServiceStandard" >
   <xs:complexContent >
     <xs:extension base="vstd:Standard" >
       <xs:sequence >
         <xs:element name="interface" type="vr:Interface" minOccurs="0"
-                    maxOccurs="unbounded" />
-      </sequence>
-    </extension>
-  </complexContent>
-</complexType>
-\end{verbatim}
+                  maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+\end{lstlisting}
 
-</div>
-</div>
+\vspace{0.5ex}\noindent\textbf{\xmlel{vstd:ServiceStandard} Extension Metadata Elements}
 
-\begin{table}
-\begin{tabular}[FIXTHIS]
-
-\textbf{vstd:ServiceStandard Extension Metadata Elements}\\
-
-\textbf{Element}&
-\textbf{Definition}\\
-interface&
-\begin{table}
-\begin{tabular}[FIXTHIS]
-\emph{Value type:}&composite: 
-<code>vr:Interface</code>
-\\
-\emph{Semantic Meaning:}&
+\begingroup\small\begin{bigdescription}\item[Element \xmlel{interface}]
+\begin{description}
+\item[Type] composite: \xmlel{vr:Interface}
+\item[Meaning] 
                       an abstract description of one of the interfaces defined 
                       by this service standard.  
-                \\
-\emph{Occurrences:}&optional; multiple occurrences allowed.\\
-\emph{Comments:}&
-               This element can provide details about the interface 
-               that apply to all implementations.  Each interface 
-               element should specify a \texttt{role} attribute with a 
-               value starting with "std:", or, if there is only one standard 
-               child element, \texttt{role} is set to "std".  
-              \\
+                    
+\item[Occurrence] optional; multiple occurrences allowed.
+\item[Comment] 
+                      This element can provide details about the interface 
+                      that apply to all implementations.  Each interface 
+                      element should specify a role with a value starting 
+                      with {"}std:{"} or, if there is only one standard interface,
+                      is equal to {"}std{"}.  
+                    
+\item[Comment] 
+                      Applications that, for example, wish to build a GUI
+                      to the service on-the-fly would first access this generic 
+                      description.  Site-specific variations, such
+                      as supported optional arguments or site specific 
+                      arguments, would be given in the actual implemented 
+                      service description and overrides any common information 
+                      found in this generic description.  This generic interface
+                      description can be matched with the site-specific one 
+                      using the role attribute.  
+                    
+\item[Comment] 
+                      Even though the Interface type requires an
+                      accessURL child element, this element is
+                      intended to describe a service in the
+                      abstract--i.e. without reference to a particular 
+                      installation of the service.  Consequently,
+                      the accessURL may contain a bogus URL;
+                      applications should not expect it to be resolvable.  
+                    
 
-\end{tabular}
-\end{table}
-\\
+\end{description}
 
-\end{tabular}
-\end{table}
 
+\end{bigdescription}\endgroup
+
+\endgroup
+\end{generated}
+
+% /GENERATED
 
 
 Even though the \texttt{vr:Interface} type requires an
@@ -1372,990 +1013,351 @@ process for building that description is as follows:
 \begin{enumerate}
 
 \item  The application obtains a VOResource resource record for the
-       service instance (e.g. from a registry).  {}
+       service instance (e.g. from a registry).
 
-\item  The application extracts the \texttt{standardID} attribute
-       for the desired service capability.  {}
+\item  The application extracts the \xmlel{standardID} attribute
+       for the desired service capability.
 
-\item  The \texttt{standardID} is resolved (via a registry) to a
-       \texttt{vstd:ServiceStandard} record for the service.  This
+\item  The \xmlel{standardID} is resolved (via a registry) to a
+       \xmlel{vstd:ServiceStandard} record for the service.  This
        description would capture the required and optional (but
-       standard) components of the service interface.{}
+       standard) components of the service interface.
 
 \item  The specific instance's interface description is merged into
        the standard one.  The service's support of optional components
        as well as its allowed customizations would override the
-       generic description from the \texttt{vstd:ServiceStandard}
-       record.  {}
+       generic description from the \xmlel{vstd:ServiceStandard}
+       record.
 
 \end{enumerate}
 
-The so-called "simple" data access layer (DAL) services, such as the
-Simple Image Access services [\href{#r:sia}{SIA}], are
-registered using the \texttt{vs:ParamHTTP} interface type
-[\href{#r:vds}{VDS}] to describe its interface.  This interface
+The so-called ``simple'' data access layer (DAL) services, such as the
+Simple Image Access services \citep{2015ivoa.spec.1223D}, are
+registered using the \xmlel{vs:ParamHTTP} interface type
+\citep{2021ivoa.spec.1102D}
+to describe its interface.  This interface
 type allows one to list input parameters accepted by the service.
 Each parameter can be marked as \emph{required}, \emph{optional},
 or \emph{ignored}.  Typically with DAL services, parameters defined
 as optional by the standard may be legally ignored by an
 implementation.  Consequently, this specification recommends special
 instruction for listing and interpreting input parameteters in a
-\texttt{vstd:ServiceStandard} record when the interface is of type
-\texttt{vs:ParamHTTP}:  parameters that can be optionally provided
+\xmlel{vstd:ServiceStandard} record when the interface is of type
+\xmlel{vs:ParamHTTP}:  parameters that can be optionally provided
 in a client's query but are ignorable by the implementation should be
 marked as \emph{ignored}.  Applications that consume such 
-\texttt{vstd:ServiceStandard} records should thus interpret the
+\xmlel{vstd:ServiceStandard} records should thus interpret the
 parameters marked \emph{ignored} as \emph{optional} for use by
 clients and \emph{ignorable} by implementations.  This minimizes the
 list of parameters that the service provider must list in the
 registration of a particular service instance to the ones that are
-actually supported (i.e. not ignored): when the list service
+actually supported (i.e., not ignored): when the list service
 instance description is merged into the list from the 
-\texttt{vstd:ServiceStandard} record (step 4 above), the result is
+\xmlel{vstd:ServiceStandard} record (step 4 above), the result is
 an accurate list of the optional but supported and the ignored
 parameters for that service instance.
 
 
 
-An example of an instance of a \texttt{vstd:ServiceStandard}
-record is shown in \href{#appB}{Appendix B}.  It describes the
-Simple Image Access Specification [\href{#r:sia}{SIA}] and
+An example of an instance of a \xmlel{vstd:ServiceStandard}
+record is shown in Appendix~\ref{app:B}.  It describes the
+Simple Image Access Specification and
 in particular illustrates the recommended way to list input parameters
 defined by the standard.  
 
 
 
-\subsubsection{3.1.3. StandardKeyEnumeration}
+\subsubsection{StandardKeyEnumeration}
 
-\label{}
-
-3.1.3. StandardKeyEnumeration
-The \texttt{vstd:StandardKeyEnumeration} resource type is available
+The \xmlel{vstd:StandardKeyEnumeration} resource type is available
 for collecting definitions of related, standard keys.  Each key defined
 within this resource can then be referred to by a unique IVOA
-Identifier URI (see \href{#stdkey}{section 3.2}).  To support
-this, the \texttt{vstd:StandardKeyEnumeration} resource simply
-adds the \texttt{<key>} element to the standard core
+Identifier URI (see Sect.~\ref{sect:stdkey}).  To support
+this, the \xmlel{vstd:StandardKeyEnumeration} resource simply
+adds the \xmlel{key} element to the standard core
 metadata.  
 
+% GENERATED: !schemadoc StandardsRegExt-v1.0.xsd StandardKeyEnumeration
+\begin{generated}
+\begingroup
+        \renewcommand*\descriptionlabel[1]{%
+        \hbox to 5.5em{\emph{#1}\hfil}}\vspace{2ex}\noindent\textbf{\xmlel{vstd:StandardKeyEnumeration} Type Schema Documentation}
 
+\noindent{\small
+            A registered set of related keys.  Each key can be
+            uniquely identified by combining the IVOA identifier of
+            this resource with the key name separated by the URI
+            fragment delimiter, \#, as in: ivoa-identifier\#key-name
+         \par}
 
-<div>
-<div>vstd:StandardKeyEnumeration Type Schema Definition</div>
+\vspace{1ex}\noindent\textbf{\xmlel{vstd:StandardKeyEnumeration} Type Schema Definition}
 
-<div>
-\begin{verbatim}<xs:complexType name="StandardKeyEnumeration" >
+\begin{lstlisting}[language=XML,basicstyle=\footnotesize]
+<xs:complexType name="StandardKeyEnumeration" >
   <xs:complexContent >
     <xs:extension base="vr:Resource" >
       <xs:sequence >
-        <xs:element name="key" type="vstd:StandardKey" maxOccurs="unbounded"
-                    minOccurs="1" />
-      </sequence>
-    </extension>
-  </complexContent>
-</complexType>
-\end{verbatim}
+        <xs:element name="key" type="vstd:StandardKey"
+                  maxOccurs="unbounded"
+                  minOccurs="1" />
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+\end{lstlisting}
 
-</div>
-</div>
+\vspace{0.5ex}\noindent\textbf{\xmlel{vstd:StandardKeyEnumeration} Extension Metadata Elements}
 
-\begin{table}
-\begin{tabular}[FIXTHIS]
-
-\textbf{vstd:StandardKeyEnumeration Extension Metadata Elements}\\
-
-\textbf{Element}&
-\textbf{Definition}\\
-key&
-\begin{table}
-\begin{tabular}[FIXTHIS]
-\emph{Value type:}&composite: 
-<code>
-<a>vstd:StandardKey</a>
-</code>
-\\
-\emph{Semantic Meaning:}&
+\begingroup\small\begin{bigdescription}\item[Element \xmlel{key}]
+\begin{description}
+\item[Type] composite: \xmlel{vstd:StandardKey}
+\item[Meaning] 
                       the name and definition of a key--a named concept, 
                       feature, or property.
-                \\
-\emph{Occurrences:}&required; multiple occurrences allowed.\\
+                    
+\item[Occurrence] required; multiple occurrences allowed.
 
-\end{tabular}
-\end{table}
-\\
-
-\end{tabular}
-\end{table}
+\end{description}
 
 
+\end{bigdescription}\endgroup
 
-The contents of the \texttt{<key>} element is described in
+\endgroup
+\end{generated}
+
+% /GENERATED
+
+The contents of the \xmlel{key} element is described in
 the next section.  
 
 
 
-\subsection{3.2. Defining Keys: StandardKey and StandardKeyURI}
+\subsection{Defining Keys: StandardKey and StandardKeyURI}
 
-\label{}
-
-3.2. Defining Keys: StandardKey and StandardKeyURI
-The \texttt{vstd:StandardKey} type provides the means to 
-define keys (as defined in \href{#sec:keys}{section 2.3}) within
+The \xmlel{vstd:StandardKey} type provides the means to 
+define keys (as defined in Sect.~\ref{sect:keys}) within
 a VOResource record.
 
+% GENERATED: !schemadoc StandardsRegExt-v1.0.xsd StandardKey
+\begin{generated}
+\begingroup
+        \renewcommand*\descriptionlabel[1]{%
+        \hbox to 5.5em{\emph{#1}\hfil}}\vspace{2ex}\noindent\textbf{\xmlel{vstd:StandardKey} Type Schema Documentation}
 
+\noindent{\small
+            The name and definition of a key--a named concept, 
+            feature, or property.
+         \par}
 
-<div>
-<div>vstd:StandardKey Type Schema Definition</div>
+\noindent{\small
+            This key can be identified via an IVOA identifier
+            of the form ivo://authority/resource\#name where name is
+            the value of the child name element.
+         \par}
 
-<div>
-\begin{verbatim}<xs:complexType name="StandardKey" >
+\noindent{\small
+            This type can be extended if the key has
+            other metadata associated with it. 
+         \par}
+
+\vspace{1ex}\noindent\textbf{\xmlel{vstd:StandardKey} Type Schema Definition}
+
+\begin{lstlisting}[language=XML,basicstyle=\footnotesize]
+<xs:complexType name="StandardKey" >
   <xs:sequence >
     <xs:element name="name" type="vstd:fragment" />
     <xs:element name="description" type="xs:token" />
-  </sequence>
-</complexType>
+  </xs:sequence>
+</xs:complexType>
+\end{lstlisting}
 
-<xs:simpleType name="fragment" >
-  <xs:restriction base="xs:string" >
-    <xs:pattern value="([A-Za-z0-9;/\?:@&amp;=\+$,\-_.!~\*'\(\)]|%[A-Fa-f0-9]{2})+" />
-  </restriction>
-</simpleType>
-\end{verbatim}
+\vspace{0.5ex}\noindent\textbf{\xmlel{vstd:StandardKey} Metadata Elements}
 
-</div>
-</div>
-
-\begin{table}
-\begin{tabular}[FIXTHIS]
-
-\textbf{vstd:StandardKey Metadata Elements}\\
-
-\textbf{Element}&
-\textbf{Definition}\\
-name&
-\begin{table}
-\begin{tabular}[FIXTHIS]
-\emph{Value type:}&
-               string with a form restricted to a legal URI fragment
-               [\href{#r:uri}{URI}]. 
-              \\
-\emph{Semantic Meaning:}&
+\begingroup\small\begin{bigdescription}\item[Element \xmlel{name}]
+\begin{description}
+\item[Type] string of the form: \emph{([A-Za-z0-9;/$\backslash$?:@\&=$\backslash$+\$,$\backslash$-\_$\backslash$.!~$\backslash$*'$\backslash$($\backslash$)]|\%[A-Fa-f0-9]\{2\})+}
+\item[Meaning] 
                   The property identifier which would appear as the
-                  fragment (string after the pound sign, #) in an IVOA
+                  fragment (string after the pound sign, \#) in an IVOA
                   identifier.  
-               \\
-\emph{Occurrences:}&required\\
-\emph{Comments:}&
-                Note that fragments may not include a pound (#) sign.
-              \\
+               
+\item[Occurrence] required
 
-\end{tabular}
-\end{table}
-\\
-description&
-\begin{table}
-\begin{tabular}[FIXTHIS]
-\emph{Value type:}&string: 
-<code>xs:token</code>
-\\
-\emph{Semantic Meaning:}&
+
+\end{description}
+\item[Element \xmlel{description}]
+\begin{description}
+\item[Type] string: \xmlel{xs:token}
+\item[Meaning] 
                   A human-readable definition of this property.  
-               \\
-\emph{Occurrences:}&required\\
-\emph{Comments:}&
-                Note that while a lengthy definition and other
-                comments can be included in the body of this element,
-                the \texttt{xs:token} type does not support
-                multiple paragraphs.  
-              \\
+               
+\item[Occurrence] required
 
-\end{tabular}
-\end{table}
-\\
-
-\end{tabular}
-\end{table}
+\end{description}
 
 
+\end{bigdescription}\endgroup
 
-Defining a key via a \texttt{<key>} element within a
+\endgroup
+\end{generated}
+
+% /GENERATED
+
+
+Defining a key via a \xmlel{key} element within a
 VOResource record implies the definition of a unique URI formed
-according to the syntax described in \href{#sec:keys}{section
-2.3} that represents the semantics given by the value of the 
-\texttt{<description>} child element.  Because the URI must
+according to the syntax described in Sect.~\ref{sect:keys}
+that represents the semantics given by the value of the 
+\xmlel{description} child element.  Because the URI must
 be globally unique, the key name (given by the
-\texttt{<name>} child element) must be unique within the
+\xmlel{name} child element) must be unique within the
 VOResource record.
-
-
 
 Though it is not needed by StandardsRegExt resource records, the StandardsRegExt
 schema further defines a convenience type,
-\texttt{vstd:StandardKeyURI}, which defines the legal pattern for
+\xmlel{vstd:StandardKeyURI}, which defines the legal pattern for
 a full standard key identifier (as defined in
-\href{#sec:keys}{section 2.3}).  Applications that wish to use
+Sect.~\ref{sect:keys}).  Applications that wish to use
 XML Schema to validate the form of a key URI may import the StandardsRegExt
 schema and use this type.  
 
 
+\begin{admonition}[Note]
+It is worth noting that just using or otherwise referencing a
+standard key URI in an application does not require importing
+the StandardsRegExt nor need there be any reference to the
+StandardsRegExt namespace.  The role of the StandardsRegExt schema is
+simply to provide a way of documenting the definitions in a
+VOResource record.  Thus, an application may dereference the
+URI for display or user help purposes; however, dereferencing
+is not necessary to use the URI. 
+\end{admonition}
+
+
+\appendix
+
+\section{The complete StandardsRegExt Schema}
+
+Appendix A: The complete StandardsRegExt SchemaThe schema is included
+here for completeness - the definitive source of the schema is at
+\href{http://www.ivoa.net/xml/StandardsRegExt/v1.0}{http://www.ivoa.net/xml/StandardsRegExt/v1.0}.\todo{No,
+it's not, and I'll throw this out in the next commit}
 
 
 
-<blockquote>
-\begin{table}
-\begin{tabular}[FIXTHIS]
+\section{A Sample Record}
 
-\begin{description}
-\item[\textbf{Note:}] It is worth noting that just using or otherwise referencing a
-       standard key URI in an application does not require importing
-       the StandardsRegExt nor need there be any reference to the
-       StandardsRegExt namespace.  The role of the StandardsRegExt schema is
-       simply to provide a way of documenting the definitions in a
-       VOResource record.  Thus, an application may dereference the
-       URI for display or user help purposes; however, dereferencing
-       is not necessary to use the URI. 
-
-\end{description}
-
-\\
-
-\end{tabular}
-\end{table}
-</blockquote>
-
-\section{Appendix A: The complete StandardsRegExt Schema}
-
-\label{}
-
-Appendix A: The complete StandardsRegExt SchemaThe schema is included here for completeness - the definitive source of the schema is at \href{http://www.ivoa.net/xml/StandardsRegExt/v1.0}{http://www.ivoa.net/xml/StandardsRegExt/v1.0}.
-
-
-<div>
-<div>The Complete StandardsRegExt Schema</div>
-
-<div>
-\begin{verbatim}<?xml version="1.0" encoding="UTF-8"?>
-<xs:schema targetNamespace="http://www.ivoa.net/xml/StandardsRegExt/v1.0" 
-           xmlns:xs="http://www.w3.org/2001/XMLSchema" 
-           xmlns:vr="http://www.ivoa.net/xml/VOResource/v1.0" 
-           xmlns:vstd="http://www.ivoa.net/xml/StandardsRegExt/v1.0" 
-           xmlns:vm="http://www.ivoa.net/xml/VOMetadata/v0.1"
-           elementFormDefault="unqualified" attributeFormDefault="unqualified"
-           version="1.0" >
-
-   <xs:annotation>
-      <xs:appinfo>
-        <vm:schemaName>StandardsRegExt</vm:schemaName>
-        <vm:schemaPrefix>xs</vm:schemaPrefix>
-        <vm:targetPrefix>vstd</vm:targetPrefix>
-      </xs:appinfo>
-      <xs:documentation>
-        This is a core schema for describing IVOA Standards themselves
-      </xs:documentation>
-   </xs:annotation>
-
-   <xs:import namespace="http://www.ivoa.net/xml/VOResource/v1.0" 
-              schemaLocation="http://www.ivoa.net/xml/VOResource/v1.0"/>
-
-   <xs:complexType name="Standard">
-      <xs:annotation>
-         <xs:documentation>
-           a description of a standard specification.
-         </xs:documentation>
-         <xs:documentation>
-           This typically refers to an IVOA standard but is not
-           limited to such.  
-         </xs:documentation>
-      </xs:annotation>
-
-      <xs:complexContent>
-         <xs:extension base="vr:Resource">
-            <xs:sequence>
- 
-              <xs:element name="endorsedVersion" type="vstd:EndorsedVersion" 
-                          maxOccurs="unbounded">
-                <xs:annotation>
-                   <xs:documentation>
-                     the version of the standard that is recommended for use.
-                   </xs:documentation>
-                   <xs:documentation>
-                     More than one version can be listed, indicating
-                     that any of these versions are recognized as
-                     acceptable for use.  
-                   </xs:documentation>
-                </xs:annotation>
-              </xs:element>
-
-              <xs:element name="schema" type="vstd:Schema" 
-                          minOccurs="0" maxOccurs="unbounded">
-                <xs:annotation>
-                   <xs:documentation>
-                     a description and pointer to a schema document
-                     defined by this standard.
-                   </xs:documentation>
-                   <xs:documentation>
-                     This is most typically an XML Schema, but it need
-                     not be strictly.  
-                   </xs:documentation>
-                </xs:annotation>
-              </xs:element>
-
-              <xs:element name="deprecated" type="xs:token" minOccurs="0">
-                <xs:annotation>
-                   <xs:documentation>
-                     when present, this element indicates that all
-                     versions of the standard are considered
-                     deprecated by the publisher.  The value is a 
-                     human-readable explanation for the designation.
-                   </xs:documentation>
-                   <xs:documentation>
-                     The explanation should indicate if another
-                     standard should be preferred.  
-                   </xs:documentation>
-                </xs:annotation>
-              </xs:element>
-
-              <xs:element name="key" type="vstd:StandardKey" 
-                          minOccurs="0" maxOccurs="unbounded">
-                <xs:annotation>
-                   <xs:documentation>
-                     a defined key associated with this standard.
-                   </xs:documentation>
-                </xs:annotation>
-              </xs:element>
-
-            </xs:sequence>
-         </xs:extension>
-      </xs:complexContent>
-   </xs:complexType>
-
-   <xs:complexType name="EndorsedVersion">
-      <xs:simpleContent>
-         <xs:extension base="xs:string">
-           <xs:attribute name="status" default="n/a">
-             <xs:annotation>
-               <xs:documentation>
-                 the IVOA status level of this version of the standard.
-               </xs:documentation>
-               <xs:documentation>
-                 For values of "rec", "pr", "wd", and "note", the
-                 record's referenceURL element should point to the
-                 official specification document in the IVOA Document
-                 Repository; if the document does not appear there,
-                 these values should not be used. 
-               </xs:documentation>
-             </xs:annotation>
-
-             <xs:simpleType>
-                <xs:restriction base="xs:string">
-                   <xs:enumeration value="rec">
-                      <xs:annotation>
-                         <xs:documentation>
-                            an IVOA Recommendation
-                         </xs:documentation>
-                      </xs:annotation>
-                   </xs:enumeration>
-                   <xs:enumeration value="pr">
-                      <xs:annotation>
-                         <xs:documentation>
-                            an IVOA Proposed Recommendation
-                         </xs:documentation>
-                      </xs:annotation>
-                   </xs:enumeration>
-                   <xs:enumeration value="wd">
-                      <xs:annotation>
-                         <xs:documentation>
-                            an IVOA Working Draft
-                         </xs:documentation>
-                      </xs:annotation>
-                   </xs:enumeration>
-                   <xs:enumeration value="iwd">
-                      <xs:annotation>
-                         <xs:documentation>
-                            an internal Working Draft of an IVOA Working Group
-                         </xs:documentation>
-                      </xs:annotation>
-                   </xs:enumeration>
-                   <xs:enumeration value="note">
-                      <xs:annotation>
-                         <xs:documentation>
-                            a published IVOA Note
-                         </xs:documentation>
-                      </xs:annotation>
-                   </xs:enumeration>
-                   <xs:enumeration value="n/a">
-                      <xs:annotation>
-                         <xs:documentation>
-                            not an IVOA standard or protostandard at
-                            this time. 
-                         </xs:documentation>
-                      </xs:annotation>
-                   </xs:enumeration>
-                </xs:restriction>
-             </xs:simpleType>
-           </xs:attribute>
-
-           <xs:attribute name="use">
-             <xs:annotation>
-               <xs:documentation>
-                 A designation of preference for the version compared
-                 to other versions in use.
-               </xs:documentation>
-             </xs:annotation>
-
-             <xs:simpleType>
-                <xs:restriction base="xs:string">
-                   <xs:enumeration value="preferred">
-                      <xs:annotation>
-                         <xs:documentation>
-                            the most preferred version.
-                         </xs:documentation>
-                         <xs:documentation>
-                            Only one version should have this designation.
-                         </xs:documentation>
-                      </xs:annotation>
-                   </xs:enumeration>
-                   <xs:enumeration value="deprecated">
-                      <xs:annotation>
-                         <xs:documentation>
-                            a version whose use is now discouraged
-                            because a newer version is preferred.  
-                         </xs:documentation>
-                      </xs:annotation>
-                   </xs:enumeration>
-                </xs:restriction>
-             </xs:simpleType>
-           </xs:attribute>
-
-         </xs:extension>
-      </xs:simpleContent>
-   </xs:complexType>
-
-   <xs:complexType name="Schema">
-      <xs:annotation>
-         <xs:documentation>
-           a description of a schema definition
-         </xs:documentation>
-      </xs:annotation>
-
-      <xs:sequence>
-         <xs:element name="location" type="xs:anyURI" 
-                     minOccurs="1" maxOccurs="1">
-            <xs:annotation>
-               <xs:documentation>
-                  A URL pointing to a document that formally defines
-                  the schema.
-               </xs:documentation>
-               <xs:documentation>
-                  The document should be in a machine-parsable format
-                  when applicable.  For example, when refering to an
-                  XML schema, the document should be an XML Schema or 
-                  similar document that can be used to validate an 
-                  instance document.  
-               </xs:documentation>
-            </xs:annotation>
-         </xs:element>
-         <xs:element name="description" type="xs:token" 
-                     minOccurs="0" maxOccurs="1" >
-            <xs:annotation>
-               <xs:documentation>
-                  A human-readable description of what the schema
-                  defines or is used for.
-               </xs:documentation>
-               <xs:documentation>
-                  A brief description--e.g. one statement--is
-                  recommended for display purposes.  
-               </xs:documentation>
-            </xs:annotation>
-         </xs:element>
-         <xs:element name="example" type="xs:anyURI" 
-                     minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-               <xs:documentation>
-                  A URL pointing to a sample document that illustrates 
-                  the use of the schema.
-               </xs:documentation>
-               <xs:documentation>
-                  When applicable (e.g. XML), the document should be
-                  in the format defined by the schema document.
-               </xs:documentation>
-            </xs:annotation>
-         </xs:element>
-      </xs:sequence>
-
-      <xs:attribute name="namespace" type="xs:token" use="required">
-          <xs:annotation>
-             <xs:documentation>
-               an identifier for the schema being described.  Each instance 
-               of this attribute must be unique within the resourse description.
-             </xs:documentation>
-             <xs:documentation>
-               For XML schemas, this should be the schema's namespace URI.
-               Otherwise, it should be a unique label to distinguish it from 
-               other schemas described in the same resource description. 
-             </xs:documentation>
-          </xs:annotation>
-      </xs:attribute>
-   </xs:complexType>
-
-   <xs:complexType name="ServiceStandard">
-      <xs:annotation>
-         <xs:documentation>
-           a description of a standard service protocol.
-         </xs:documentation>
-         <xs:documentation>
-           This typically refers to an IVOA standard but is not
-           limited to such.  
-         </xs:documentation>
-      </xs:annotation>
-
-      <xs:complexContent>
-         <xs:extension base="vstd:Standard">
-            <xs:sequence>
-               <xs:element name="interface" type="vr:Interface"
-                           minOccurs="0" maxOccurs="unbounded">
-                  <xs:annotation>
-                    <xs:documentation>
-                      an abstract description of one of the interfaces defined 
-                      by this service standard.  
-                    </xs:documentation>
-                    <xs:documentation>
-                      This element can provide details about the interface 
-                      that apply to all implementations.  Each interface 
-                      element should specify a role with a value starting 
-                      with "std:" or, if there is only one standard interface,
-                      is equal to "std".  
-                    </xs:documentation>
-                    <xs:documentation>
-                      Applications that, for example, wish to build a GUI
-                      to the service on-the-fly would first access this generic 
-                      description.  Site-specific variations, such
-                      as supported optional arguments or site specific 
-                      arguments, would be given in the actual implemented 
-                      service description and overrides any common information 
-                      found in this generic description.  This generic interface
-                      description can be matched with the site-specific one 
-                      using the role attribute.  
-                    </xs:documentation>
-                    <xs:documentation>
-                      Even though the Interface type requires an
-                      accessURL child element, this element is
-                      intended to describe a service in the
-                      abstract--i.e. without reference to a particular 
-                      installation of the service.  Consequently,
-                      the accessURL may contain a bogus URL;
-                      applications should not expect it to be resolvable.  
-                    </xs:documentation>
-                  </xs:annotation>
-               </xs:element>
-            </xs:sequence>
-         </xs:extension>
-      </xs:complexContent>
-   </xs:complexType>
-
-   <xs:complexType name="StandardKeyEnumeration">
-      <xs:annotation>
-         <xs:documentation>
-            A registered set of related keys.  Each key can be
-            uniquely identified by combining the IVOA identifier of
-            this resource with the key name separated by the URI
-            fragment delimiter, #, as in: ivoa-identifier#key-name
-         </xs:documentation>
-      </xs:annotation>
-      <xs:complexContent>
-         <xs:extension base="vr:Resource">
-            <xs:sequence>
-               <xs:element name="key" type="vstd:StandardKey"
-                           maxOccurs="unbounded" minOccurs="1">
-                 <xs:annotation>
-                    <xs:documentation>
-                      the name and definition of a key--a named concept, 
-                      feature, or property.
-                    </xs:documentation>
-                 </xs:annotation>
-               </xs:element>
-            </xs:sequence>
-         </xs:extension>
-      </xs:complexContent>
-   </xs:complexType>
-
-   <xs:complexType name="StandardKey">
-      <xs:annotation>
-         <xs:documentation>
-            The name and definition of a key--a named concept, 
-            feature, or property.
-         </xs:documentation>
-         <xs:documentation>
-            This key can be identified via an IVOA identifier
-            of the form ivo://authority/resource#name where name is
-            the value of the child name element.
-         </xs:documentation>
-         <xs:documentation>
-            This type can be extended if the key has
-            other metadata associated with it. 
-         </xs:documentation>
-      </xs:annotation>
-
-      <xs:sequence>
-         <xs:element name="name" type="vstd:fragment">
-            <xs:annotation>
-               <xs:documentation>
-                  The property identifier which would appear as the
-                  fragment (string after the pound sign, #) in an IVOA
-                  identifier.  
-               </xs:documentation>
-            </xs:annotation>
-         </xs:element>
-         <xs:element name="description" type="xs:token">
-            <xs:annotation>
-               <xs:documentation>
-                  A human-readable definition of this property.  
-               </xs:documentation>
-            </xs:annotation>
-         </xs:element>
-      </xs:sequence>
-   </xs:complexType>
-
-   <xs:simpleType name="StandardKeyURI">
-      <xs:annotation>
-         <xs:documentation>
-            reference that forces an IVOA ID with a # fragment part
-            appended to match the standard pattern for registering
-            enumeration values with a vstd:StandardKeyList
-         </xs:documentation>
-      </xs:annotation>
-      <xs:restriction base="xs:anyURI">
-         <xs:pattern value="ivo://[\w\d][\w\d\-_\.!~\*'\(\)\+=]{2,}(/[\w\d\-_\.!~\*'\(\)\+=]+(/[\w\d\-_\.!~\*'\(\)\+=]+)*)?(#([A-Za-z0-9;/\?:@&amp;=\+$,\-_\.!~\*'\(\)]|%[A-Fa-f0-9]{2})+)?"/>
-      </xs:restriction>
-    </xs:simpleType>
-
-    <xs:simpleType name="fragment">
-       <xs:annotation>
-          <xs:documentation>
-             the allowed characters for a fragment identifier taken
-             from rfc2396
-          </xs:documentation>
-       </xs:annotation>
-       <xs:restriction base="xs:string">
-          <xs:pattern
-              value="([A-Za-z0-9;/\?:@&amp;=\+$,\-_\.!~\*'\(\)]|%[A-Fa-f0-9]{2})+"/>
-       </xs:restriction>
-    </xs:simpleType>
-</xs:schema>
-\end{verbatim}
-
-</div>
-</div>
-
-\section{Appendix B: A Sample Record}
-
-\label{}
-
-Appendix B: A Sample Record
 This example shows how one can describe an IVOA standard, the Simple
 Image Access Protocol.  It includes a description of the input parameters
 defined in the specification.  
 
+\lstinputlisting{sia-example.vor}
 
+\section{Changes from Previous Versions}
 
-<div>
-<div>A
-  sample record describing the SIA standard</div>
+\subsection{Changes since Rec-1.0}
 
-<div>
-\begin{verbatim}><?xml version="1.0" encoding="UTF-8"?>
-<resource xsi:type="vstd:ServiceStandard" status="active"
-          created="2000-01-01T09:00:00" updated="2000-01-01T09:00:00"
-          xmlns:vstd="http://www.ivoa.net/xml/StandardsRegExt/v1.0" 
-          xmlns:vs="http://www.ivoa.net/xml/VODataService/v1.1" 
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://www.ivoa.net/xml/VOResource/v1.0
-                              VOResource-v1.0.xsd
-                              http://www.ivoa.net/xml/VODataService/v1.1
-                              VODataService-v1.1.xsd
-                              http://www.ivoa.net/xml/StandardsRegExt/v1.0
-                              StandardsRegExt-v1.0.xsd">
-
-    <title>   Simple Image Access Protocol   </title>
-    <shortName>   SIA   </shortName>
-    <identifier>   ivo://ivoa.net/std/SIA   </identifier>
-
-    <curation>
-      <publisher ivo-id="ivo://ivoa.net/IVOA">
-        International Virtual Observatory Alliance
-      </publisher>
-      <creator>
-        <name>  Doug Tody   </name>
-      </creator>
-      <creator>
-        <name>  Ray Plante   </name>
-      </creator>
-      <date>   2004-05-24   </date>
-      <contact>
-        <name>   Data Access Layer Working Group   </name>
-	<email>  dal@ivoa.net    </email>
-      </contact>
-    </curation>
-
-    <content>
-      <subject>   software standard   </subject>
-      <subject>   virtual observatory   </subject>
-      <description>
-        The Simple Image Access Protocol is a protocol for retrieving
-        image data from a variety of astronomical image repositories
-        through a uniform interface. The interface is meant to be
-        reasonably simple to implement by service providers. A query
-        defining a rectangular region on the sky is used to query for
-        candidate images. The service returns a list of candidate
-        images formatted as a VOTable. For each candidate image an
-        access reference URL may be used to retrieve the image. Images
-        may be returned in a variety of formats including FITS and
-        various graphics formats. Referenced images are often computed
-        on the fly, e.g., as cutouts from larger images. 
-      </description>
-      <referenceURL>
-         http://www.ivoa.net/Documents/latest/SIA.html
-      </referenceURL>
-      <type>   Other   </type>
-      <contentLevel>   Research   </contentLevel>
-    </content>
-
-    <endorsedVersion status="rec"> 1.0 </endorsedVersion>
-
-    <interface xsi:type="vs:ParamHTTP" role="std" version="1.0">
-       <accessURL use="base"> http://sample.org/cgi-bin/sia </accessURL>
-       <queryType>GET</queryType>
-       <resultType>text/xml+votable</resultType>
-
-       <!-- 
-         -  These are the standard input parameters defined in the 
-         -  SIA spec
-         -->
-       <param use="required">
-         <name>POS</name>
-         <description>
-            Search Position in the form "ra,dec" where ra and dec are given 
-            in decimal degrees in the ICRS coordinate system.
-         </description>
-         <unit>degrees</unit>
-         <dataType arraysize="2">real</dataType>
-       </param>
-       <param use="required">
-         <name>SIZE</name>
-         <description>
-            Size of search region in the RA and Dec. directions in decimal 
-            degrees.
-         </description>
-         <unit>degrees</unit>
-         <dataType arraysize="2">real</dataType>
-       </param>
-       <param use="optional">
-         <name>FORMAT</name>
-         <description>Requested format of images.</description>
-         <dataType>string</dataType>
-       </param>
-       <param use="optional">
-         <name>INTERSECT</name>
-         <description>
-           Choice of intersection of matched images with the region of 
-           interest.
-         </description>
-         <dataType>string</dataType>
-       </param>
-       <param use="ignored">
-         <name>NAXIS</name>
-         <description>
-           The number of pixels desired along each axis
-         </description>
-         <dataType arraysize="2">integer</dataType>
-       </param>
-       <param use="ignored">
-         <name>CFRAME</name>
-         <description>
-           the coordinate frame to impose on the image.
-         </description>
-         <dataType>string</dataType>
-       </param>
-       <param use="ignored">
-         <name>EQUINOX</name>
-         <description>
-           the epoch of the mean equator and equinox for the specified 
-           coordinate system reference frame (CFRAME). coordinate frame to 
-           impose on the image.
-         </description>
-         <dataType>string</dataType>
-       </param>
-       <param use="ignored">
-         <name>CRPIX</name>
-         <description>
-           the pixel position to locate the reference position in the output
-           image.
-         </description>
-         <dataType arraysize="2">real</dataType>
-       </param>
-       <param use="ignored">
-         <name>CRVAL</name>
-         <description>
-           the world coordinates of the reference position in the output
-           image in decimal degrees
-         </description>
-         <dataType arraysize="2">real</dataType>
-       </param>
-       <param use="ignored">
-         <name>CDELT</name>
-         <description>
-           the scale of the output image in decimal degrees per pixel
-         </description>
-         <dataType arraysize="2">real</dataType>
-       </param>
-       <param use="ignored">
-         <name>ROTANG</name>
-         <description>
-           the rotation angle to put into the output image's coordinate system
-         </description>
-         <dataType arraysize="2">real</dataType>
-       </param>
-       <param use="ignored">
-         <name>PROJ</name>
-         <description>
-           the projection to impose in the construction of the output image
-         </description>
-         <dataType>string</dataType>
-       </param>
-       <param use="ignored">
-         <name>VERB</name>
-         <description>
-           the level of verbosity in the output.
-         </description>
-         <dataType>string</dataType>
-       </param>
-    </interface>
-   
-</resource>
-\end{verbatim}
-
-</div>
-</div>
-
-\section{Appendix C: Change History}
-
-\label{}
-
-Appendix C: Change History
-\subsubsection{Changes since PR-v1.0 20120217:}
-Changes since PR-v1.0 20120217:
 \begin{itemize}
+\item Ported to ivoatex.
+\end{itemize}
 
-\item  none other than date and status.{}
+\subsubsection{Changes since PR-v1.0 20120217:}
 
+\begin{itemize}
+\item  none other than date and status.
 \end{itemize}
 
 \subsubsection{Changes since PR-v1.0 20120213:}
-Changes since PR-v1.0 20120213:
+
 \begin{itemize}
+\item  added the \xmlel{schema} element to
+       \xmlel{vstd:Standard}
 
-\item  added the \textbf{\texttt{<schema>}} element to
-       \textbf{\texttt{vstd:Standard}}{}
-
-\item  updated example in section 3.1.1 {}
+\item  updated example for \xmlel{vstd:Standard}
 
 \end{itemize}
 
 \subsubsection{Changes since PR-v1.0 20111017:}
-Changes since PR-v1.0 20111017:
+
 \begin{itemize}
+\item  added Note box that recommends against using 
+       \xmlel{vstd:StandardKeyEnumeration} to
+       describe keys when they are defined by an IVOA standard.
 
-\item  added Note box to section 2.2 that recommends against using 
-       \textbf{\texttt{vstd:StandardKeyEnumeration}} to
-       describe keys when they are defined by an IVOA standard. {}
-
-\item  added statement in section 2.3 highlighting that # signs are
-       not allowed in key names. {}
+\item  added statement highlighting that \verb|#| signs are
+       not allowed in key names.
 
 \item  added \texttt{iwd} and \texttt{note} as allowed values
-       for \textbf{\texttt{vstd:EndorsedVersion}}'s
-       \textbf{\texttt{status}} attribute. {}
+       for \xmlel{vstd:EndorsedVersion}'s
+       \xmlel{status} attribute.
 
-\item  converted a Note box in section 3.1.2 to a normative paragraph
-       that recommends listing optional \textbf{\texttt{ParamHTTP}}
+\item  converted a Note box in to a normative paragraph
+       that recommends listing optional \xmlel{ParamHTTP}
        parameters as ignored.  Note that there is a related error in
-       the VODataService standard [\href{#r:vds}{VDS}]: while
-       the \textbf{\texttt{ignored}} value is defined in
-       the schema, it is not included in the document text.{}
+       the VODataService standard: while
+       the \texttt{ignored} value is defined in
+       the schema, it is not included in the document text.
 
-\item  added sample \textbf{\texttt{vstd:ServiceStandard}} 
-       instance record back in as Appendix B {}
+\item  added sample \xmlel{vstd:ServiceStandard}
+       instance record back in as Appendix B
 
-\item  added references to TAP and SIA {}
+\item  added references to TAP and SIA
 
-\item  fixed various grammatical typos. {}
+\item  fixed various grammatical typos.
 
 \end{itemize}
 
 \subsubsection{Changes since PR-v1.0 20110921:}
-Changes since PR-v1.0 20110921:
+
 \begin{itemize}
 
-\item  In \texttt{<endorsedVersion>}, changed "prop" to "pr". {}
+\item  In \xmlel{endorsedVersion}, changed ``prop'' to ``pr''.
 
-\item  various typo corrections {}
+\item  various typo corrections
 
 \end{itemize}
 
 \subsubsection{Changes since PR-v1.0 20110316:}
-Changes since PR-v1.0 20110316:
+
 \begin{itemize}
 
-\item Corrected ampersand representation in schema listing{}
+\item Corrected ampersand representation in schema listing
 
-\item Various typo corrections and clarifications{}
+\item Various typo corrections and clarifications
 
 \end{itemize}
 
 \subsubsection{Changes since WD-v1.0 20100519:}
-Changes since WD-v1.0 20100519:
+
 \begin{itemize}
 
-\item  Prepped for PR {}
+\item  Prepped for PR 
 
-\item  improved discussion of example in section 2 {}
+\item  improved discussion of example in section on the data model
 
-\item  Added standard architecture sub-section {}
+\item  Added standard architecture sub-section
 
-\item  updated in-lined schema (App. 1) {}
+\item  updated in-lined schema (App. 1)
 
 \end{itemize}
 
 \subsubsection{Changes since WD-v1.0 20100514:}
-Changes since WD-v1.0 20100514:
+
 \begin{itemize}
 
-\item  short name changed from VOStandard to StandardsRegExt {}
+\item  short name changed from VOStandard to StandardsRegExt
 
 \end{itemize}
 
 \subsubsection{Changes since WD-v0.4:}
-Changes since WD-v0.4:
+
 \begin{itemize}
 
 \item  removed App. B. (Sample instance) as examples appear throughout
-       the document. {}
+       the document.
 
 \end{itemize}
 
-\section{References}
-
-\label{References}
-
-References
-<hr></hr>
-
-$Revision: 1636 $ $Date: 2012-02-17 08:53:29 -0600 (Fri, 17 Feb 2012) $  $HeadURL: https://volute.googlecode.com/svn/trunk/projects/registry/StandardsRegExt/StandardsRegExt-v1.0pr.html $
-
-
-</div>
-
-% end id="main"
+\bibliography{ivoatex/ivoabib,ivoatex/docrepo}
 
 \end{document}
