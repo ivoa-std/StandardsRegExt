@@ -1,0 +1,6 @@
+Before standards were in proper version control, we collected their
+StandardRegExt records here.
+
+Since more and more of these standards now come with their own record,
+we should remove them here to avoid confusion when outdated records are
+still present here.
