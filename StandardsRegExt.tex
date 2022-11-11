@@ -154,7 +154,7 @@ descriptions.
 It is envisaged that StandardsRegExt instances that describe standards
 endorsed or otherwise in development by the IVOA will be published in
 the IVOA Registry of Registries \citep{2007ivoa.rept.0628P} using the
-authority identifier, \texttt{ivoa.net}.
+authority identifier \texttt{ivoa.net}.
 However, other standards, be they ad hoc or endorsed by another
 body, may be published in any compliant registry.
 
@@ -170,7 +170,7 @@ body, may be published in any compliant registry.
 \end{figure}
 
 Fig.~\ref{fig:archdiag} shows the role this document plays within the
-IVOA architecture \citep{2010ivoa.rept.1123A}.
+IVOA architecture \citep{2021ivoa.spec.1101D}.
 The Registry enables applications in the User Layer to discover
 archives and services in the Resource Layer.  The registry metadata
 model standards (in blue text and boxes) give structure to the
@@ -222,7 +222,7 @@ schema include the namespaces prefix, \texttt{vstd}, as in
 \xmlel{vstd:ServiceStandard} (a type defined in the StandardsRegExt schema).
 Use of the \texttt{vstd} prefix in compliant instance documents is 
 strongly recommended.  It is required where the Registry Interfaces
-standard \citep{2018ivoa.spec.0723D} standard applies.
+standard \citep{2018ivoa.spec.0723D} applies.
 
 
 
@@ -297,12 +297,12 @@ that might be referred to in other descriptions of applications.
      <description>The Python programming language</description>
   </key>
 </ri:Resource>
-\end{listlisting}
+\end{lstlisting}
 
 
 This description defines the meaning behind the following URI, namely
 the Python language,
-\nolinkuri{ivo://ivoa.net/std/application/languages#Python}
+\nolinkurl{ivo://ivoa.net/std/application/languages#Python}.
 
 An application can thus refer to, for example, its support for the
 Python language via this URI.  Should other languages become
@@ -316,7 +316,7 @@ identifier).
 
 The namespace associated with StandardsRegExt extensions is
 $$
-\hbox{\nolinkuri{http://www.ivoa.net/xml/StandardsRegExt/v1.0}.}
+\hbox{\nolinkurl{http://www.ivoa.net/xml/StandardsRegExt/v1.0}.}
 $$
 
 Just like the namespace URI for the VOResource schema, the
@@ -337,9 +337,9 @@ recommends using the StandardsRegExt namespace URI as its location URL
 
 
 
-\begin{lstlisting}
+\begin{lstlisting}[basicstyle=\ttfamily\footnotesize]
 xsi:schemaLocation="http://www.ivoa.net/xml/StandardsRegExt/v1.0
-                    http://www.ivoa.net/xml/StandardsRegExt/v1.0"
+                      http://www.ivoa.net/xml/StandardsRegExt/v1.0"
 \end{lstlisting}
 
 The prefix, \texttt{vstd}, is used by convention as the
@@ -1251,7 +1251,14 @@ as distributed by the Registry of Registries.
 \subsection{Changes since Rec-1.0}
 
 \begin{itemize}
-\item Ported to ivoatex.
+\item Ported to ivoatex.  This entailed some re-shuffling the the
+previous content.
+\item Dropped the ``example of a Standard resource that summarizes this
+specification'' (we have an example in the appendix already, and it's
+not clear why there would be another one inline).
+\item Dropped the in-document full schema (we now have auxiliaryurl, and
+it's unclear whether it's a good idea to have a second copy of the
+schema anyway).
 \end{itemize}
 
 \subsection{Changes since PR-v1.0 20120217:}
