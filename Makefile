@@ -41,13 +41,10 @@ ivoatex/Makefile:
 	git submodule update --init
 
 test:
+	@$(STILTS) xsdvalidate StandardsRegExt-v1.0.xsd
 	@$(STILTS) xsdvalidate \
-		schemaloc='http://www.ivoa.net/xml/VOResource/v1.0=https://www.ivoa.net/xml/VOResource/VOResource-v1.1.xsd' \
-		StandardsRegExt-v1.0.xsd
-	@$(STILTS) xsdvalidate \
-		schemaloc=’http://www.ivoa.net/xml/StandardsRegExt/v1.0=StandardsRegExt-v1.0.xsd’ \
-		schemaloc=’http://www.ivoa.net/xml/VODataService/v1.1=https://www.ivoa.net/xml/VODataService/v1.1’ \
+		schemaloc='http://www.ivoa.net/xml/StandardsRegExt/v1.0=StandardsRegExt-v1.0.xsd' \
 		sia-example.vor
 	@$(STILTS) xsdvalidate \
-		schemaloc=’http://www.ivoa.net/xml/StandardsRegExt/v1.0=StandardsRegExt-v1.0.xsd’ \
+		schemaloc='http://www.ivoa.net/xml/StandardsRegExt/v1.0=StandardsRegExt-v1.0.xsd' \
 		StandardsRegExt.vor
