@@ -211,7 +211,7 @@ The full schema is available from the IVOA schema
 repository\footnote{\url{https://ivoa.net/xml/index.html}}.  For
 documentation and development purposes, this document is accompanied by
 a copy of that
-schema\footnote{\auxiliaryurl{StandardsRegExt-v1.0.xsd}}.  In case of
+schema\footnote{\auxiliaryurl{StandardsRegExt-v1.1.xsd}}.  In case of
 conflicts, the copy at the schema repository is normative.
 
 Reference to specific elements and types defined in the VOResource
@@ -535,7 +535,7 @@ follows.
 
 
 
-% GENERATED: !schemadoc StandardsRegExt-v1.0.xsd Standard
+% GENERATED: !schemadoc StandardsRegExt-v1.1.xsd Standard
 \begin{generated}
 \begingroup
         \renewcommand*\descriptionlabel[1]{%
@@ -653,7 +653,7 @@ this case, the \xmlel{use} attribute can further help steer the
 users to the preferred version.
 
 
-% GENERATED: !schemadoc StandardsRegExt-v1.0.xsd EndorsedVersion
+% GENERATED: !schemadoc StandardsRegExt-v1.1.xsd EndorsedVersion
 \begin{generated}
 \begingroup
         \renewcommand*\descriptionlabel[1]{%
@@ -671,6 +671,8 @@ users to the preferred version.
             <xs:enumeration value="wd" />
             <xs:enumeration value="iwd" />
             <xs:enumeration value="note" />
+            <xs:enumeration value="pen" />
+            <xs:enumeration value="en" />
             <xs:enumeration value="n/a" />
           </xs:restriction>
         </xs:simpleType>
@@ -715,6 +717,12 @@ users to the preferred version.
 \item[note]
                             a published IVOA Note
                          
+\item[pen]
+                            a Proposed Endorsed Note
+                         
+\item[en]
+                            an Endorsed Note
+                         
 \item[n/a]
                             not an IVOA standard or protostandard at
                             this time. 
@@ -722,7 +730,7 @@ users to the preferred version.
 \end{longtermsdescription}
 \item[Default] n/a
 \item[Comment] 
-                 For values of {"}rec{"}, {"}pr{"}, {"}wd{"}, and {"}note{"}, the
+                 For values of “rec”, “pr”, “wd”, “note”, “pen”, and “en” the
                  record's referenceURL element should point to the
                  official specification document in the IVOA Document
                  Repository; if the document does not appear there,
@@ -784,7 +792,7 @@ schemas.  Typically (especially for IVOA standards), the schema is an
 XML schema, and the location points to an XML Schema document; however, this is not required.
 Other schema types and definition formats are allowed.
 
-% GENERATED: !schemadoc StandardsRegExt-v1.0.xsd Schema
+% GENERATED: !schemadoc StandardsRegExt-v1.1.xsd Schema
 \begin{generated}
 \begingroup
         \renewcommand*\descriptionlabel[1]{%
@@ -911,7 +919,7 @@ is defined to be \xmlel{vr:Interface}, which is defined in the
 VOResource schema.
 
 
-% GENERATED: !schemadoc StandardsRegExt-v1.0.xsd ServiceStandard
+% GENERATED: !schemadoc StandardsRegExt-v1.1.xsd ServiceStandard
 \begin{generated}
 \begingroup
         \renewcommand*\descriptionlabel[1]{%
@@ -1075,7 +1083,7 @@ this, the \xmlel{vstd:StandardKeyEnumeration} resource simply
 adds the \xmlel{key} element to the standard core
 metadata.  
 
-% GENERATED: !schemadoc StandardsRegExt-v1.0.xsd StandardKeyEnumeration
+% GENERATED: !schemadoc StandardsRegExt-v1.1.xsd StandardKeyEnumeration
 \begin{generated}
 \begingroup
         \renewcommand*\descriptionlabel[1]{%
@@ -1137,7 +1145,7 @@ The \xmlel{vstd:StandardKey} type provides the means to
 define keys (as defined in Sect.~\ref{sect:keys}) within
 a VOResource record.
 
-% GENERATED: !schemadoc StandardsRegExt-v1.0.xsd StandardKey
+% GENERATED: !schemadoc StandardsRegExt-v1.1.xsd StandardKey
 \begin{generated}
 \begingroup
         \renewcommand*\descriptionlabel[1]{%
@@ -1251,6 +1259,7 @@ as distributed by the Registry of Registries.
 \subsection{Changes since Rec-1.0}
 
 \begin{itemize}
+\item Added en and pen to the list of document types.
 \item Ported to ivoatex.  This entailed some re-shuffling the the
 previous content.
 \item Dropped the ``example of a Standard resource that summarizes this

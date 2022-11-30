@@ -5,7 +5,7 @@
            xmlns:vstd="http://www.ivoa.net/xml/StandardsRegExt/v1.0" 
            xmlns:vm="http://www.ivoa.net/xml/VOMetadata/v0.1"
            elementFormDefault="unqualified" attributeFormDefault="unqualified"
-           version="1.0" >
+           version="1.1-wd1" >
 
    <xs:annotation>
       <xs:appinfo>
@@ -104,7 +104,7 @@
                  the IVOA status level of this version of the standard.
                </xs:documentation>
                <xs:documentation>
-                 For values of "rec", "pr", "wd", and "note", the
+                 For values of “rec”, “pr”, “wd”, “note”, “pen”, and “en” the
                  record's referenceURL element should point to the
                  official specification document in the IVOA Document
                  Repository; if the document does not appear there,
@@ -146,6 +146,20 @@
                       <xs:annotation>
                          <xs:documentation>
                             a published IVOA Note
+                         </xs:documentation>
+                      </xs:annotation>
+                   </xs:enumeration>
+                   <xs:enumeration value="pen">
+                      <xs:annotation>
+                         <xs:documentation>
+                            a Proposed Endorsed Note
+                         </xs:documentation>
+                      </xs:annotation>
+                   </xs:enumeration>
+                   <xs:enumeration value="en">
+                      <xs:annotation>
+                         <xs:documentation>
+                            an Endorsed Note
                          </xs:documentation>
                       </xs:annotation>
                    </xs:enumeration>
