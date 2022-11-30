@@ -31,7 +31,7 @@ FIGURES = role_diagram.svg
 VECTORFIGURES = 
 
 # Additional files to distribute (e.g., CSS, schema files, examples...)
-AUX_FILES = StandardsRegExt-v1.0.xsd
+AUX_FILES = StandardsRegExt-v1.1.xsd
 
 -include ivoatex/Makefile
 
@@ -43,8 +43,8 @@ ivoatex/Makefile:
 test:
 	@$(STILTS) xsdvalidate StandardsRegExt-v1.0.xsd
 	@$(STILTS) xsdvalidate \
-		schemaloc='http://www.ivoa.net/xml/StandardsRegExt/v1.0=StandardsRegExt-v1.0.xsd' \
+		schemaloc='http://www.ivoa.net/xml/StandardsRegExt/v1.0=StandardsRegExt-v1.1.xsd' \
 		sia-example.vor
 	@$(STILTS) xsdvalidate \
-		schemaloc='http://www.ivoa.net/xml/StandardsRegExt/v1.0=StandardsRegExt-v1.0.xsd' \
+		schemaloc='http://www.ivoa.net/xml/StandardsRegExt/v1.0=StandardsRegExt-v1.1.xsd' \
 		StandardsRegExt.vor
