@@ -1,8 +1,10 @@
 <resource xsi:type="vstd:ServiceStandard" status="active"
           created="2000-01-01T09:00:00" updated="2000-01-01T09:00:00"
-          xmlns:vstd="http://www.ivoa.net/xml/StandardsRegExt/v1.0" 
+          xmlns:vstd="http://www.ivoa.net/xml/StandardsRegExt/v1.0"
           xmlns:vs="http://www.ivoa.net/xml/VODataService/v1.1" 
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.ivoa.net/xml/VODataService/v1.1
+            http://www.ivoa.net/xml/VODataService/v1.1">
 
     <title>   Simple Image Access Protocol   </title>
     <shortName>   SIA   </shortName>
@@ -21,7 +23,7 @@
       <date>   2004-05-24   </date>
       <contact>
         <name>   Data Access Layer Working Group   </name>
-	<email>  dal@ivoa.net    </email>
+  <email>  dal@ivoa.net    </email>
       </contact>
     </curation>
 
