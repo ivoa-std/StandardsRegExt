@@ -1,5 +1,6 @@
 \documentclass[11pt,a4paper]{ivoa}
 
+\urlstyle{same}
 \lstloadlanguages{XML}
 \lstset{flexiblecolumns=true,tagstyle=\ttfamily, showstringspaces=False,
   basicstyle=\footnotesize}
@@ -123,7 +124,7 @@ resource in an IVOA-compliant registry.
 This document defines a VOResource extension schema called
 StandardsRegExt which allows one to describe a standard
 and register it with an IVOA registry.  By doing so, a unique IVOA
-identifier becomes "attached" to the standard which can be referred to
+identifier becomes ``attached'' to the standard which can be referred to
 in other resource descriptions, namely for services that support the
 standard.  Not only does this aid in the unambiguous discovery of
 compliant service instances but also in validating their descriptions
@@ -151,10 +152,11 @@ descriptions.
 
 
 
-It is envisaged that StandardsRegExt instances that describe standards
-endorsed or otherwise in development by the IVOA will be published in
+StandardsRegExt records that describe standards
+endorsed or otherwise in development by the IVOA are published in
 the IVOA Registry of Registries \citep{2007ivoa.rept.0628P} using the
-authority identifier \texttt{ivoa.net}.
+authority identifier \texttt{ivoa.net} as discussed in
+\ref{sect:operations}.
 However, other standards, be they ad hoc or endorsed by another
 body, may be published in any compliant registry.
 
@@ -393,7 +395,7 @@ are specifically for independently documented standards:
        resource, the \xmlel{vstd:StandardKeyEnumeration} allows 
        a set of key definitions to stand as a resource on its own,
        regardless of whether it is part of a documented standard or
-       not.  
+       not.
 
 \end{description}
 
@@ -404,9 +406,10 @@ are specifically for independently documented standards:
        standard, it is recommended that the \xmlel{vstd:Standard} or
        \xmlel{vstd:ServiceStandard} record corresponding to the
        IVOA standard document be used to define the names.  The
-       \xmlel{vstd:StandardKeyEnumeration} might be convenient
-       for definitions that are experimental or otherwise are for
-       non-IVOA-based applications.  
+       \xmlel{vstd:StandardKeyEnumeration} was originally envisioned to
+       as a container for names.  With the adoption of Vocabularies in
+       the VO 2 \citep{2021ivoa.spec.0525D}, this type has probably
+       become obsolete.
 \end{admonition}
 
 
@@ -438,6 +441,7 @@ via an IVOA-compliant registry, it is still possible for a
 
 
 
+
 The StandardsRegExt specification also defines a mapping from a key name to
 a URI.  This allows these keys--and their underlying meaning -- to be
 referenced in a globally unique way in a variety of contexts, not
@@ -447,14 +451,12 @@ restricted to XML.
 
 A key is defined using the \xmlel{vstd:StandardKey} type which
 consists simply of a name and a description.  The key is mapped to a
-URI by attaching the name as the "fragment" -- i.e., appending after a
+URI by attaching the name as the fragment -- i.e., appending after a
 pound sign, \verb|#| -- to the IVOA identifier for the resource
 description that defines the key:
-
 $$
-\hbox{\emph{ivoa-identifier}\verb|#|\emph{key-name}}
+\hbox{\emph{ivoa-identifier}\verb|#|\emph{key-name}},
 $$
-
 where \emph{ivoa-identifier} is the resource's IVOA identifier and
 \emph{key-name} is the name of a key defined in that resource.
 Consistent with the URI standard, the
@@ -467,9 +469,8 @@ identifier given by
 \nolinkurl{ivo://ivoa.net/std/QueryProtocol} that
 defines a a key named \texttt{case-insensitive}; the URI
 identifying this key would be: 
-
 $$
-\hbox{\nolinkurl{ivo://ivoa.net/std/QueryProtocol#case-insensitive}}
+\hbox{\nolinkurl{ivo://ivoa.net/std/QueryProtocol#case-insensitive}}.
 $$
 
 
@@ -484,7 +485,7 @@ URI, all in one resource has several advantages:
        resource, and so can be retrieved with one registry query and
        need no further metadata to assert the association.
 
-\item  The "Dublin core" metadata that is associated with a resource
+\item  The ``Dublin core'' metadata that is associated with a resource
        need only be entered once for the whole enumeration, rather
        than for each member of the enumeration -- this  saves both
        curation effort and space in the registry.
@@ -497,10 +498,10 @@ URI, all in one resource has several advantages:
 
 \begin{admonition}{Note}
        When these enumerations are presented to a user in a GUI it is
-       expected that only the "fragment" part that distinguishes
+       expected that only the fragment part that distinguishes
        the various members of the enumeration will be used as a choice
        value, as the full IVO ID is not usually particularly
-       "user-friendly". 
+       ``user-friendly''. 
 \end{admonition}
 
 Some applications may wish to publish additional metadata associated
@@ -1239,6 +1240,54 @@ VOResource record.  Thus, an application may dereference the
 URI for display or user help purposes; however, dereferencing
 is not necessary to use the URI. 
 \end{admonition}
+
+\section{Operational Aspects}
+
+\subsection{Managment of Standards Records}
+
+Only IVOA standards that actually make use of identifiers to or into
+StandardsRegExt records MUST be accompanied with active records
+published by the ivoa.net registry.  This, in particular, concerns all
+standards defining capabilities to be discerned using their
+\xmlel{standardID} attribute.  Other standards MAY be registered in this
+way once they have entered the IVOA document repository.
+
+There are no regulations on StandardsRegExt records published under
+authorities other than ivoa.net; these can be published (and withdrawn)
+at any time.
+
+Editors of standards requiring an ivoa.net StandardsRegExt record SHOULD
+upload one when they submit the first Working Draft in order to make
+IVOIDs valid even in prototyping phases.  They MUST upload it at the
+beginning of the standard's RFC phase to ensure validators can work
+properly, and they MUST update the record when the standard reaches REC
+status.
+
+Submission to the ivoa.net registry generally happens through e-mail.
+See \url{http://rofr.ivoa.net/} for contact information.
+
+The ivoatex package \citep{ivoatexDoc} offers templates for
+StandardsRegExt records and recommends keeping these in the respective
+standards' source code repositories.
+
+
+\subsection{Management of Standard Keys}
+
+Standards using standard keys must specify rules defining when and how
+standard  keys are being added.  In the simplest case, this would be
+``Keys in this standard's StandardsRegExt record are defined in this
+text.''  This will make sure that additions of keys receive the same
+review as the standard text itself.
+
+However, other, more flexible regulations are conceivable, as for
+instance ``Keys in this standard's StandardsRegExt record can be added
+by the chair of the managing Working Group after consultation on the
+WG's mailing list''.  However, complicated processes should be avoided
+here; if regular key additions requiring consensus building are
+expected, the standard should probably rather define a proper IVOA
+vocabulary \citep{2021ivoa.spec.0525D}; this also has the advantage over
+StandardsRegExt keys that non-VO RDF tools can evaluate the resources
+produced, which is not the case for StandardsRegExt records.
 
 
 \appendix
