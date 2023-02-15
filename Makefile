@@ -9,7 +9,7 @@ DOCNAME = StandardsRegExt
 DOCVERSION = 1.1
 
 # Publication date, ISO format; update manually for "releases"
-DOCDATE = 2023-01-15
+DOCDATE = 2023-02-15
 
 # What is it you're writing: NOTE, WD, PR, REC, PEN, or EN
 DOCTYPE = WD
@@ -41,7 +41,7 @@ ivoatex/Makefile:
 	git submodule update --init
 
 test:
-	@$(STILTS) xsdvalidate StandardsRegExt-v1.0.xsd
+	@$(STILTS) xsdvalidate StandardsRegExt-v1.1.xsd
 	@$(STILTS) xsdvalidate \
 		schemaloc='http://www.ivoa.net/xml/StandardsRegExt/v1.0=StandardsRegExt-v1.1.xsd' \
 		sia-example.vor
