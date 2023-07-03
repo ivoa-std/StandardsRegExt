@@ -383,8 +383,6 @@
                   The property identifier which would appear as the
                   fragment (string after the pound sign, #) in an IVOA
                   identifier.
-               </xs:documentation>
-               <xs:documentation>
                   To facilitate comparisons of such keys given that
                   registry identifiers are case insensitive, all newly
                   created standard keys must not contain uppercase letters.
