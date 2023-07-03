@@ -475,6 +475,18 @@ $$
 \hbox{\nolinkurl{ivo://ivoa.net/std/QueryProtocol#case-insensitive}}.
 $$
 
+Note that registry references in the sense of \emph{IVOA Identifiers 2}
+(i.e., the part in front of the hash character) must be compared
+case-insensitively.  To facilitate comparisons of full IVOIDs, since
+version 1.1 this specifiation requires that standard key names do not
+contain uppercase letters.  In this way, clients can safely lowercase
+the full standard key references before comparing them.
+
+This is also true for all IVOA-approved standard keys before version 1.1
+except for the keys for authentication methods from
+\citet{2017ivoa.spec.0524T}.  Clients implementing other IVOA standards
+can hence safely compare IVOIDs for standard keys by checking for
+identity after lowercasing.
 
 This form of defining multiple keys, each with its own mapping to a
 URI, all in one resource has several advantages:
@@ -1192,6 +1204,11 @@ a VOResource record.
                   identifier.
 
 \item[Occurrence] required
+
+\item[Comment]
+                  To facilitate comparisons of such keys given that
+                  registry identifiers are case insensitive, all newly
+                  created standard keys must not contain uppercase letters.
 
 
 \end{description}

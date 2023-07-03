@@ -1,0 +1,50 @@
+To figure out the the extent of the problem with mixed-case standard
+keys, I wanted to know all standard keys out there.  Here is a hack to
+do that if you have a local connection to a DaCHS rr RegTAP
+implementation:
+
+psql gavo
+\copy (select string_agg(oaixml, '') from rr.oairecs where ivoid like 'ivo://ivoa.net%') to ivorecs.xml;
+
+Exit, psql, edit ivorecs.xml and give it an arbitrary root element.
+Also replace the literal "\n".
+
+Then:
+
+xmlstarlet sel -t -c //key/name ivorecs.xml
+
+Don't worry about the undefined namespace prefixes -- we don't need them
+here.
+
+With a bit of RE trickery, you'll get a list of standard keys.  In July
+2023, we had:
+
+v2.0
+hipslist-1.0
+hips-1.0
+core-1.1
+table-1.0
+1.0
+BasicAA
+tls-with-password
+tls-with-password
+tls-with-certificate
+cookie
+saml2.0
+OAuth
+OpenID
+upload-inline
+upload-http
+upload-https
+upload-ftp
+output-votable-td
+output-votable-binary
+output-votable-binary2
+features-udf
+features-adqlgeo
+features-adql-string
+features-adql-common-table
+features-adql-sets
+features-adql-type
+features-adql-unit
+features-adql-offset
