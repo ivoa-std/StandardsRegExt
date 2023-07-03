@@ -1,4 +1,4 @@
-# ivoatex Makefile.  The http://ivoa.net/documents/notes/IVOATex 
+# ivoatex Makefile.  The http://ivoa.net/documents/notes/IVOATex
 # for the targets available.
 
 STILTS?=stilts
@@ -28,7 +28,7 @@ FIGURES = role_diagram.svg
 
 # List of PDF figures (figures that must be converted to pixel images to
 # work in web browsers).
-VECTORFIGURES = 
+VECTORFIGURES =
 
 # Additional files to distribute (e.g., CSS, schema files, examples...)
 AUX_FILES = StandardsRegExt-v1.1.xsd
