@@ -233,25 +233,26 @@ standard \citep{2018ivoa.spec.0723D} applies.
 
 \section{The StandardsRegExt Data Model}
 
-The StandardsRegExt extension in general enables the description of three
+The StandardsRegExt extension in general enables the description of two
 types of resources:
 
 \begin{itemize}
 \item  a generic standard (specified by an external document)
 \item  a standard specifically defining a service protocol
-\item  a set of related, standardized names called \emph{keys}.
 \end{itemize}
+
+Each type of resource can have a set of related, standardized names called \emph{keys}.
 
 Here's an example of defining the HiPS standard and its associated \emph{keys}.
 
 \begin{lstlisting}[language=xml]
-<ri:Resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<ri:Resource xsi:type="vstd:Standard"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xmlns:vstd="http://www.ivoa.net/xml/StandardsRegExt/v1.0"
 		xmlns:ri="http://www.ivoa.net/xml/RegistryInterface/v1.0"
 		created="2017-06-01T09:33:00Z"
 		updated="2017-06-01T09:33:00Z"
-		status="active"
-		xsi:type="vstd:Standard">
+		status="active">
   	<title>HiPS -- Hierarchical Progressive Survey</title>
   	<identifier>ivo://ivoa.net/std/hips</identifier>
   	<curation>
@@ -300,16 +301,6 @@ Here's an example of defining the HiPS standard and its associated \emph{keys}.
 </ri:Resource>
 \end{lstlisting}
 
-
-This description defines the meaning behind the following URI, namely
-the Python language,
-\nolinkurl{ivo://ivoa.net/std/application/languages#Python}.
-
-An application can thus refer to, for example, its support for the
-Python language via this URI.  Should other languages become
-prevalent, the resource description could be updated to add the new
-names, or a new resource description could be created (with a new IVOA
-identifier).
 
 
 
@@ -393,7 +384,7 @@ are specifically for independently documented standards:
 
 \begin{admonition}{Note}
        As mentioned above, this standard allows controlled names to be
-       defined either as part of a record of any of the above three
+       defined either as part of a record of any of the above two
        types.  When such names are being defined as part of an IVOA
        standard, it is recommended that the \xmlel{vstd:Standard} or
        \xmlel{vstd:ServiceStandard} record corresponding to the
@@ -425,7 +416,7 @@ that will likely change over time.
 
 The StandardsRegExt schema provides an alternative to XML Schema-based
 definitions of controlled names.  Instead, a controlled list of names,
-called \emph{standard keys}, can be defined as part of any of the three
+called \emph{standard keys}, can be defined as part of any of the two
 StandardsRegExt resource types.  Updating a resource description is much
 less disruptive than a Schema document, and as a resource is available
 via an IVOA-compliant registry, it is still possible for a
@@ -519,7 +510,7 @@ derived by extension from the \xmlel{vstd:StandardKey}.
 
 \subsection{Resource Type Extensions}
 
-This specification defined three new resource types.  As is spelled
+This specification defined two new resource types.  As is spelled
 out in the VOResource specification, a resource description indicates
 that it refers to one of these types of resources by setting the
 \xmlel{xsi:type} attribute to the namespace-qualified type name.
@@ -1255,7 +1246,8 @@ as distributed by the Registry of Registries.
 \subsection{Changes since Rec-1.0}
 
 \begin{itemize}
-\item Removed references to \xmlel{vstd:StandardKeyEnumeration} which is now deprecated.
+\item Removed references to \xmlel{vstd:StandardKeyEnumeration} which is now deprecated. 
+Replaced computer language example by HiPS standard definition example.
 \item Added en and pen to the list of document types.
 \item Adding regulations on record upload and key additions.
 \item Requiring new keys to be all-lowercase in order to simpify
