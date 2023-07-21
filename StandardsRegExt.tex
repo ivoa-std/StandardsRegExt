@@ -400,10 +400,10 @@ are specifically for independently documented standards:
        types.  When such names are being defined as part of an IVOA
        standard, it is recommended that the \xmlel{vstd:Standard} or
        \xmlel{vstd:ServiceStandard} record corresponding to the
-       IVOA standard document be used to define the names.  The
+       IVOA standard document be used to define the names.  The deprecated
        \xmlel{vstd:StandardKeyEnumeration} was originally envisioned to
        as a container for names.  With the adoption of Vocabularies in
-       the VO 2 \citep{2021ivoa.spec.0525D}, this type has probably
+       the VO 2 \citep{2021ivoa.spec.0525D}, this type has 
        become obsolete.
 \end{admonition}
 
@@ -1081,69 +1081,6 @@ defined by the standard.
 
 
 
-\subsubsection{StandardKeyEnumeration}
-
-The \xmlel{vstd:StandardKeyEnumeration} resource type is available
-for collecting definitions of related, standard keys.  Each key defined
-within this resource can then be referred to by a unique IVOA
-Identifier URI (see Sect.~\ref{sect:keys}).  To support
-this, the \xmlel{vstd:StandardKeyEnumeration} resource simply
-adds the \xmlel{key} element to the standard core
-metadata.
-
-% GENERATED: !schemadoc StandardsRegExt-v1.1.xsd StandardKeyEnumeration
-\begin{generated}
-\begingroup
-        \renewcommand*\descriptionlabel[1]{%
-        \hbox to 5.5em{\emph{#1}\hfil}}\vspace{2ex}\noindent\textbf{\xmlel{vstd:StandardKeyEnumeration} Type Schema Documentation}
-
-\noindent{\small
-            A registered set of related keys.  Each key can be
-            uniquely identified by combining the IVOA identifier of
-            this resource with the key name separated by the URI
-            fragment delimiter, \#, as in: ivoa-identifier\#key-name
-         \par}
-
-\vspace{1ex}\noindent\textbf{\xmlel{vstd:StandardKeyEnumeration} Type Schema Definition}
-
-\begin{lstlisting}[language=XML,basicstyle=\footnotesize]
-<xs:complexType name="StandardKeyEnumeration" >
-  <xs:complexContent >
-    <xs:extension base="vr:Resource" >
-      <xs:sequence >
-        <xs:element name="key" type="vstd:StandardKey"
-                  maxOccurs="unbounded"
-                  minOccurs="1" />
-      </xs:sequence>
-    </xs:extension>
-  </xs:complexContent>
-</xs:complexType>
-\end{lstlisting}
-
-\vspace{0.5ex}\noindent\textbf{\xmlel{vstd:StandardKeyEnumeration} Extension Metadata Elements}
-
-\begingroup\small\begin{bigdescription}\item[Element \xmlel{key}]
-\begin{description}
-\item[Type] composite: \xmlel{vstd:StandardKey}
-\item[Meaning]
-                      the name and definition of a key--a named concept,
-                      feature, or property.
-
-\item[Occurrence] required; multiple occurrences allowed.
-
-\end{description}
-
-
-\end{bigdescription}\endgroup
-
-\endgroup
-\end{generated}
-
-% /GENERATED
-
-The contents of the \xmlel{key} element is described in
-the next section.
-
 
 
 \subsection{Defining Keys: StandardKey and StandardKeyURI}
@@ -1321,6 +1258,7 @@ as distributed by the Registry of Registries.
 \subsection{Changes since Rec-1.0}
 
 \begin{itemize}
+\item Removed references to \xmlel{vstd:StandardKeyEnumeration} which is now deprecated.
 \item Added en and pen to the list of document types.
 \item Adding regulations on record upload and key additions.
 \item Requiring new keys to be all-lowercase in order to simpify
