@@ -333,32 +333,6 @@
       </xs:complexContent>
    </xs:complexType>
 
-   <xs:complexType name="StandardKeyEnumeration">
-      <xs:annotation>
-         <xs:documentation>
-            A registered set of related keys.  Each key can be
-            uniquely identified by combining the IVOA identifier of
-            this resource with the key name separated by the URI
-            fragment delimiter, #, as in: ivoa-identifier#key-name
-         </xs:documentation>
-      </xs:annotation>
-      <xs:complexContent>
-         <xs:extension base="vr:Resource">
-            <xs:sequence>
-               <xs:element name="key" type="vstd:StandardKey"
-                           maxOccurs="unbounded" minOccurs="1">
-                 <xs:annotation>
-                    <xs:documentation>
-                      the name and definition of a key--a named concept,
-                      feature, or property.
-                    </xs:documentation>
-                 </xs:annotation>
-               </xs:element>
-            </xs:sequence>
-         </xs:extension>
-      </xs:complexContent>
-   </xs:complexType>
-
    <xs:complexType name="StandardKey">
       <xs:annotation>
          <xs:documentation>
