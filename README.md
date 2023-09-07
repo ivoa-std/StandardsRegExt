@@ -1,3 +1,5 @@
+[![PDF-Preview](https://img.shields.io/badge/Preview-PDF-blue)](../../releases/download/auto-pdf-preview/StandardsRegExt-draft.pdf)
+
 This document defines a [VOResource](https://ivoa.net/documents/VOResource)
 for registering Virtual Observatory standards.  Its primary use is to
 enable machine-actionable references to standards and concepts within them.
