@@ -58,7 +58,7 @@ jobs:
         release_name: "Auto PDF Preview"
         body_mrkdwn: |
           This release aims to provide a PDF preview of the last commit applied on this repository.
-          It will be updated automatically after each merge of a PullRequest.
+          It will be updated automatically after each push on the main branch. 
           **DO NOT PUBLISH THIS PRE-RELEASE!**"
           _Corresponding commit: ${{ github.sha }}_
         assets: ${{ env.doc_name }}-draft.pdf
