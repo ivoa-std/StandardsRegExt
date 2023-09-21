@@ -20,7 +20,7 @@ AUTHOR_EMAIL=renaud.savalle@obspm.fr
 
 # Source files for the TeX document (but the main file must always
 # be called $(DOCNAME).tex)
-SOURCES = $(DOCNAME).tex role_diagram.pdf sia-example.vor
+SOURCES = $(DOCNAME).tex role_diagram.pdf sia-example.vor gitmeta.tex
 
 # List of image files to be included in submitted package (anything that
 # can be rendered directly by common web browsers)
