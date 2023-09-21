@@ -573,53 +573,53 @@ follows.
 \begingroup\small\begin{bigdescription}\item[Element \xmlel{endorsedVersion}]
 \begin{description}
 \item[Type] a string with optional attributes
-\item[Meaning]
+\item[Meaning] 
                      the version of the standard that is recommended for use.
-
+                   
 \item[Occurrence] required; multiple occurrences allowed.
-\item[Comment]
+\item[Comment] 
                      More than one version can be listed, indicating
                      that any of these versions are recognized as
                      acceptable for use.
-
+                   
 
 \end{description}
 \item[Element \xmlel{schema}]
 \begin{description}
 \item[Type] composite: \xmlel{vstd:Schema}
-\item[Meaning]
+\item[Meaning] 
                      a description and pointer to a schema document
                      defined by this standard.
-
+                   
 \item[Occurrence] optional; multiple occurrences allowed.
-\item[Comment]
+\item[Comment] 
                      This is most typically an XML Schema, but it need
                      not be strictly.
-
+                   
 
 \end{description}
 \item[Element \xmlel{deprecated}]
 \begin{description}
 \item[Type] string: \xmlel{xs:token}
-\item[Meaning]
+\item[Meaning] 
                      when present, this element indicates that all
                      versions of the standard are considered
                      deprecated by the publisher.  The value is a
-                     human-readable explanation for the deprecation.
-
+                     human-readable explanation for the designation.
+                   
 \item[Occurrence] optional
-\item[Comment]
+\item[Comment] 
                      The explanation should indicate if another
                      standard should be preferred.
-
+                   
 
 \end{description}
 \item[Element \xmlel{key}]
 \begin{description}
 \item[Type] composite: \xmlel{vstd:StandardKey}
-\item[Meaning]
+\item[Meaning] 
                      a defined key associated with this standard.
-
+                   
 \item[Occurrence] optional; multiple occurrences allowed.
 
 \end{description}
@@ -693,64 +693,64 @@ users to the preferred version.
 \item[status]
 \begin{description}
 \item[Type] string with controlled vocabulary
-\item[Meaning]
+\item[Meaning] 
                  the IVOA status level of this version of the standard.
-
+               
 \item[Occurrence] optional
 
 \item[Allowed Values]\hfil
 \begin{longtermsdescription}\item[rec]
                             an IVOA Recommendation
-
+                         
 \item[pr]
                             an IVOA Proposed Recommendation
-
+                         
 \item[wd]
                             an IVOA Working Draft
-
+                         
 \item[iwd]
                             an internal Working Draft of an IVOA Working Group
-
+                         
 \item[note]
                             a published IVOA Note
-
+                         
 \item[pen]
                             a Proposed Endorsed Note
-
+                         
 \item[en]
                             an Endorsed Note
-
+                         
 \item[n/a]
                             not an IVOA standard or protostandard at
                             this time.
-
+                         
 \end{longtermsdescription}
 \item[Default] n/a
-\item[Comment]
+\item[Comment] 
                  For values of “rec”, “pr”, “wd”, “note”, “pen”, and “en” the
                  record's referenceURL element should point to the
                  official specification document in the IVOA Document
                  Repository; if the document does not appear there,
                  these values should not be used.
-
+               
 \end{description}
 \item[use]
 \begin{description}
 \item[Type] string with controlled vocabulary
-\item[Meaning]
+\item[Meaning] 
                  A designation of preference for the version compared
                  to other versions in use.
-
+               
 \item[Occurrence] optional
 
 \item[Allowed Values]\hfil
 \begin{longtermsdescription}\item[preferred]
                             the most preferred version.
-
+                         
 \item[deprecated]
                             a version whose use is now discouraged
                             because a newer version is preferred.
-
+                         
 \end{longtermsdescription}
 \end{description}
 
@@ -821,16 +821,16 @@ Other schema types and definition formats are allowed.
 \item[namespace]
 \begin{description}
 \item[Type] string: \xmlel{xs:token}
-\item[Meaning]
+\item[Meaning] 
                an identifier for the schema being described.  Each instance
                of this attribute must be unique within the resourse description.
-
+             
 \item[Occurrence] required
-\item[Comment]
+\item[Comment] 
                For XML schemas, this should be the schema's namespace URI.
                Otherwise, it should be a unique label to distinguish it from
                other schemas described in the same resource description.
-
+             
 \end{description}
 
 
@@ -843,46 +843,46 @@ Other schema types and definition formats are allowed.
 \begingroup\small\begin{bigdescription}\item[Element \xmlel{location}]
 \begin{description}
 \item[Type] a URI: \xmlel{xs:anyURI}
-\item[Meaning]
+\item[Meaning] 
                   A URL pointing to a document that formally defines
                   the schema.
-
+               
 \item[Occurrence] required
-\item[Comment]
+\item[Comment] 
                   The document should be in a machine-parsable format
                   when applicable.  For example, when refering to an
                   XML schema, the document should be an XML Schema or
                   similar document that can be used to validate an
                   instance document.
-
+               
 
 \end{description}
 \item[Element \xmlel{description}]
 \begin{description}
 \item[Type] string: \xmlel{xs:token}
-\item[Meaning]
+\item[Meaning] 
                   A human-readable description of what the schema
                   defines or is used for.
-
+               
 \item[Occurrence] optional
-\item[Comment]
+\item[Comment] 
                   A brief description--e.g. one statement--is
                   recommended for display purposes.
-
+               
 
 \end{description}
 \item[Element \xmlel{example}]
 \begin{description}
 \item[Type] a URI: \xmlel{xs:anyURI}
-\item[Meaning]
+\item[Meaning] 
                   A URL pointing to a sample document that illustrates
                   the use of the schema.
-
+               
 \item[Occurrence] optional; multiple occurrences allowed.
-\item[Comment]
+\item[Comment] 
                   When applicable (e.g. XML), the document should be
                   in the format defined by the schema document.
-
+               
 
 \end{description}
 
@@ -951,19 +951,19 @@ VOResource schema.
 \begingroup\small\begin{bigdescription}\item[Element \xmlel{interface}]
 \begin{description}
 \item[Type] composite: \xmlel{vr:Interface}
-\item[Meaning]
+\item[Meaning] 
                       an abstract description of one of the interfaces defined
                       by this service standard.
-
+                    
 \item[Occurrence] optional; multiple occurrences allowed.
-\item[Comment]
+\item[Comment] 
                       This element can provide details about the interface
                       that apply to all implementations.  Each interface
                       element should specify a role with a value starting
                       with {"}std:{"} or, if there is only one standard interface,
                       is equal to {"}std{"}.
-
-\item[Comment]
+                    
+\item[Comment] 
                       Applications that, for example, wish to build a GUI
                       to the service on-the-fly would first access this generic
                       description.  Site-specific variations, such
@@ -973,8 +973,8 @@ VOResource schema.
                       found in this generic description.  This generic interface
                       description can be matched with the site-specific one
                       using the role attribute.
-
-\item[Comment]
+                    
+\item[Comment] 
                       Even though the Interface type requires an
                       accessURL child element, this element is
                       intended to describe a service in the
@@ -982,7 +982,7 @@ VOResource schema.
                       installation of the service.  Consequently,
                       the accessURL may contain a bogus URL;
                       applications should not expect it to be resolvable.
-
+                    
 
 \end{description}
 
@@ -1117,26 +1117,24 @@ a VOResource record.
 \begingroup\small\begin{bigdescription}\item[Element \xmlel{name}]
 \begin{description}
 \item[Type] string of the form: \emph{([A-Za-z0-9;/$\backslash$?:@\&=$\backslash$+\$,$\backslash$-\_$\backslash$.!~$\backslash$*'$\backslash$($\backslash$)]|\%[A-Fa-f0-9]\{2\})+}
-\item[Meaning]
+\item[Meaning] 
                   The property identifier which would appear as the
                   fragment (string after the pound sign, \#) in an IVOA
                   identifier.
-
-\item[Occurrence] required
-
-\item[Comment]
                   To facilitate comparisons of such keys given that
                   registry identifiers are case insensitive, all newly
                   created standard keys must not contain uppercase letters.
+               
+\item[Occurrence] required
 
 
 \end{description}
 \item[Element \xmlel{description}]
 \begin{description}
 \item[Type] string: \xmlel{xs:token}
-\item[Meaning]
+\item[Meaning] 
                   A human-readable definition of this property.
-
+               
 \item[Occurrence] required
 
 \end{description}
