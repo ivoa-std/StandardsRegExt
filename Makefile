@@ -12,7 +12,7 @@ DOCVERSION = 1.1
 DOCDATE = 2024-01-25 
 
 # What is it you're writing: NOTE, WD, PR, REC, PEN, or EN
-DOCTYPE = PR 
+DOCTYPE = PR
 
 # An e-mail address of the person doing the submission to the document
 # repository (can be empty until a make upload is being made)
