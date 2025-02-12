@@ -128,7 +128,7 @@ resource in an IVOA-compliant registry.
 
 
 This document defines a VOResource extension schema called
-StandardsRegExt which allows one to describe a standard
+StandardsRegExt which allows standards writers to describe a standard
 and register it with an IVOA registry.  By doing so, a unique IVOA
 identifier becomes ``attached'' to the standard which can be referred to
 in other resource descriptions, namely for services that support the
@@ -326,7 +326,7 @@ slightly confusing convention.
 Authors of VOResource instance documents may choose to
 provide a location for the VOResource XML Schema document and its
 extensions using the
-\xmlel{xsi:schemaLocation} attribute.  While the choice of
+\xmlel{xsi:schemaLocation} attribute.  While 
 the location value is the choice of the author, this specification
 recommends using the StandardsRegExt namespace URI as its location URL
 (as illustrated in the example above), as in,
