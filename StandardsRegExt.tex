@@ -276,10 +276,10 @@ Here's an example of defining the HiPS standard and its associated \emph{keys}.
     	<subject>Standards</subject>
     	<subject>HiPS</subject>
 		<description>
-			HiPS: a hierarchical scheme for the description, storage and access of 
-			sky survey data. The system is based on hierarchical tiling of sky regions 
-			at finer and finer spatial  resolution which facilitates a progressive 
-			view of a survey, and supports multi-resolution zooming and panning. 
+			HiPS: a hierarchical scheme for the description, storage and access of
+			sky survey data. The system is based on hierarchical tiling of sky regions
+			at finer and finer spatial  resolution which facilitates a progressive
+			view of a survey, and supports multi-resolution zooming and panning.
 			HiPS uses the HEALPix tessellation of the sky as the basis for the scheme
 			and is implemented as a simple file structure with a direct indexing
 			scheme that leads to practical implementations.
@@ -387,15 +387,18 @@ are specifically for independently documented standards:
 \end{description}
 
 \begin{admonition}{Note}
-       As mentioned above, this standard allows controlled names to be
-       defined either as part of a record of any of the above two
-       types.  When such names are being defined as part of an IVOA
-       standard, it is recommended that the \xmlel{vstd:Standard} or
-       \xmlel{vstd:ServiceStandard} record corresponding to the
-       IVOA standard document be used to define the names.  The deprecated
-       \xmlel{vstd:StandardKeyEnumeration} was originally envisioned to
-       as a container for names.  With the adoption of Vocabularies in
-       the VO 2 \citep{2021ivoa.spec.0525D}, this type has 
+       In general, \xmlel{vstd:StandardKey}-s used by a standard should
+       be defined in that standard's registry record.  That is, the
+       practice currently employed by ADQL \citep{2023ivoa.spec.1215M}
+       that defines standard keys in TAPRegExt's StandardsRegExt record
+       is to be considered a historical artefact.
+
+       The deprecated
+       \xmlel{vstd:StandardKeyEnumeration} was originally envisioned as
+       a container for names that are not closely related to a single
+       standard and hence perhaps not suitable for that standard's
+       record.  With the adoption of Vocabularies in
+       the VO 2 \citep{2021ivoa.spec.0525D}, this type has
        become obsolete.
 \end{admonition}
 
@@ -505,9 +508,7 @@ URI, all in one resource has several advantages:
 
 Some applications may wish to publish additional metadata associated
 with a key definition through further extension of VOResource
-metadata.  This can be be done by deriving a new key metadatum type
-derived by extension from the \xmlel{vstd:StandardKey}.
-
+metadata.  This could be done by extending \xmlel{vstd:StandardKey} type.
 
 
 \section{The StandardsRegExt Metadata}
@@ -576,53 +577,53 @@ follows.
 \begingroup\small\begin{bigdescription}\item[Element \xmlel{endorsedVersion}]
 \begin{description}
 \item[Type] a string with optional attributes
-\item[Meaning] 
+\item[Meaning]
                      the version of the standard that is recommended for use.
-                   
+
 \item[Occurrence] required; multiple occurrences allowed.
-\item[Comment] 
+\item[Comment]
                      More than one version can be listed, indicating
                      that any of these versions are recognized as
                      acceptable for use.
-                   
+
 
 \end{description}
 \item[Element \xmlel{schema}]
 \begin{description}
 \item[Type] composite: \xmlel{vstd:Schema}
-\item[Meaning] 
+\item[Meaning]
                      a description and pointer to a schema document
                      defined by this standard.
-                   
+
 \item[Occurrence] optional; multiple occurrences allowed.
-\item[Comment] 
+\item[Comment]
                      This is most typically an XML Schema, but it need
                      not be strictly.
-                   
+
 
 \end{description}
 \item[Element \xmlel{deprecated}]
 \begin{description}
 \item[Type] string: \xmlel{xs:token}
-\item[Meaning] 
+\item[Meaning]
                      when present, this element indicates that all
                      versions of the standard are considered
                      deprecated by the publisher.  The value is a
                      human-readable explanation for the designation.
-                   
+
 \item[Occurrence] optional
-\item[Comment] 
+\item[Comment]
                      The explanation should indicate if another
                      standard should be preferred.
-                   
+
 
 \end{description}
 \item[Element \xmlel{key}]
 \begin{description}
 \item[Type] composite: \xmlel{vstd:StandardKey}
-\item[Meaning] 
+\item[Meaning]
                      a defined key associated with this standard.
-                   
+
 \item[Occurrence] optional; multiple occurrences allowed.
 
 \end{description}
@@ -696,64 +697,64 @@ users to the preferred version.
 \item[status]
 \begin{description}
 \item[Type] string with controlled vocabulary
-\item[Meaning] 
+\item[Meaning]
                  the IVOA status level of this version of the standard.
-               
+
 \item[Occurrence] optional
 
 \item[Allowed Values]\hfil
 \begin{longtermsdescription}\item[rec]
                             an IVOA Recommendation
-                         
+
 \item[pr]
                             an IVOA Proposed Recommendation
-                         
+
 \item[wd]
                             an IVOA Working Draft
-                         
+
 \item[iwd]
                             an internal Working Draft of an IVOA Working Group
-                         
+
 \item[note]
                             a published IVOA Note
-                         
+
 \item[pen]
                             a Proposed Endorsed Note
-                         
+
 \item[en]
                             an Endorsed Note
-                         
+
 \item[n/a]
                             not an IVOA standard or protostandard at
                             this time.
-                         
+
 \end{longtermsdescription}
 \item[Default] n/a
-\item[Comment] 
+\item[Comment]
                  For values of “rec”, “pr”, “wd”, “note”, “pen”, and “en” the
                  record's referenceURL element should point to the
                  official specification document in the IVOA Document
                  Repository; if the document does not appear there,
                  these values should not be used.
-               
+
 \end{description}
 \item[use]
 \begin{description}
 \item[Type] string with controlled vocabulary
-\item[Meaning] 
+\item[Meaning]
                  A designation of preference for the version compared
                  to other versions in use.
-               
+
 \item[Occurrence] optional
 
 \item[Allowed Values]\hfil
 \begin{longtermsdescription}\item[preferred]
                             the most preferred version.
-                         
+
 \item[deprecated]
                             a version whose use is now discouraged
                             because a newer version is preferred.
-                         
+
 \end{longtermsdescription}
 \end{description}
 
@@ -824,16 +825,16 @@ Other schema types and definition formats are allowed.
 \item[namespace]
 \begin{description}
 \item[Type] string: \xmlel{xs:token}
-\item[Meaning] 
+\item[Meaning]
                an identifier for the schema being described.  Each instance
                of this attribute must be unique within the resourse description.
-             
+
 \item[Occurrence] required
-\item[Comment] 
+\item[Comment]
                For XML schemas, this should be the schema's namespace URI.
                Otherwise, it should be a unique label to distinguish it from
                other schemas described in the same resource description.
-             
+
 \end{description}
 
 
@@ -846,46 +847,46 @@ Other schema types and definition formats are allowed.
 \begingroup\small\begin{bigdescription}\item[Element \xmlel{location}]
 \begin{description}
 \item[Type] a URI: \xmlel{xs:anyURI}
-\item[Meaning] 
+\item[Meaning]
                   A URL pointing to a document that formally defines
                   the schema.
-               
+
 \item[Occurrence] required
-\item[Comment] 
+\item[Comment]
                   The document should be in a machine-parsable format
                   when applicable.  For example, when refering to an
                   XML schema, the document should be an XML Schema or
                   similar document that can be used to validate an
                   instance document.
-               
+
 
 \end{description}
 \item[Element \xmlel{description}]
 \begin{description}
 \item[Type] string: \xmlel{xs:token}
-\item[Meaning] 
+\item[Meaning]
                   A human-readable description of what the schema
                   defines or is used for.
-               
+
 \item[Occurrence] optional
-\item[Comment] 
+\item[Comment]
                   A brief description--e.g. one statement--is
                   recommended for display purposes.
-               
+
 
 \end{description}
 \item[Element \xmlel{example}]
 \begin{description}
 \item[Type] a URI: \xmlel{xs:anyURI}
-\item[Meaning] 
+\item[Meaning]
                   A URL pointing to a sample document that illustrates
                   the use of the schema.
-               
+
 \item[Occurrence] optional; multiple occurrences allowed.
-\item[Comment] 
+\item[Comment]
                   When applicable (e.g. XML), the document should be
                   in the format defined by the schema document.
-               
+
 
 \end{description}
 
@@ -954,19 +955,19 @@ VOResource schema.
 \begingroup\small\begin{bigdescription}\item[Element \xmlel{interface}]
 \begin{description}
 \item[Type] composite: \xmlel{vr:Interface}
-\item[Meaning] 
+\item[Meaning]
                       an abstract description of one of the interfaces defined
                       by this service standard.
-                    
+
 \item[Occurrence] optional; multiple occurrences allowed.
-\item[Comment] 
+\item[Comment]
                       This element can provide details about the interface
                       that apply to all implementations.  Each interface
                       element should specify a role with a value starting
                       with {"}std:{"} or, if there is only one standard interface,
                       is equal to {"}std{"}.
-                    
-\item[Comment] 
+
+\item[Comment]
                       Applications that, for example, wish to build a GUI
                       to the service on-the-fly would first access this generic
                       description.  Site-specific variations, such
@@ -976,8 +977,8 @@ VOResource schema.
                       found in this generic description.  This generic interface
                       description can be matched with the site-specific one
                       using the role attribute.
-                    
-\item[Comment] 
+
+\item[Comment]
                       Even though the Interface type requires an
                       accessURL child element, this element is
                       intended to describe a service in the
@@ -985,7 +986,7 @@ VOResource schema.
                       installation of the service.  Consequently,
                       the accessURL may contain a bogus URL;
                       applications should not expect it to be resolvable.
-                    
+
 
 \end{description}
 
@@ -1041,26 +1042,26 @@ The so-called ``simple'' data access layer (DAL) services, such as the
 Simple Image Access services \citep{2015ivoa.spec.1223D}, are
 registered using the \xmlel{vs:ParamHTTP} interface type
 \citep{2021ivoa.spec.1102D}
-to describe its interface.  This interface
+to describe their interfaces.  This interface
 type allows one to list input parameters accepted by the service.
 Each parameter can be marked as \emph{required}, \emph{optional},
-or \emph{ignored}.  Typically with DAL services, parameters defined
-as optional by the standard may be legally ignored by an
-implementation.  Consequently, this specification recommends special
-instruction for listing and interpreting input parameteters in a
-\xmlel{vstd:ServiceStandard} record when the interface is of type
-\xmlel{vs:ParamHTTP}:  parameters that can be optionally provided
-in a client's query but are ignorable by the implementation should be
-marked as \emph{ignored}.  Applications that consume such
+or \emph{ignored}.  In several DAL standards, there are optional
+parameters that implementations may choose to ignore.
+When a \xmlel{vstd:ServiceStandard} record contains an interface of type
+\xmlel{vs:ParamHTTP}, such ignoreable parameters should have their
+\xmlel{use} attribute set to \emph{ignored}.
+
+Applications that consume such
 \xmlel{vstd:ServiceStandard} records should thus interpret the
 parameters marked \emph{ignored} as \emph{optional} for use by
 clients and \emph{ignorable} by implementations.  This minimizes the
 list of parameters that the service provider must list in the
 registration of a particular service instance to the ones that are
-actually supported (i.e., not ignored): when the list service
-instance description is merged into the list from the
+actually supported (i.e., not ignored).  When the list of parameters
+from the service
+instance description is merged into the list of parameters from the
 \xmlel{vstd:ServiceStandard} record (step 4 above), the result is
-an accurate list of the optional but supported and the ignored
+an accurate list of the optional but supported versus optional but ignored
 parameters for that service instance.
 
 
@@ -1079,7 +1080,7 @@ defined by the standard.
 \label{sect:standardkeys}
 
 The \xmlel{vstd:StandardKey} type provides the means to
-define keys (as defined in Sect.~\ref{sect:keys}) within
+define keys (as described in Sect.~\ref{sect:keys}) within
 a VOResource record.
 
 % GENERATED: !schemadoc StandardsRegExt-v1.1.xsd StandardKey
@@ -1120,14 +1121,14 @@ a VOResource record.
 \begingroup\small\begin{bigdescription}\item[Element \xmlel{name}]
 \begin{description}
 \item[Type] string of the form: \emph{([A-Za-z0-9;/$\backslash$?:@\&=$\backslash$+\$,$\backslash$-\_$\backslash$.!~$\backslash$*'$\backslash$($\backslash$)]|\%[A-Fa-f0-9]\{2\})+}
-\item[Meaning] 
+\item[Meaning]
                   The property identifier which would appear as the
                   fragment (string after the pound sign, \#) in an IVOA
                   identifier.
                   To facilitate comparisons of such keys given that
                   registry identifiers are case insensitive, all newly
                   created standard keys must not contain uppercase letters.
-               
+
 \item[Occurrence] required
 
 
@@ -1135,9 +1136,9 @@ a VOResource record.
 \item[Element \xmlel{description}]
 \begin{description}
 \item[Type] string: \xmlel{xs:token}
-\item[Meaning] 
+\item[Meaning]
                   A human-readable definition of this property.
-               
+
 \item[Occurrence] required
 
 \end{description}
