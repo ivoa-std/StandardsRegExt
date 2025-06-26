@@ -457,14 +457,14 @@ Consistent with the URI standard, the
 For example, we consider a resource description with an IVOA
 identifier given by
 \nolinkurl{ivo://ivoa.net/std/QueryProtocol} that
-defines a a key named \texttt{case-insensitive}; the URI
+defines a key named \texttt{case-insensitive}; the URI
 identifying this key would be:
 $$
 \hbox{\nolinkurl{ivo://ivoa.net/std/QueryProtocol#case-insensitive}}.
 $$
 
 Note that registry references in the sense of \emph{IVOA Identifiers 2}
-(i.e., the part in front of the hash character) must be compared
+(i.e., the part in front of the the pound sign, \#) must be compared
 case-insensitively.  To facilitate comparisons of full IVOIDs, since
 version 1.1 this specifiation requires that standard key names do not
 contain uppercase letters.  In this way, clients can safely lowercase
@@ -1184,7 +1184,7 @@ is not necessary to use the URI.
 \section{Operational Aspects}
 \label{sect:operations}
 
-\subsection{Managment of Standards Records}
+\subsection{Management of Standards Records}
 
 Only IVOA standards that actually make use of identifiers to or into
 StandardsRegExt records MUST be accompanied with active records
@@ -1249,6 +1249,7 @@ as distributed by the Registry of Registries.
 \subsection{Changes since Rec-1.0}
 
 \begin{itemize}
+\item Corrected typos identified in RFC remarks
 \item Corrected and clarified some wordings.
 \item Removed references to \xmlel{vstd:StandardKeyEnumeration} (which is now deprecated)
 from this document and associated schema.
@@ -1257,7 +1258,7 @@ Replaced computer language example by HiPS standard definition example.
 \item Adding regulations on record upload and key additions.
 \item Requiring new keys to be all-lowercase in order to simplify
 comparisons.
-\item Ported to ivoatex.  This entailed some re-shuffling the the
+\item Ported to ivoatex.  This entailed some re-shuffling the 
 previous content.
 \item Dropped the ``example of a Standard resource that summarizes this
 specification'' (we have an example in the appendix already, and it's
