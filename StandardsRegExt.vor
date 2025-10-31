@@ -1,8 +1,4 @@
-<ri:Resource xsi:type="vstd:Standard" status="active"
-             created="2012-02-17T11:15:00" updated="2012-02-17T11:15:00"
-             xmlns:ri="http://www.ivoa.net/xml/RegistryInterface/v1.0" 
-             xmlns:vstd="http://www.ivoa.net/xml/StandardsRegExt/v1.0" 
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ri:Resource xmlns:ri="http://www.ivoa.net/xml/RegistryInterface/v1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="vstd:Standard" status="active" created="2012-02-17T11:15:00" updated="2025-10-31T13:04:42.635930">
     <title> StandardsRegExt: a VOResource Schema Extension for Describing IVOA Standards </title>
     <shortName> StandardsRegExt </shortName>
     <identifier>   ivo://ivoa.net/std/StandardsRegExt   </identifier>
@@ -15,8 +11,8 @@
         <logo>http://www.ivoa.net/icons/ivoa_logo_small.jpg</logo>
       </creator>
       <date role="creation"> 2010-05-19 </date>
-      <date role="updated">  2012-02-17 </date>
-      <version> 1.0 </version>
+      <date role="updated">  2025-10-31 </date>
+      <version>1.1</version>
       <contact>
         <name>   Resource Registry Working Group   </name>
 	<email>  registry@ivoa.net    </email>
@@ -43,7 +39,7 @@
       <type>   Other   </type>
       <contentLevel>   Research   </contentLevel>
     </content>
-    <endorsedVersion status="pr"> 1.0 </endorsedVersion>
+    <endorsedVersion status="rec">1.1</endorsedVersion>
     <schema namespace="http://www.ivoa.net/xml/StandardsRegExt/v1.0">
       <location>http://www.ivoa.net/xml/StandardsRegExt/v1.0</location>
       <description>
