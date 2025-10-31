@@ -9,10 +9,10 @@ DOCNAME = StandardsRegExt
 DOCVERSION = 1.1
 
 # Publication date, ISO format; update manually for "releases"
-DOCDATE = 2024-01-25
+DOCDATE = 2025-10-31
 
 # What is it you're writing: NOTE, WD, PR, REC, PEN, or EN
-DOCTYPE = PR
+DOCTYPE = REC
 
 # An e-mail address of the person doing the submission to the document
 # repository (can be empty until a make upload is being made)
