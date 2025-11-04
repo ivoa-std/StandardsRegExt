@@ -9,7 +9,7 @@ DOCNAME = StandardsRegExt
 DOCVERSION = 1.1
 
 # Publication date, ISO format; update manually for "releases"
-DOCDATE = 2025-10-31
+DOCDATE = 2025-10-20 
 
 # What is it you're writing: NOTE, WD, PR, REC, PEN, or EN
 DOCTYPE = REC
